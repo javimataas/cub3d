@@ -1,42 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/21 18:06:53 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/11/23 17:43:55 by jariza-o         ###   ########.fr       */
+/*   Created: 2023/11/23 17:34:43 by jariza-o          #+#    #+#             */
+/*   Updated: 2023/11/23 17:42:11 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "../../includes/cub3d.h" //crear .h
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include "../libft/libft.h"
-# include "../MLX42/include/MLX42/MLX42.h"
-# include "map_checker.h"
-
-enum e_datatype
+void	ft_init_struct(t_game *game, char **argv)
 {
-	ERR_WRNG_ARGS,
-	ERR_WRNG_EXT
-};
+	game->map_path = ft_strdup(argv[1]);
+	ft_init_map_textures(t_game *game);
+	
+}
 
-typedef struct s_map
+void	ft_init_map_textures(t_game *game)
 {
-	char	*map_path;
-	char	**textures;
-	char	**map;
-}	t_map;
-
-typedef struct s_game
-{
-	mlx_t	*mlx;
-	t_map	*s_map;
-}	t_game;
-
-#endif
+	game->textures[]
+}

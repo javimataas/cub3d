@@ -3,12 +3,22 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+         #
+#    By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/16 19:23:22 by jmatas-p          #+#    #+#              #
-#    Updated: 2023/11/21 18:43:01 by jmatas-p         ###   ########.fr        #
+#    Updated: 2023/11/23 15:21:20 by jariza-o         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+# Colors
+GREEN	=	\033[0;32m
+YELLOW	=	\033[0;93m
+FYELLOW	=	\033[38;5;154m
+BLUE	=	\033[0;96m
+PURPLE	=	\033[0;95m
+PINK	=	\033[0;91m
+RED		=	\033[0;31m
+END		=	\033[0m
 
 CC 		=	gcc
 CFLAGS	=	-Wall -Wextra -Werror
@@ -28,7 +38,7 @@ NAME	=	cub3d
 all:		$(NAME)
 
 $(NAME):	$(LIBFT) $(MLX42) $(OBJ)
-			@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MLX42) -framework Cocoa -framework OpenGL -framework IOKit -Iinclude -lglfw -L"/Users/jmatas-p/.brew/opt/glfw/lib/" -o $(NAME)
+			@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MLX42) -framework Cocoa -framework OpenGL -framework IOKit -Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/" -o $(NAME)
 			@echo "$(GREEN)$(NAME) compiled successfully"
 
 $(LIBFT):
@@ -51,4 +61,11 @@ fclean:		clean
 
 re:			fclean all
 
-.PHONY: all clean fclean re
+norminette:	
+			@echo "$(YELLOW)Norminette libft.$(END)"
+			@norminette ./libft
+			@echo "$(YELLOW)Norminette minishell.$(END)"
+			@norminette ./includes
+			@norminette ./src
+
+.PHONY: all clean fclean re norminette
