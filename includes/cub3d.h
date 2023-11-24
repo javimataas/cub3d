@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:06:53 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/11/23 17:43:55 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/11/24 16:55:49 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,25 @@ enum e_datatype
 	ERR_WRNG_EXT
 };
 
+typedef struct s_textures
+{
+	char		*id;
+	char		*path;
+	t_textures	*prev;
+	t_textures	*next;
+}	t_textures;
+
+
 typedef struct s_map
 {
-	char	*map_path;
-	char	**textures;
-	char	**map;
+	char		**map;
+	t_textures	*texts;
 }	t_map;
 
 typedef struct s_game
 {
 	mlx_t	*mlx;
-	t_map	*s_map;
+	t_map	*map;
 }	t_game;
 
 #endif
