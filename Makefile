@@ -6,7 +6,7 @@
 #    By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/16 19:23:22 by jmatas-p          #+#    #+#              #
-#    Updated: 2023/11/23 15:21:20 by jariza-o         ###   ########.fr        #
+#    Updated: 2023/11/26 17:55:07 by jariza-o         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,9 +27,11 @@ LIBFT	=	libft/libft.a
 
 MLX42	=	MLX42/libmlx42.a
 
-GREEN	=	\033[0;32m
+HDRS	= 	includes
 
-SRC		=	src/main.c src/map_checker/error.c src/map_checker/map_checker.c
+SRC		=	src/main.c \
+			src/map_checker/error.c src/map_checker/map_checker.c \
+			src/init_structs/init.c src/init_structs/map/init_map_texts.c src/init_structs/init_map.c \
 
 OBJ		=	$(SRC:.c=.o)
 
@@ -38,7 +40,7 @@ NAME	=	cub3d
 all:		$(NAME)
 
 $(NAME):	$(LIBFT) $(MLX42) $(OBJ)
-			@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MLX42) -framework Cocoa -framework OpenGL -framework IOKit -Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/" -o $(NAME)
+			@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MLX42) -framework Cocoa -framework OpenGL -framework IOKit -Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/"  -I $(HDRS) -o $(NAME)
 			@echo "$(GREEN)$(NAME) compiled successfully"
 
 $(LIBFT):

@@ -6,11 +6,11 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 15:35:36 by jariza-o          #+#    #+#             */
-/*   Updated: 2023/11/24 16:56:25 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/11/26 17:57:52 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/init_structs.h"
+#include "../../../includes/init_structs.h"
 
 void	ft_init_map_textures(t_game *game)
 {
@@ -34,7 +34,7 @@ void	ft_init_map_textures(t_game *game)
 	aux->next->next->next->next->next->id = "C";
 }
 
-static t_textures	*ft_lstnew_texts(void)
+t_textures	*ft_lstnew_texts(void)
 {
 	t_textures	*node;
 
@@ -48,7 +48,7 @@ static t_textures	*ft_lstnew_texts(void)
 	return (node);
 }
 
-static t_textures	*ft_lstlast_texts(t_textures *lst)
+t_textures	*ft_lstlast_texts(t_textures *lst)
 {
 	if (!lst)
 		return (NULL);
