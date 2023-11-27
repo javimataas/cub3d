@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 16:57:41 by jariza-o          #+#    #+#             */
-/*   Updated: 2023/11/27 19:01:25 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/11/27 19:33:41 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		ft_is_empty(char *line)
 	i = 0;
 	while (line && line[i])
 	{
-		if (line[i] != ' ' && line[i] != '\t' && line[i] != '\n') // NOSE SI AÑADIR /0 A LA COMPROBACION
+		if (line[i] != ' ' && line[i] != '\t' && line[i] != '\n')
 			return (1);
 		i++;
 	}
