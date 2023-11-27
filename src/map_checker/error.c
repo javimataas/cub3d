@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:21:05 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/11/27 17:19:39 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/11/27 18:24:59 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,10 @@ void	ft_error(int error)
 	else if (error == ERR_WRNG_EXT)
 		printf("Error: Wrong file extension\n");
 	else if (error == ERR_MLLC_FAIL)
-		printf("Error: Malloc Fail\n");
+		printf("Error: Malloc fail\n");
 	else if (error == ERR_DUP_TEXTS)
-		printf("Error: A Cordenate Texture is duplicated\n");
+		printf("Error: A coordenate texture is duplicated\n");
+	else if (error == ERR_MISS_TEXTS)
+		printf("Error: A coordenate texture is missing\n");
 	exit (1);
 }

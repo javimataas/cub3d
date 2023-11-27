@@ -3,29 +3,105 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 16:57:41 by jariza-o          #+#    #+#             */
-/*   Updated: 2023/11/27 17:25:19 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/11/27 18:24:13 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/cub3d.h"
 
+int		ft_is_empty(char *line)
+{
+	int		i;
+
+	i = 0;
+	while (line && line[i])
+	{
+		if (line[i] != ' ' && line[i] != '\t' && line[i] != '\n')
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+int	ft_is_texts(char *line)
+{
+	int		i;
+	int		n;
+	char	*id;
+
+	i = 0;
+	while (line && line[i] && (line[i] == ' ' && line[i] == '\t'))
+		i++;
+	if (line[i] == '\0' || line[i] == '\n')
+		return (1);
+	id = (char *)ft_calloc(3, sizeof(char));
+	if (!id)
+		return (0);
+	n = 0;
+	while (line && line[i] && (line[i] != ' ' && line[i] != '\t'))
+	{
+		id[n] = line[i];
+		n++;
+		i++;
+	}
+	if (ft_strcmp(id, "NO") && ft_strcmp(id, "SO") && ft_strcmp(id, "WE")
+		&& ft_strcmp(id, "EA") && ft_strcmp(id, "F") && ft_strcmp(id, "C"))
+	{
+		free (id);
+		return (0);
+	}
+	free (id);
+	return (1);
+}
+
+int	ft_check_texts(t_game *game)
+{
+	t_textures	*aux;
+
+	aux = game->map->texts;
+	while (aux)
+	{
+		if (aux->path == NULL)
+			return (0);
+		aux = aux->next;
+	}
+	return (1);
+}
+
+
 void	ft_load_struct(t_game *game, int fd)
 {
 	char		*line;
 
+	int i = 1;
 	line = get_next_line(fd);
 	game->map->start_map = 0;
 	while (line != NULL)
 	{
-		ft_select_texts(game, line);
+		while (line != NULL && ft_is_empty(line) == 0)
+		{
+			free (line);
+			line = get_next_line(fd);
+			game->map->start_map++;
+		}
+		printf("%d LINE: (%s)\n", i, line);
 		game->map->start_map++;
+		if (!ft_is_texts(line))
+			break ;
+		ft_select_texts(game, line);
+		printf("NO ROMPE %d\n", i);
+		i++;
 		free (line);
-		//COMPROBAR SI TENEMOS TODAS LAS TEXTURAS y SALIR
 		line = get_next_line(fd);
 	}
+	printf("NO ROMPE FINAL\n");
+	// check if all texts are loaded
+	if (!ft_check_texts(game))
+		ft_error(ERR_MISS_TEXTS);
+	ft_print_texts(game);
 	if (line != NULL)
 		free (line);
 }
@@ -41,7 +117,7 @@ void	ft_select_texts(t_game *game, char *line) // como estoy uasnado aux no dber
 	i = 0;
 	while (line && line[i] && (line[i] == ' ' && line[i] == '\t'))
 		i++;
-	if (line[i] == '\0') //Por si hay lineas vacias
+	if (line[i] == '\0' || line[i] == '\n') //Por si hay lineas vacias
 		return ;
 	id = (char *)ft_calloc(3, sizeof(char));
 	if (!id)

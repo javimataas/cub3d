@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+         #
+#    By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/16 19:23:22 by jmatas-p          #+#    #+#              #
-#    Updated: 2023/11/27 15:50:41 by jariza-o         ###   ########.fr        #
+#    Updated: 2023/11/27 17:38:11 by jmatas-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,7 @@ all:		$(NAME)
 
 $(NAME):	$(LIBFT) $(MLX42) $(OBJ)
 			@gcc $(CFLAGS) $(OBJ) -I $(HDRS) $(LIBFT) $(MLX42) $(GLFW_FLAGS) -o $(NAME)
-			@echo "$(GREEN)$(NAME) compiled successfully"
+			@echo "$(GREEN)$(NAME) compiled successfully$(END)"
 
 $(LIBFT):
 			@make -C libft
@@ -64,7 +64,7 @@ fclean:		clean
 			@rm -f $(NAME)
 			@make fclean -C libft
 			@make clean -C MLX42/
-			@echo "$(GREEN)All clear"
+			@echo "$(GREEN)All clear$(END)"
 
 re:			fclean all
 

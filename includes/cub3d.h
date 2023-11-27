@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:06:53 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/11/27 17:17:12 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/11/27 18:24:22 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ enum			e_datatype
 	ERR_WRNG_ARGS,
 	ERR_WRNG_EXT,
 	ERR_MLLC_FAIL,
-	ERR_DUP_TEXTS
+	ERR_DUP_TEXTS,
+	ERR_MISS_TEXTS
 };
 
 typedef struct s_textures
