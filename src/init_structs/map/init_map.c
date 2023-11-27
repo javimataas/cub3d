@@ -6,11 +6,11 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 16:57:41 by jariza-o          #+#    #+#             */
-/*   Updated: 2023/11/26 17:56:03 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/11/27 17:25:19 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "init_structs.h"
+#include "../../../includes/cub3d.h"
 
 void	ft_load_struct(t_game *game, int fd)
 {
@@ -39,7 +39,7 @@ void	ft_select_texts(t_game *game, char *line) // como estoy uasnado aux no dber
 	t_textures	*aux;
 
 	i = 0;
-	while (line && line[i] && (line[i] == ' ' || line[i] == '\t'))
+	while (line && line[i] && (line[i] == ' ' && line[i] == '\t'))
 		i++;
 	if (line[i] == '\0') //Por si hay lineas vacias
 		return ;
@@ -47,14 +47,14 @@ void	ft_select_texts(t_game *game, char *line) // como estoy uasnado aux no dber
 	if (!id)
 		return ;
 	n = 0;
-	while (line && line[i] && (line[i] != ' ' || line[i] != '\t'))
+	while (line && line[i] && (line[i] != ' ' && line[i] != '\t'))
 	{
 		id[n] = line[i];
 		n++;
 		i++;
 	}
 	// COMPROBAR QUE ES UN ID VALIDO Y SI NO DLLAMAR A ERROR
-	while (line && line[i] && (line[i] == ' ' || line[i] == '\t'))
+	while (line && line[i] && (line[i] == ' ' && line[i] == '\t'))
 		i++;
 	len = 0;
 	n = i;
@@ -66,8 +66,8 @@ void	ft_select_texts(t_game *game, char *line) // como estoy uasnado aux no dber
 	aux = game->map->texts;
 	while (aux && ft_strcmp(id, aux->id))
 		aux = aux->next;
-	if (aux->path != NULL)
-		return ; //LlAMAR A ERROR
+	if (aux && aux->path != NULL)
+		ft_error(ERR_DUP_TEXTS);
 	aux->path = (char *)ft_calloc((len + 1), sizeof(char));
 	if (!aux->path)
 		return ;
@@ -78,6 +78,7 @@ void	ft_select_texts(t_game *game, char *line) // como estoy uasnado aux no dber
 		i++;
 		n++;
 	}
+	ft_printf("%s: %s\n", aux->id, aux->path);
 	free (id);
 }
 
@@ -135,7 +136,7 @@ void	ft_load_map(t_game *game, char *path)
 	fd = open(path, O_RDONLY);
 	n = 0;
 	line = get_next_line(fd);
-	while (n < game->map->map)
+	while (n < game->map->start_map)
 	{
 		n++;
 		free (line);

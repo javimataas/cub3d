@@ -6,11 +6,11 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 17:34:43 by jariza-o          #+#    #+#             */
-/*   Updated: 2023/11/26 17:57:30 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/11/27 17:22:12 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/init_structs.h"
+#include "../../includes/cub3d.h"
 
 void	ft_init_map(t_game *game, char *path)
 {
@@ -18,12 +18,13 @@ void	ft_init_map(t_game *game, char *path)
 
 	game = (t_game *)malloc(sizeof(t_game));
 	if (!game)
-	{
 		ft_error(ERR_MLLC_FAIL);
-		return ;
-	}
+	game->map = (t_map *)malloc(sizeof(t_map));
+	if (!game->map)
+		ft_error(ERR_MLLC_FAIL);
 	fd = open(path, O_RDONLY);
 	ft_init_map_textures(game);
+	ft_printf("TEST\n");
 	ft_load_struct(game, fd);
 	close(fd);
 	ft_reserve_map(game, path);

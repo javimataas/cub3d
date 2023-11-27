@@ -6,32 +6,32 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 15:35:36 by jariza-o          #+#    #+#             */
-/*   Updated: 2023/11/26 17:57:52 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/11/27 17:05:57 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/init_structs.h"
+#include "../../../includes/cub3d.h"
 
 void	ft_init_map_textures(t_game *game)
 {
 	t_textures	*aux;
 	int			i;
 
-	aux = t_lstnew_texts();
+	aux = ft_lstnew_texts();
 	i = 1;
 	while (i < 6)
 	{
 		ft_lstadd_back_texts(&aux, ft_lstnew_texts());
 		i++;
 	}
-	game->map->texts = aux;
-	i = 0;
 	aux->id = "NO";
 	aux->next->id = "SO";
 	aux->next->next->id = "WE";
 	aux->next->next->next->id = "EA";
 	aux->next->next->next->next->id = "F";
 	aux->next->next->next->next->next->id = "C";
+	game->map->texts = aux;
+	// ft_print_texts(game);
 }
 
 t_textures	*ft_lstnew_texts(void)

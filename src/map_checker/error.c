@@ -6,11 +6,11 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:21:05 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/11/26 17:57:34 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/11/27 17:19:39 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/map_checker.h"
+#include "../../includes/cub3d.h"
 
 void	ft_error(int error)
 {
@@ -20,5 +20,7 @@ void	ft_error(int error)
 		printf("Error: Wrong file extension\n");
 	else if (error == ERR_MLLC_FAIL)
 		printf("Error: Malloc Fail\n");
+	else if (error == ERR_DUP_TEXTS)
+		printf("Error: A Cordenate Texture is duplicated\n");
 	exit (1);
 }
