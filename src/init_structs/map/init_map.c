@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 16:57:41 by jariza-o          #+#    #+#             */
-/*   Updated: 2023/11/27 18:24:13 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2023/11/27 19:01:25 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		ft_is_empty(char *line)
 	i = 0;
 	while (line && line[i])
 	{
-		if (line[i] != ' ' && line[i] != '\t' && line[i] != '\n')
+		if (line[i] != ' ' && line[i] != '\t' && line[i] != '\n') // NOSE SI AÑADIR /0 A LA COMPROBACION
 			return (1);
 		i++;
 	}
@@ -76,7 +76,6 @@ void	ft_load_struct(t_game *game, int fd)
 {
 	char		*line;
 
-	int i = 1;
 	line = get_next_line(fd);
 	game->map->start_map = 0;
 	while (line != NULL)
@@ -87,21 +86,16 @@ void	ft_load_struct(t_game *game, int fd)
 			line = get_next_line(fd);
 			game->map->start_map++;
 		}
-		printf("%d LINE: (%s)\n", i, line);
 		game->map->start_map++;
 		if (!ft_is_texts(line))
 			break ;
 		ft_select_texts(game, line);
-		printf("NO ROMPE %d\n", i);
-		i++;
 		free (line);
 		line = get_next_line(fd);
 	}
-	printf("NO ROMPE FINAL\n");
 	// check if all texts are loaded
 	if (!ft_check_texts(game))
 		ft_error(ERR_MISS_TEXTS);
-	ft_print_texts(game);
 	if (line != NULL)
 		free (line);
 }
@@ -177,10 +171,7 @@ void	ft_reserve_map(t_game *game, char *path)
 	}
 	while (line != NULL)
 	{
-		i = 0;
-		while (line && line[i] && (line[i] == ' ' || line[i] == '\t'))
-			i++;
-		if (line[i] == '\n')
+		if (!ft_is_empty(line))
 			game->map->start_map++;
 		else
 			break ;
@@ -189,12 +180,11 @@ void	ft_reserve_map(t_game *game, char *path)
 	}
 	while (line != NULL)
 	{
-		i = 0;
-		while (line && line[i] && (line[i] == ' ' || line[i] == '\t'))
-			i++;
-		if (line[i] == '\n' || line[i] == '\n')
-			break ;
+		if (!ft_is_empty(line))
+			break;
 		len_line++;
+		free (line);
+		line = get_next_line(fd);
 	}
 	close (fd);
 	game->map->map = (char **)ft_calloc((len_line + 1), sizeof (char *));

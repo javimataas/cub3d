@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 17:34:43 by jariza-o          #+#    #+#             */
-/*   Updated: 2023/11/27 17:22:12 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/11/27 19:06:17 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ void	ft_init_map(t_game *game, char *path)
 		ft_error(ERR_MLLC_FAIL);
 	fd = open(path, O_RDONLY);
 	ft_init_map_textures(game);
-	ft_printf("TEST\n");
 	ft_load_struct(game, fd);
 	close(fd);
 	ft_reserve_map(game, path);
 	ft_load_map(game, path);
+	ft_print_texts(game);
 }
