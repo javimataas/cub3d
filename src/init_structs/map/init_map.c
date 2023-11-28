@@ -6,13 +6,13 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 16:57:41 by jariza-o          #+#    #+#             */
-/*   Updated: 2023/11/27 19:33:41 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/11/28 15:25:17 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/cub3d.h"
 
-int		ft_is_empty(char *line)
+int	ft_is_empty(char *line)
 {
 	int		i;
 
@@ -71,7 +71,6 @@ int	ft_check_texts(t_game *game)
 	return (1);
 }
 
-
 void	ft_load_struct(t_game *game, int fd)
 {
 	char		*line;
@@ -93,7 +92,6 @@ void	ft_load_struct(t_game *game, int fd)
 		free (line);
 		line = get_next_line(fd);
 	}
-	// check if all texts are loaded
 	if (!ft_check_texts(game))
 		ft_error(ERR_MISS_TEXTS);
 	if (line != NULL)
@@ -160,7 +158,7 @@ void	ft_reserve_map(t_game *game, char *path)
 	char	*line;
 
 	fd = open(path, O_RDONLY);
-	i = 0;
+	i = 1; // Lo he puesto a 1 porque sino fallaba y se pasaba una linea del inicio del mapa
 	len_line = 0;
 	line = get_next_line(fd);
 	while (i < game->map->start_map)
@@ -181,7 +179,7 @@ void	ft_reserve_map(t_game *game, char *path)
 	while (line != NULL)
 	{
 		if (!ft_is_empty(line))
-			break;
+			break ;
 		len_line++;
 		free (line);
 		line = get_next_line(fd);
@@ -200,7 +198,7 @@ void	ft_load_map(t_game *game, char *path)
 	char	*line;
 
 	fd = open(path, O_RDONLY);
-	n = 0;
+	n = 1;
 	line = get_next_line(fd);
 	while (n < game->map->start_map)
 	{
@@ -211,12 +209,10 @@ void	ft_load_map(t_game *game, char *path)
 	i = 0;
 	while (line != NULL)
 	{
-		n = 0;
-		while (line && line[n] && (line[n] == ' ' || line[n] == '\t'))
-			n++;
-		if (line[i] == '\n' || line[i] == '\0')
+		if (!ft_is_empty(line))
 			break ;
 		game->map->map[i] = ft_strdup(line);
+		i++;
 		free (line);
 		line = get_next_line(fd);
 	}

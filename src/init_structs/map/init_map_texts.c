@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 15:35:36 by jariza-o          #+#    #+#             */
-/*   Updated: 2023/11/27 17:05:57 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/11/28 13:55:34 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	ft_init_map_textures(t_game *game)
 	aux->next->next->next->next->id = "F";
 	aux->next->next->next->next->next->id = "C";
 	game->map->texts = aux;
-	// ft_print_texts(game);
 }
 
 t_textures	*ft_lstnew_texts(void)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:06:53 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/11/27 18:24:22 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2023/11/28 15:03:58 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ typedef struct s_game
 
 /* INIT */
 /* INIT_STRUCT */
-void		ft_init_map(t_game *game, char *path);
+t_game		*ft_init_map(char *path);
 
 /* Create t_textures */
 void		ft_init_map_textures(t_game *game);
@@ -74,7 +74,7 @@ int			ft_check_extension(char *file);
 
 /* UTILS */
 /* Print Functions */
-void		ft_print_texts(t_game *game);
+void		ft_print_texts(t_game game);
 void		ft_print_map(t_game *game);
 
 #endif
