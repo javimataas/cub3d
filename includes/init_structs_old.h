@@ -1,58 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   init_structs.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/21 18:06:53 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/11/28 15:03:58 by jariza-o         ###   ########.fr       */
+/*   Created: 2023/11/24 16:23:00 by jariza-o          #+#    #+#             */
+/*   Updated: 2023/11/26 17:01:46 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef INIT_STRUCTS_H
+# define INIT_STRUCTS_H
 
-# include "../MLX42/include/MLX42/MLX42.h"
-# include "../libft/libft.h"
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
+# include "cub3d.h"
 # include <fcntl.h>
 
-enum			e_datatype
-{
-	ERR_WRNG_ARGS,
-	ERR_WRNG_EXT,
-	ERR_MLLC_FAIL,
-	ERR_DUP_TEXTS,
-	ERR_MISS_TEXTS
-};
-
-typedef struct s_textures
-{
-	char				*id;
-	char				*path;
-	struct s_textures	*prev;
-	struct s_textures	*next;
-}				t_textures;
-
-typedef struct s_map
-{
-	int			start_map;
-	char		**map;
-	t_textures	*texts;
-}				t_map;
-
-typedef struct s_game
-{
-	mlx_t		*mlx;
-	t_map		*map;
-}				t_game;
-
 /* INIT */
+
 /* INIT_STRUCT */
-t_game		*ft_init_map(char *path);
+void		ft_init_map(t_game *game, char *path);
 
 /* Create t_textures */
 void		ft_init_map_textures(t_game *game);
@@ -67,14 +34,5 @@ void		ft_select_texts(t_game *game, char *line);
 /* Load Map */
 void		ft_reserve_map(t_game *game, char *path);
 void		ft_load_map(t_game *game, char *path);
-
-/* MAP CHECHKER*/
-void		ft_error(int error);
-int			ft_check_extension(char *file);
-
-/* UTILS */
-/* Print Functions */
-void		ft_print_texts(t_game game);
-void		ft_print_map(t_game *game);
 
 #endif

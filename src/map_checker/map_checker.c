@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   map_checker.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:29:43 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/11/21 18:46:48 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2023/11/27 15:31:12 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/map_checker.h"
+#include "../../includes/cub3d.h"
 
 int	ft_check_extension(char *file)
 {

@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/16 19:32:55 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/11/28 15:17:38 by jariza-o         ###   ########.fr       */
+/*   Created: 2023/11/23 17:34:43 by jariza-o          #+#    #+#             */
+/*   Updated: 2023/11/28 15:04:44 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
-int	main(int argc, char **argv)
+t_game	*ft_init_map(char *path)
 {
 	t_game	*game;
+	int		fd;
 
-	if (argc == 2)
-	{
-		if (ft_check_extension(argv[1]) == 0)
-		{
-			game = ft_init_map(argv[1]);
-			ft_print_texts(*game);
-			ft_print_map(game);
-		}
-		else
-			ft_error(ERR_WRNG_EXT);
-	}
-	else
-		ft_error(ERR_WRNG_ARGS);
-	return (0);
+	game = malloc(sizeof(t_game));
+	if (!game)
+		ft_error(ERR_MLLC_FAIL);
+	game->map = malloc(sizeof(t_map));
+	if (!game->map)
+		ft_error(ERR_MLLC_FAIL);
+	fd = open(path, O_RDONLY);
+	ft_init_map_textures(game);
+	ft_load_struct(game, fd);
+	close(fd);
+	ft_reserve_map(game, path);
+	ft_load_map(game, path);
+	return (game);
 }
