@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:06:53 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/11/28 15:03:58 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/11/28 15:35:43 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,11 @@ void		ft_select_texts(t_game *game, char *line);
 /* Load Map */
 void		ft_reserve_map(t_game *game, char *path);
 void		ft_load_map(t_game *game, char *path);
+
+/* Init Utils */
+int			ft_is_empty(char *line);
+int			ft_is_texts(char *line);
+int			ft_check_texts(t_game *game);
 
 /* MAP CHECHKER*/
 void		ft_error(int error);
