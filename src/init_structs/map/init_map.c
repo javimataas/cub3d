@@ -6,37 +6,27 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 16:57:41 by jariza-o          #+#    #+#             */
-/*   Updated: 2023/11/28 16:37:04 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/11/28 17:49:05 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/cub3d.h"
 
-void	ft_load_struct(t_game *game, int fd)
+void	ft_load_struct(t_game *game)
 {
-	char		*line;
+	int	i;
 
-	line = get_next_line(fd);
-	game->map->start_map = 0;
-	while (line != NULL)
+	i = 0;
+	while (game->map->file[i])
 	{
-		while (line != NULL && ft_is_empty(line) == 0)
-		{
-			free (line);
-			line = get_next_line(fd);
-			game->map->start_map++;
-		}
-		game->map->start_map++;
-		if (!ft_is_texts(line))
+		if (!ft_is_texts(game->map->file[i]))
 			break ;
-		ft_select_texts(game, line);
-		free (line);
-		line = get_next_line(fd);
+		ft_select_texts(game, game->map->file[i]);
+		i++;
 	}
+	game->map->start_map = i;
 	if (!ft_check_texts(game))
 		ft_error(ERR_MISS_TEXTS);
-	if (line != NULL)
-		free (line);
 }
 
 void	ft_select_texts(t_game *game, char *line) // como estoy uasnado aux no dbería de perderse la referencia
@@ -91,71 +81,34 @@ void	ft_select_texts(t_game *game, char *line) // como estoy uasnado aux no dber
 	free (id);
 }
 
-void	ft_reserve_map(t_game *game, char *path)
+void	ft_reserve_map(t_game *game)
 {
-	int		fd;
 	int		i;
 	int		len_line;
-	char	*line;
 
-	fd = open(path, O_RDONLY);
-	i = 0; // Lo he puesto a 1 porque sino fallaba y se pasaba una linea del inicio del mapa
+	i = game->map->start_map;
 	len_line = 0;
-	line = get_next_line(fd);
-	while (i < game->map->start_map)
+	while (game->map->file[i])
 	{
-		free (line);
-		line = get_next_line(fd);
+		len_line++;
 		i++;
 	}
-	while (line != NULL)
-	{
-		if (!ft_is_empty(line))
-			game->map->start_map++;
-		else
-			break ;
-		free (line);
-		line = get_next_line(fd);
-	}
-	while (line != NULL)
-	{
-		if (!ft_is_empty(line))
-			break ;
-		len_line++;
-		free (line);
-		line = get_next_line(fd);
-	}
-	close (fd);
 	game->map->map = (char **)ft_calloc((len_line + 1), sizeof (char *));
 	if (!game->map->map)
 		return ;
 }
 
-void	ft_load_map(t_game *game, char *path)
+void	ft_load_map(t_game *game)
 {
-	int		fd;
 	int		i;
 	int		n;
-	char	*line;
 
-	fd = open(path, O_RDONLY);
-	n = 0; // estaba a 0
-	line = get_next_line(fd);
-	while (n < game->map->start_map)
-	{
-		n++;
-		free (line);
-		line = get_next_line(fd);
-	}
+	n = game->map->start_map;
 	i = 0;
-	while (line != NULL)
+	while (game->map->file[n])
 	{
-		if (!ft_is_empty(line))
-			break ;
-		game->map->map[i] = ft_strdup(line);
+		game->map->map[i] = ft_strdup(game->map->file[n]);
 		i++;
-		free (line);
-		line = get_next_line(fd);
+		n++;
 	}
-	close (fd);
 }
