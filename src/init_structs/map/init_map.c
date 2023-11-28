@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 16:57:41 by jariza-o          #+#    #+#             */
-/*   Updated: 2023/11/28 17:49:05 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/11/28 19:08:42 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,13 @@ void	ft_select_texts(t_game *game, char *line) // como estoy uasnado aux no dber
 	int			len;
 	t_textures	*aux;
 
-	i = 0;
-	while (line && line[i] && (line[i] == ' ' && line[i] == '\t'))
-		i++;
-	if (line[i] == '\0' || line[i] == '\n') //Por si hay lineas vacias
-		return ;
 	id = (char *)ft_calloc(3, sizeof(char));
 	if (!id)
 		return ;
+	i = 0;
 	n = 0;
+	while (line && line[i] && (line[i] == ' ' || line[i] == '\t'))
+		i++;
 	while (line && line[i] && (line[i] != ' ' && line[i] != '\t'))
 	{
 		id[n] = line[i];
