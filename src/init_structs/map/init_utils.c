@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 15:30:49 by jariza-o          #+#    #+#             */
-/*   Updated: 2023/11/28 15:34:25 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/11/28 17:07:22 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_is_texts(char *line)
 	char	*id;
 
 	i = 0;
-	while (line && line[i] && (line[i] == ' ' && line[i] == '\t'))
+	while (line && line[i] && (line[i] == ' ' || line[i] == '\t'))
 		i++;
 	if (line[i] == '\0' || line[i] == '\n')
 		return (1);
@@ -69,4 +69,49 @@ int	ft_check_texts(t_game *game)
 		aux = aux->next;
 	}
 	return (1);
+}
+
+char	**ft_read_file(char *path)
+{
+	char	**matrix;
+	int		fd;
+	char	*line;
+	int		i;
+
+	matrix = (char **)ft_calloc((ft_reserve_matrix(path) + 1), sizeof(char *)); // +1 no deberia de ser necesario
+	fd = open(path, O_RDONLY);
+	line = get_next_line(fd);
+	i = 0;
+	while (line != NULL)
+	{
+		if (ft_is_empty(line))
+		{
+			matrix[i] = ft_strdup(line);
+			i++;
+		}
+		free (line);
+		line = get_next_line(fd);
+	}
+	close (fd);
+	return (matrix);
+}
+
+int	ft_reserve_matrix(char *path)
+{
+	char	*line;
+	int		fd;
+	int		len;
+
+	fd = open(path, O_RDONLY);
+	line = get_next_line(fd);
+	len = 0;
+	while (line != NULL)
+	{
+		if (ft_is_empty(line))
+			len++;
+		free (line);
+		line = get_next_line(fd);
+	}
+	close (fd);
+	return (len);
 }

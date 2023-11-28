@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmatas-p <jmatas-p@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 15:56:20 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/05/25 17:31:22 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2023/11/28 17:06:29 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ char			*ft_strjoin_gnl(char *s1, char *s2);
 int				ft_abs(int n);
 long int		ft_atol(const char *str);
 void			ft_free_str_array(char **array);
+void			ft_print_str_array(char **array);
 void			ft_swap(int *a, int *b);
 int				ft_strcmp(char *s1, char *s2);
 
