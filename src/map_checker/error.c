@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:21:05 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/11/27 18:24:59 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2023/11/28 16:25:29 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,7 @@ void	ft_error(int error)
 		printf("Error: A coordenate texture is duplicated\n");
 	else if (error == ERR_MISS_TEXTS)
 		printf("Error: A coordenate texture is missing\n");
+	else if (error == ERR_EMPT_TEXTS)
+		printf("Error: A path texture is empty\n");
 	exit (1);
 }

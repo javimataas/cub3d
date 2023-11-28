@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 16:57:41 by jariza-o          #+#    #+#             */
-/*   Updated: 2023/11/28 15:40:07 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/11/28 16:37:04 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,10 @@ void	ft_select_texts(t_game *game, char *line) // como estoy uasnado aux no dber
 		n++;
 		i++;
 	}
-	// COMPROBAR QUE ES UN ID VALIDO Y SI NO DLLAMAR A ERROR
-	while (line && line[i] && (line[i] == ' ' && line[i] == '\t'))
+	while (line && line[i] && (line[i] == ' ' || line[i] == '\t'))
 		i++;
+	if (line[i] == '\0' || line[i] == '\n')
+		ft_error(ERR_EMPT_TEXTS);
 	len = 0;
 	n = i;
 	while (line && line[i])
@@ -98,7 +99,7 @@ void	ft_reserve_map(t_game *game, char *path)
 	char	*line;
 
 	fd = open(path, O_RDONLY);
-	i = 1; // Lo he puesto a 1 porque sino fallaba y se pasaba una linea del inicio del mapa
+	i = 0; // Lo he puesto a 1 porque sino fallaba y se pasaba una linea del inicio del mapa
 	len_line = 0;
 	line = get_next_line(fd);
 	while (i < game->map->start_map)
@@ -138,7 +139,7 @@ void	ft_load_map(t_game *game, char *path)
 	char	*line;
 
 	fd = open(path, O_RDONLY);
-	n = 1;
+	n = 0; // estaba a 0
 	line = get_next_line(fd);
 	while (n < game->map->start_map)
 	{

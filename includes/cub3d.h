@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:06:53 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/11/28 15:35:43 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/11/28 17:01:37 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ enum			e_datatype
 	ERR_WRNG_EXT,
 	ERR_MLLC_FAIL,
 	ERR_DUP_TEXTS,
-	ERR_MISS_TEXTS
+	ERR_MISS_TEXTS,
+	ERR_EMPT_TEXTS
 };
 
 typedef struct s_textures
@@ -40,6 +41,7 @@ typedef struct s_textures
 typedef struct s_map
 {
 	int			start_map;
+	char		**file;
 	char		**map;
 	t_textures	*texts;
 }				t_map;
@@ -72,6 +74,8 @@ void		ft_load_map(t_game *game, char *path);
 int			ft_is_empty(char *line);
 int			ft_is_texts(char *line);
 int			ft_check_texts(t_game *game);
+char		**ft_read_file(char *path);
+int			ft_reserve_matrix(char *path);
 
 /* MAP CHECHKER*/
 void		ft_error(int error);
