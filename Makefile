@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+         #
+#    By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/16 19:23:22 by jmatas-p          #+#    #+#              #
-#    Updated: 2023/11/27 17:38:11 by jmatas-p         ###   ########.fr        #
+#    Updated: 2023/11/28 15:32:27 by jariza-o         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ NAME	=	cub3d
 
 SRC		=	src/main.c \
 			src/map_checker/error.c src/map_checker/map_checker.c \
-			src/init_structs/init.c src/init_structs/map/init_map_texts.c src/init_structs/map/init_map.c \
+			src/init_structs/init.c src/init_structs/map/init_map_texts.c src/init_structs/map/init_map.c src/init_structs/map/init_utils.c\
 			src/utils/print_utils.c \
 
 OBJ		=	$(SRC:.c=.o)
