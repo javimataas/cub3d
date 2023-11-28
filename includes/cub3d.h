@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:06:53 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/11/28 17:43:16 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/11/28 18:03:46 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ enum			e_datatype
 	ERR_MLLC_FAIL,
 	ERR_DUP_TEXTS,
 	ERR_MISS_TEXTS,
-	ERR_EMPT_TEXTS
+	ERR_EMPT_TEXTS,
+	ERR_MLX_FAIL
 };
 
 typedef struct s_textures
@@ -40,14 +41,15 @@ typedef struct s_textures
 
 typedef struct s_map
 {
+	mlx_image_t	*img;
 	int			start_map;
-	char		**file;
 	char		**map;
 	t_textures	*texts;
 }				t_map;
 
 typedef struct s_game
 {
+	char		**file;
 	mlx_t		*mlx;
 	t_map		*map;
 }				t_game;
@@ -81,9 +83,12 @@ int			ft_reserve_matrix(char *path);
 void		ft_error(int error);
 int			ft_check_extension(char *file);
 
-/* UTILS */
-/* Print Functions */
+/* Utils */
 void		ft_print_texts(t_game game);
 void		ft_print_map(t_game *game);
+
+/* Hooks */
+void	escape_hook(mlx_key_data_t keydata, void *param);
+void	hook_screen(int32_t width, int32_t height, void *param);
 
 #endif

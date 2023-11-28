@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 16:57:41 by jariza-o          #+#    #+#             */
-/*   Updated: 2023/11/28 19:08:42 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/11/28 19:22:23 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ void	ft_load_struct(t_game *game)
 	int	i;
 
 	i = 0;
-	while (game->map->file[i])
+	while (game->file[i])
 	{
-		if (!ft_is_texts(game->map->file[i]))
+		if (!ft_is_texts(game->file[i]))
 			break ;
-		ft_select_texts(game, game->map->file[i]);
+		ft_select_texts(game, game->file[i]);
 		i++;
 	}
 	game->map->start_map = i;
@@ -86,7 +86,7 @@ void	ft_reserve_map(t_game *game)
 
 	i = game->map->start_map;
 	len_line = 0;
-	while (game->map->file[i])
+	while (game->file[i])
 	{
 		len_line++;
 		i++;
@@ -103,9 +103,9 @@ void	ft_load_map(t_game *game)
 
 	n = game->map->start_map;
 	i = 0;
-	while (game->map->file[n])
+	while (game->file[n])
 	{
-		game->map->map[i] = ft_strdup(game->map->file[n]);
+		game->map->map[i] = ft_strdup(game->file[n]);
 		i++;
 		n++;
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:21:05 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/11/28 16:25:29 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/11/28 17:33:44 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,7 @@ void	ft_error(int error)
 		printf("Error: A coordenate texture is missing\n");
 	else if (error == ERR_EMPT_TEXTS)
 		printf("Error: A path texture is empty\n");
+	else if (error == ERR_MLX_FAIL)
+		printf("Error: MLX fail\n");
 	exit (1);
 }

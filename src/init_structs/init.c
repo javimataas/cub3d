@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 17:34:43 by jariza-o          #+#    #+#             */
-/*   Updated: 2023/11/28 19:07:33 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/11/28 19:19:39 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_game	*ft_init_map(char *path)
 	game->map = malloc(sizeof(t_map));
 	if (!game->map)
 		ft_error(ERR_MLLC_FAIL);
-	game->map->file = ft_read_file(path);
+	game->file = ft_read_file(path);
 	ft_init_map_textures(game);
 	ft_load_struct(game);
 	ft_reserve_map(game);
