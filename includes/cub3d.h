@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:06:53 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/11/28 17:01:37 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/11/28 17:43:16 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,12 @@ t_textures	*ft_lstlast_texts(t_textures *lst);
 void		ft_lstadd_back_texts(t_textures **lst, t_textures *new);
 
 /* Load Textures in Struct */
-void		ft_load_struct(t_game *game, int fd);
+void		ft_load_struct(t_game *game);
 void		ft_select_texts(t_game *game, char *line);
 
 /* Load Map */
-void		ft_reserve_map(t_game *game, char *path);
-void		ft_load_map(t_game *game, char *path);
+void		ft_reserve_map(t_game *game);
+void		ft_load_map(t_game *game);
 
 /* Init Utils */
 int			ft_is_empty(char *line);
