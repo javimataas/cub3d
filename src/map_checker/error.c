@@ -6,7 +6,7 @@
 /*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:21:05 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/11/28 17:33:44 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2023/11/29 17:26:31 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,9 @@ void	ft_error(int error)
 		printf("Error: A path texture is empty\n");
 	else if (error == ERR_MLX_FAIL)
 		printf("Error: MLX fail\n");
+	else if (error == ERR_MAP_FAIL)
+		printf("Error: Invalid map\n");
+	else if (error == ERR_NO_PLAYER)
+		printf("Error: No player found in the map\n");
 	exit (1);
 }

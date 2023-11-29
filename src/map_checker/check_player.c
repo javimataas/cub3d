@@ -1,27 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_checker.c                                      :+:      :+:    :+:   */
+/*   check_player.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/21 18:29:43 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/11/29 17:36:36 by jmatas-p         ###   ########.fr       */
+/*   Created: 2023/11/29 17:24:48 by jmatas-p          #+#    #+#             */
+/*   Updated: 2023/11/29 17:25:53 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int	ft_check_extension(char *file)
+int	ft_check_player(char **map)
 {
-	int	i;
+	int		i;
+	int		j;
+	int		player;
 
 	i = 0;
-	printf("file: %s\n", file);
-	while (file[i])
+	player = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (ft_strchr("NSEW", map[i][j]))
+				player++;
+			j++;
+		}
 		i++;
-	if (file[i - 1] == 'b' && file[i - 2] == 'u'
-		&& file[i - 3] == 'c' && file[i - 4] == '.' && file[i - 5])
-		return (0);
+	}
+	if (player != 1)
+		ft_error(ERR_NO_PLAYER);
 	return (1);
 }
