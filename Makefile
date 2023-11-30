@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+         #
+#    By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/16 19:23:22 by jmatas-p          #+#    #+#              #
-#    Updated: 2023/11/29 17:27:53 by jmatas-p         ###   ########.fr        #
+#    Updated: 2023/11/30 18:52:19 by jariza-o         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,9 +32,10 @@ GLFW_FLAGS	=	-framework Cocoa -framework OpenGL -framework IOKit -Iinclude -lglf
 NAME	=	cub3d
 
 SRC		=	src/main.c \
-			src/map_checker/error.c src/map_checker/map_checker.c src/map_checker/check_walls.c src/map_checker/check_utils.c src/map_checker/check_player.c \
+			src/map_checker/error.c src/map_checker/extensions_checker.c src/map_checker/check_walls.c src/map_checker/check_utils.c src/map_checker/check_player.c \
 			src/init_structs/init.c src/init_structs/map/init_map_texts.c src/init_structs/map/init_map.c src/init_structs/map/init_utils.c\
 			src/utils/print_utils.c src/hooks/hooks.c \
+			src/render/textures.c \
 
 OBJ		=	$(SRC:.c=.o)
 
