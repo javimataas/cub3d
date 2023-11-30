@@ -6,7 +6,7 @@
 /*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 19:32:55 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/11/29 17:33:32 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2023/11/30 17:31:26 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,9 @@ int	main(int argc, char **argv)
 	{
 		if (ft_check_extension(argv[1]) == 0)
 		{
-			printf("BUCLE");
 			game = ft_init_map(argv[1]);
-			if (ft_check_walls(game->map->map)
-				&& ft_check_player(game->map->map))
+			if (ft_check_player(game)
+				&& ft_check_walls(game->map->map))
 			{
 				ft_print_texts(*game);
 				ft_print_map(game);

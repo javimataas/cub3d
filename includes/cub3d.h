@@ -6,7 +6,7 @@
 /*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:06:53 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/11/29 17:27:01 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2023/11/30 17:09:47 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ typedef struct s_textures
 typedef struct s_map
 {
 	mlx_image_t	*img;
+	t_coord		player_pos;
 	int			start_map;
 	char		**map;
 	t_textures	*texts;
@@ -95,7 +96,7 @@ int			ft_check_extension(char *file);
 int			ft_check_walls(char **map);
 
 /* Check Player */
-int			ft_check_player(char **map);
+int			ft_check_player(t_game *game);
 
 /* Checker Utils */
 int			ft_get_len_x(char **map);

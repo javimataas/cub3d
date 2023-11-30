@@ -6,7 +6,7 @@
 /*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 18:12:23 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/11/29 17:29:54 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2023/11/30 17:29:03 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,8 @@ void	ft_space_map(char **map)
 	i = -1;
 	while (map[++i])
 	{
-		j = 0;
-		while (map[i][j])
+		j = -1;
+		while (map[i][++j])
 			if (map[i][j] == '\n')
 				map[i][j] = ' ';
 	}
@@ -95,34 +95,25 @@ int	ft_walls(char **map)
 	x = coord.x;
 	ft_flood_fill(map, y, x);
 	if (ft_char_count(map, ' ') != valid || !ft_contains_str(map[1], "1 \n")
-		|| !ft_contains_str(map[ft_get_len_y(map) - 2], "1 \n")
-		|| ft_char_count(map, '0'))
+		|| !ft_contains_str(map[ft_get_len_y(map) - 2], "1 \n"))
 	{
 		ft_free_str_array(map);
 		return (2);
 	}
-	ft_free_str_array(map);
 	return (1);
 }
 
 int	ft_check_walls(char **map)
 {
-	int	i;
+	int		i;
+	char	**aux;
 
-	i = ft_walls(map);
+	aux = ft_copy_str_array(map);
+	i = ft_walls(aux);
 	if (i == 2)
 	{
-		map = NULL;
 		ft_error(ERR_MAP_FAIL);
 		return (0);
 	}
-	if (i == 0)
-	{
-		ft_free_str_array(map);
-		map = NULL;
-		ft_error(ERR_MAP_FAIL);
-		return (0);
-	}
-	map = NULL;
 	return (1);
 }
