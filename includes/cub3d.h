@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:06:53 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/11/30 17:09:47 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2023/11/30 18:50:42 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,9 @@ enum			e_datatype
 	ERR_EMPT_TEXTS,
 	ERR_MLX_FAIL,
 	ERR_MAP_FAIL,
-	ERR_NO_PLAYER
+	ERR_NO_PLAYER,
+	ERR_PNG_FAIL,
+	ERR_COLOR_FAIL
 };
 
 typedef struct s_coord
@@ -43,6 +45,7 @@ typedef struct s_textures
 {
 	char				*id;
 	char				*path;
+	mlx_image_t			*image;
 	struct s_textures	*prev;
 	struct s_textures	*next;
 }				t_textures;
@@ -90,7 +93,10 @@ int			ft_reserve_matrix(char *path);
 
 /* Map Checker */
 void		ft_error(int error);
-int			ft_check_extension(char *file);
+
+/* Extension Checker */
+int			ft_check_cub(char *file);
+int			ft_check_png(char *file);
 
 /* Check Walls */
 int			ft_check_walls(char **map);
@@ -108,6 +114,9 @@ int			ft_contains_str(char *str, char *container);
 /* Utils */
 void		ft_print_texts(t_game game);
 void		ft_print_map(t_game *game);
+
+/* TEXTURES */
+void		ft_load_textures(t_game *game);
 
 /* Hooks */
 void		escape_hook(mlx_key_data_t keydata, void *param);

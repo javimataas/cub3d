@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:21:05 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/11/29 17:26:31 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2023/11/30 18:08:02 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,9 @@ void	ft_error(int error)
 		printf("Error: Invalid map\n");
 	else if (error == ERR_NO_PLAYER)
 		printf("Error: No player found in the map\n");
+	else if (error == ERR_PNG_FAIL)
+		printf("Error: The texture file ins't .png");
+	else if (error == ERR_COLOR_FAIL)
+		printf("Error: The color for the texture is incorrect");
 	exit (1);
 }

@@ -3,14 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 19:32:55 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/11/30 17:31:26 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2023/11/30 18:56:01 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+void	ft_cub3d(t_game *game)
+{
+	mlx_set_setting(MLX_MAXIMIZED, true);
+	game->mlx = mlx_init(1920, 1080, "Cub3D", true);
+	if (!game->mlx)
+		ft_error(ERR_MLX_FAIL);
+	ft_load_textures(game);
+}
 
 int	main(int argc, char **argv)
 {
@@ -18,7 +27,7 @@ int	main(int argc, char **argv)
 
 	if (argc == 2)
 	{
-		if (ft_check_extension(argv[1]) == 0)
+		if (ft_check_cub(argv[1]))
 		{
 			game = ft_init_map(argv[1]);
 			if (ft_check_player(game)
@@ -26,9 +35,7 @@ int	main(int argc, char **argv)
 			{
 				ft_print_texts(*game);
 				ft_print_map(game);
-				game->mlx = mlx_init(1920, 1080, "Cub3D", true);
-				if (!game->mlx)
-					ft_error(ERR_MLX_FAIL);
+				ft_cub3d(game);
 				mlx_key_hook(game->mlx, &escape_hook, (void *)(game));
 				mlx_resize_hook(game->mlx, &hook_screen, (void *)(game));
 				mlx_loop(game->mlx);
