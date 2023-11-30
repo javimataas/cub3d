@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 18:07:15 by jariza-o          #+#    #+#             */
-/*   Updated: 2023/11/30 19:20:00 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/11/30 19:25:27 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,8 @@ void	ft_load_textures(t_game *game)
 
 	aux = game->map->texts;
 	ft_check_pngpath(game);
-	while (aux)
+	while (aux && (ft_strcmp(aux->id, "F") && ft_strcmp(aux->id, "C")))
 	{
-		printf("%s\n", aux->path);
 		text = mlx_load_png(aux->path);
 		if (!text)
 			ft_error(404);

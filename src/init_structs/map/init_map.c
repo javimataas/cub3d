@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 16:57:41 by jariza-o          #+#    #+#             */
-/*   Updated: 2023/11/28 19:22:23 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2023/11/30 19:21:25 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	ft_select_texts(t_game *game, char *line) // como estoy uasnado aux no dber
 	if (!aux->path)
 		return ;
 	i = 0;
-	while (line && line[n])
+	while (line && line[n] && line[n] != '\n')
 	{
 		aux->path[i] = line[n];
 		i++;
