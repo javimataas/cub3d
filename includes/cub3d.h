@@ -6,7 +6,7 @@
 /*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:06:53 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/11/28 18:03:46 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2023/11/30 17:09:47 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,16 @@ enum			e_datatype
 	ERR_DUP_TEXTS,
 	ERR_MISS_TEXTS,
 	ERR_EMPT_TEXTS,
-	ERR_MLX_FAIL
+	ERR_MLX_FAIL,
+	ERR_MAP_FAIL,
+	ERR_NO_PLAYER
 };
+
+typedef struct s_coord
+{
+	float	x;
+	float	y;
+}				t_coord;
 
 typedef struct s_textures
 {
@@ -42,6 +50,7 @@ typedef struct s_textures
 typedef struct s_map
 {
 	mlx_image_t	*img;
+	t_coord		player_pos;
 	int			start_map;
 	char		**map;
 	t_textures	*texts;
@@ -54,8 +63,8 @@ typedef struct s_game
 	t_map		*map;
 }				t_game;
 
-/* INIT */
-/* INIT_STRUCT */
+/* Init */
+/* Init Struct */
 t_game		*ft_init_map(char *path);
 
 /* Create t_textures */
@@ -79,16 +88,29 @@ int			ft_check_texts(t_game *game);
 char		**ft_read_file(char *path);
 int			ft_reserve_matrix(char *path);
 
-/* MAP CHECHKER*/
+/* Map Checker */
 void		ft_error(int error);
 int			ft_check_extension(char *file);
+
+/* Check Walls */
+int			ft_check_walls(char **map);
+
+/* Check Player */
+int			ft_check_player(t_game *game);
+
+/* Checker Utils */
+int			ft_get_len_x(char **map);
+int			ft_get_len_y(char **map);
+char		**ft_add_extra_rows(char **map);
+t_coord		ft_get_player_coord(char **map);
+int			ft_contains_str(char *str, char *container);
 
 /* Utils */
 void		ft_print_texts(t_game game);
 void		ft_print_map(t_game *game);
 
 /* Hooks */
-void	escape_hook(mlx_key_data_t keydata, void *param);
-void	hook_screen(int32_t width, int32_t height, void *param);
+void		escape_hook(mlx_key_data_t keydata, void *param);
+void		hook_screen(int32_t width, int32_t height, void *param);
 
 #endif

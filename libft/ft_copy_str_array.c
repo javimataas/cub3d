@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_checker.c                                      :+:      :+:    :+:   */
+/*   ft_copy_str_array.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/21 18:29:43 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/11/30 17:19:50 by jmatas-p         ###   ########.fr       */
+/*   Created: 2023/11/29 16:49:15 by jmatas-p          #+#    #+#             */
+/*   Updated: 2023/11/29 16:51:26 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "libft.h"
 
-int	ft_check_extension(char *file)
+char	**ft_copy_str_array(char **strs)
 {
-	int	i;
+	char	**res;
+	int		i;
 
 	i = 0;
-	while (file[i])
+	while (strs[i])
 		i++;
-	if (file[i - 1] == 'b' && file[i - 2] == 'u'
-		&& file[i - 3] == 'c' && file[i - 4] == '.' && file[i - 5])
-		return (0);
-	return (1);
+	res = (char **)malloc(sizeof(char *) * (i + 1));
+	if (!res)
+		return (NULL);
+	i = 0;
+	while (strs[i])
+	{
+		res[i] = ft_strdup(strs[i]);
+		i++;
+	}
+	res[i] = NULL;
+	return (res);
 }

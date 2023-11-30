@@ -5,73 +5,93 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/28 18:12:23 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/11/28 19:15:54 by jmatas-p         ###   ########.fr       */
+/*   Created: 2023/11/29 17:01:25 by jmatas-p          #+#    #+#             */
+/*   Updated: 2023/11/29 17:21:05 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/Cube3d.h"
+#include "../../includes/cub3d.h"
 
-int	ft_char_count(char **map, char c)
+int	ft_get_len_y(char **map)
 {
 	int	i;
-	int	j;
-	int	res;
 
 	i = 0;
-	res = 0;
+	while (map[i])
+		i++;
+	return (i);
+}
+
+int	ft_get_len_x(char **map)
+{
+	int	i;
+	int	max;
+
+	i = 0;
+	max = 0;
 	while (map[i])
 	{
-		j = 0;
-		while (map[i][j])
-		{
-			if (map[i][j] == c)
-				res++;
-			j++;
-		}
+		if ((int)ft_strlen(map[i]) > max)
+			max = ft_strlen(map[i]);
 		i++;
 	}
-	return (res);
+	return (max);
 }
 
-void	ft_flood_fill(char **map, int begin_y, int begin_x)
+char	**ft_add_extra_rows(char **map)
 {
-	if (map[begin_y][begin_x] == '1' || map[begin_y][begin_x] == 'F'
-		|| map[begin_y][begin_x] == '\0')
-		return ;
-	if (begin_y <= 0 || begin_x < 0 || begin_y >= ft_get_len_y(map) - 1
-		|| (unsigned int)begin_x > ft_strlen(map[begin_y]))
-		return ;
-	map[begin_y][begin_x] = 'F';
-	ft_flood_fill(map, begin_y - 1, begin_x);
-	ft_flood_fill(map, begin_y + 1, begin_x);
-	ft_flood_fill(map, begin_y, begin_x - 1);
-	ft_flood_fill(map, begin_y, begin_x + 1);
-}
-
-void	ft_space_map(char **map)
-{
-	char	*aux;
-	char	*space;
+	char	**new_map;
 	int		i;
-	int		j;
 
 	i = 0;
+	new_map = malloc(sizeof(char *) * (ft_get_len_y(map) + 3));
+	new_map[0] = ft_strdup(" ");
+	while (ft_strlen(new_map[0]) < (size_t)ft_get_len_x(map))
+		new_map[0] = ft_strjoin(new_map[0], " ");
 	while (map[i])
 	{
-		space = ft_strdup(" ");
-		aux = ft_strdup(map[i]);
-		free(map[i]);
-		map[i] = ft_strjoin(space, aux);
-		free(aux);
+		new_map[i + 1] = ft_strdup(map[i]);
 		i++;
 	}
-	i = -1;
-	while (map[++i])
+	new_map[i + 1] = ft_strdup(new_map[0]);
+	new_map[i + 2] = NULL;
+	return (new_map);
+}
+
+t_coord	ft_get_player_coord(char **map)
+{
+	t_coord	coord;
+	int		x;
+	int		y;
+
+	y = 0;
+	while (map[y])
 	{
-		j = 0;
-		while (map[i][j])
-			if (map[i][j] == "\n")
-				map[i][j] = " ";
+		x = 0;
+		while (map[y][x])
+		{
+			if (ft_strchr("NSEW", map[y][x]))
+			{
+				coord.x = x;
+				coord.y = y;
+			}
+			x++;
+		}
+		y++;
 	}
+	return (coord);
+}
+
+int	ft_contains_str(char *str, char *container)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (!ft_strchr(container, str[i]))
+			return (0);
+		i++;
+	}
+	return (1);
 }

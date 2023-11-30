@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+         #
+#    By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 17:59:17 by jmatas-p          #+#    #+#              #
-#    Updated: 2023/11/28 17:11:07 by jariza-o         ###   ########.fr        #
+#    Updated: 2023/11/29 16:52:01 by jmatas-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ FILES	= 	ft_isalpha ft_isdigit ft_isalnum ft_isascii ft_strlen \
 			ft_printf ft_printf_utils ft_printnbr_unsigned ft_printhex \
 			ft_printptr get_next_line_bonus ft_swap ft_abs ft_strcmp \
 			ft_atol ft_free_str_array get_next_line_utils_bonus ft_print_str_array \
+			ft_copy_str_array \
 
 BFILES  = 	ft_lstnew ft_lstadd_front ft_lstsize ft_lstlast ft_lstadd_back \
 			ft_lstdelone ft_lstclear ft_lstiter ft_lstmap \
