@@ -1,39 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   extensions_checker.c                               :+:      :+:    :+:   */
+/*   clean.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/21 18:29:43 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/11/30 19:25:06 by jariza-o         ###   ########.fr       */
+/*   Created: 2023/12/02 15:37:57 by jariza-o          #+#    #+#             */
+/*   Updated: 2023/12/02 18:50:21 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int	ft_check_cub(char *file)
+void	ft_clear(t_game *game)
 {
-	int	i;
+	t_textures	*aux ;
 
-	i = 0;
-	while (file[i])
-		i++;
-	if (file[i - 1] == 'b' && file[i - 2] == 'u'
-		&& file[i - 3] == 'c' && file[i - 4] == '.' && file[i - 5])
-		return (1);
-	return (0);
-}
-
-int	ft_check_png(char *file)
-{
-	int	i;
-
-	i = 0;
-	while (file[i])
-		i++;
-	if (file[i] == 'g' && file[i - 1] == 'n'
-		&& file[i - 2] == 'p' && file[i - 3] == '.' && file[i - 4])
-		return (1);
-	return (0);
+	aux = game->map->texts;
+	while (aux)
+	{
+		if (aux->id != NULL)
+			free (aux->id);
+		if (aux->path != NULL)
+			free (aux->path);
+		aux = aux->next;
+	}
+	free (game->map->texts);
+	if (game->map->map != NULL)
+		ft_free_str_array(game->map->map);
+	free (game->map);
+	if (game->file != NULL)
+		ft_free_str_array(game->file);
+	if (game != NULL)
+		free (game);
+	mlx_terminate(game->mlx);
 }
