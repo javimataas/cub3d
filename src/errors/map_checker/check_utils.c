@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 17:01:25 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/12/02 15:30:07 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/12/04 17:52:21 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ char	**ft_add_extra_rows(char **map)
 	new_map = malloc(sizeof(char *) * (ft_get_len_y(map) + 3));
 	new_map[0] = ft_strdup(" ");
 	while (ft_strlen(new_map[0]) < (size_t)ft_get_len_x(map))
-		new_map[0] = ft_strjoin(new_map[0], " ");
+		new_map[0] = ft_strjoin_gnl(new_map[0], " ");
 	while (map[i])
 	{
 		new_map[i + 1] = ft_strdup(map[i]);
