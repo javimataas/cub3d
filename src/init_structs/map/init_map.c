@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 16:57:41 by jariza-o          #+#    #+#             */
-/*   Updated: 2023/11/30 19:21:25 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/12/02 17:04:16 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_load_struct(t_game *game)
 	}
 	game->map->start_map = i;
 	if (!ft_check_texts(game))
-		ft_error(ERR_MISS_TEXTS);
+		ft_error(game, ERR_MISS_TEXTS);
 }
 
 void	ft_select_texts(t_game *game, char *line) // como estoy uasnado aux no dbería de perderse la referencia
@@ -39,7 +39,7 @@ void	ft_select_texts(t_game *game, char *line) // como estoy uasnado aux no dber
 
 	id = (char *)ft_calloc(3, sizeof(char));
 	if (!id)
-		return ;
+		ft_error(game, ERR_MLLC_FAIL);
 	i = 0;
 	n = 0;
 	while (line && line[i] && (line[i] == ' ' || line[i] == '\t'))
@@ -53,7 +53,7 @@ void	ft_select_texts(t_game *game, char *line) // como estoy uasnado aux no dber
 	while (line && line[i] && (line[i] == ' ' || line[i] == '\t'))
 		i++;
 	if (line[i] == '\0' || line[i] == '\n')
-		ft_error(ERR_EMPT_TEXTS);
+		ft_error(game, ERR_EMPT_TEXTS);
 	len = 0;
 	n = i;
 	while (line && line[i])
@@ -65,7 +65,7 @@ void	ft_select_texts(t_game *game, char *line) // como estoy uasnado aux no dber
 	while (aux && ft_strcmp(id, aux->id))
 		aux = aux->next;
 	if (aux && aux->path != NULL)
-		ft_error(ERR_DUP_TEXTS);
+		ft_error(game, ERR_DUP_TEXTS);
 	aux->path = (char *)ft_calloc((len + 1), sizeof(char));
 	if (!aux->path)
 		return ;
@@ -93,7 +93,7 @@ void	ft_reserve_map(t_game *game)
 	}
 	game->map->map = (char **)ft_calloc((len_line + 1), sizeof (char *));
 	if (!game->map->map)
-		return ;
+		ft_error(game, ERR_MLLC_FAIL);
 }
 
 void	ft_load_map(t_game *game)

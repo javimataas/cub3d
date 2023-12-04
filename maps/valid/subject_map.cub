@@ -1,7 +1,7 @@
-NO /Users/jariza-o/Desktop/cub3d_2_putojavi/textures/Brick_02-256x256.png
-SO /Users/jariza-o/Desktop/cub3d_2_putojavi/textures/Metal_15-256x256.png
-WE /Users/jariza-o/Desktop/cub3d_2_putojavi/textures/Tile_08-256x256.png
-EA /Users/jariza-o/Desktop/cub3d_2_putojavi/textures/Wood_07-256x256.png
+NO /Users/jariza-o/Desktop/cub3d/textures/Brick_02-256x256.png
+SO /Users/jariza-o/Desktop/cub3d/textures/Metal_15-256x256.png
+WE /Users/jariza-o/Desktop/cub3d/textures/Tile_08-256x256.png
+EA /Users/jariza-o/Desktop/cub3d/textures/Wood_07-256x256.png
 
 F 220,100,1
 C 225,30,100

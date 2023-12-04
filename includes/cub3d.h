@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:06:53 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/11/30 18:50:42 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/12/02 16:52:03 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,18 @@ typedef struct s_textures
 	struct s_textures	*next;
 }				t_textures;
 
+typedef struct s_minimap
+{
+	mlx_image_t	*img;
+}				t_minimap;
+
 typedef struct s_map
 {
 	mlx_image_t	*img;
 	t_coord		player_pos;
 	int			start_map;
 	char		**map;
+	t_minimap	*minimap;
 	t_textures	*texts;
 }				t_map;
 
@@ -92,14 +98,14 @@ char		**ft_read_file(char *path);
 int			ft_reserve_matrix(char *path);
 
 /* Map Checker */
-void		ft_error(int error);
+void		ft_error(t_game *game, int error);
 
 /* Extension Checker */
 int			ft_check_cub(char *file);
 int			ft_check_png(char *file);
 
 /* Check Walls */
-int			ft_check_walls(char **map);
+int			ft_check_walls(t_game *game, char **map);
 
 /* Check Player */
 int			ft_check_player(t_game *game);
@@ -111,12 +117,21 @@ char		**ft_add_extra_rows(char **map);
 t_coord		ft_get_player_coord(char **map);
 int			ft_contains_str(char *str, char *container);
 
-/* Utils */
+/* UTILS */
+/* Free functions */
+void		ft_clear(t_game *game);
+
+/* Print Functions */
 void		ft_print_texts(t_game game);
 void		ft_print_map(t_game *game);
 
 /* TEXTURES */
 void		ft_load_textures(t_game *game);
+
+/* MAP */
+/* Minimap */
+void		ft_init_minimap(t_game *game);
+void		ft_paint_minimap(t_game *game);
 
 /* Hooks */
 void		escape_hook(mlx_key_data_t keydata, void *param);

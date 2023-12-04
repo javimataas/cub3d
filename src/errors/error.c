@@ -6,18 +6,24 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:21:05 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/11/30 18:08:02 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/12/02 16:53:28 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void	ft_error(int error)
+void	ft_error(t_game *game, int error)
 {
 	if (error == ERR_WRNG_ARGS)
+	{
 		printf("Error: Wrong number of arguments\n");
+		exit (1);
+	}
 	else if (error == ERR_WRNG_EXT)
+	{
 		printf("Error: Wrong file extension\n");
+		exit (1);
+	}
 	else if (error == ERR_MLLC_FAIL)
 		printf("Error: Malloc fail\n");
 	else if (error == ERR_DUP_TEXTS)
@@ -36,5 +42,6 @@ void	ft_error(int error)
 		printf("Error: The texture file ins't .png");
 	else if (error == ERR_COLOR_FAIL)
 		printf("Error: The color for the texture is incorrect");
+	ft_clear(game);
 	exit (1);
 }

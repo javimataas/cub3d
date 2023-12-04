@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check_player.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 17:24:48 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/11/30 17:10:26 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2023/12/02 16:51:24 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "../../../includes/cub3d.h"
 
 int	ft_check_player(t_game *game)
 {
@@ -34,6 +34,6 @@ int	ft_check_player(t_game *game)
 		}
 	}
 	if (player != 1)
-		ft_error(ERR_NO_PLAYER);
+		ft_error(game, ERR_NO_PLAYER);
 	return (1);
 }

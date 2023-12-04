@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check_walls.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 18:12:23 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/11/30 17:29:03 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2023/12/04 16:37:14 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "../../../includes/cub3d.h"
 
 int	ft_char_count(char **map, char c)
 {
@@ -103,7 +103,7 @@ int	ft_walls(char **map)
 	return (1);
 }
 
-int	ft_check_walls(char **map)
+int	ft_check_walls(t_game *game, char **map)
 {
 	int		i;
 	char	**aux;
@@ -111,9 +111,7 @@ int	ft_check_walls(char **map)
 	aux = ft_copy_str_array(map);
 	i = ft_walls(aux);
 	if (i == 2)
-	{
-		ft_error(ERR_MAP_FAIL);
-		return (0);
-	}
+		ft_error(game, ERR_MAP_FAIL);
+	// ft_free_str_array(aux);
 	return (1);
 }
