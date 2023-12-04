@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:06:53 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/12/04 18:46:03 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/12/04 19:20:16 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,18 +50,13 @@ typedef struct s_textures
 	struct s_textures	*next;
 }				t_textures;
 
-typedef struct s_minimap
-{
-	mlx_image_t	*img;
-}				t_minimap;
-
 typedef struct s_map
 {
 	mlx_image_t	*img;
 	t_coord		player_pos;
 	int			start_map;
 	char		**map;
-	t_minimap	*minimap;
+	mlx_image_t	*minimap;
 	t_textures	*texts;
 }				t_map;
 
@@ -131,7 +126,8 @@ void		ft_load_textures(t_game *game);
 /* MAP */
 /* Minimap */
 void		ft_init_minimap(t_game *game);
-void		ft_paint_minimap(t_game *game);
+void		ft_background_minimap(t_game *game);
+void		ft_walls_minimap(t_game *game);
 
 /* Hooks */
 void		escape_hook(mlx_key_data_t keydata, void *param);
