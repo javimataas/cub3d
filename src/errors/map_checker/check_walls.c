@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 18:12:23 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/12/02 16:51:54 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/12/04 16:37:14 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,9 +111,7 @@ int	ft_check_walls(t_game *game, char **map)
 	aux = ft_copy_str_array(map);
 	i = ft_walls(aux);
 	if (i == 2)
-	{
 		ft_error(game, ERR_MAP_FAIL);
-		return (0);
-	}
+	// ft_free_str_array(aux);
 	return (1);
 }

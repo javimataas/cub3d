@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 19:32:55 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/12/02 18:40:16 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/12/04 16:35:14 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void	ft_cub3d(t_game *game)
 	if (!game->mlx)
 		ft_error(game, ERR_MLX_FAIL);
 	ft_load_textures(game);
+	mlx_loop(game->mlx);
+	ft_clear(game);
 }
 
 int	main(int argc, char **argv)
@@ -43,9 +45,8 @@ int	main(int argc, char **argv)
 				ft_print_texts(*game);
 				ft_print_map(game);
 				ft_cub3d(game);
-				mlx_key_hook(game->mlx, &escape_hook, (void *)(game));
-				mlx_resize_hook(game->mlx, &hook_screen, (void *)(game));
-				mlx_loop(game->mlx);
+				// mlx_key_hook(game->mlx, &escape_hook, (void *)(game));
+				// mlx_resize_hook(game->mlx, &hook_screen, (void *)(game));
 			}
 		}
 		else
