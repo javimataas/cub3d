@@ -1,6 +1,9 @@
 # Program
 cub3d
 
+# VsCode
+.vscode
+
 # Prerequisites
 *.d
 

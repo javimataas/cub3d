@@ -6,40 +6,11 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 13:53:48 by jariza-o          #+#    #+#             */
-/*   Updated: 2023/12/05 16:47:45 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/12/05 18:44:00 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/cub3d.h"
-
-void	ft_init_minimap(t_game *game)
-{
-	game->map->minimap = mlx_new_image(game->mlx, 662, 331);
-	if (!game->map->minimap)
-		ft_error(game, ERR_MLX_FAIL);
-	if (mlx_image_to_window(game->mlx, game->map->minimap, 0, 0) < 0)
-		ft_error(game, ERR_MLX_FAIL);
-	ft_background_minimap(game);
-	ft_paint_minimap(game);
-}
-
-void	ft_background_minimap(t_game *game)
-{
-	int	x;
-	int	y;
-
-	y = 0;
-	while (y < 662)
-	{
-		x = 0;
-		while (x < 662)
-		{
-			mlx_put_pixel(game->map->minimap, x, y, 0xFFFFFFFF);
-			x++;
-		}
-		y++;
-	}
-}
 
 void	ft_paint(t_game *game, int y, int x, int color)
 {
@@ -73,6 +44,36 @@ void	ft_paint(t_game *game, int y, int x, int color)
 	}
 }
 
+void	ft_init_minimap(t_game *game)
+{
+	game->map->minimap = mlx_new_image(game->mlx, 662, 331);
+	if (!game->map->minimap)
+		ft_error(game, ERR_MLX_FAIL);
+	if (mlx_image_to_window(game->mlx, game->map->minimap, 0, 0) < 0)
+		ft_error(game, ERR_MLX_FAIL);
+	ft_pixel(game);
+	ft_background_minimap(game);
+	ft_paint_minimap(game);
+}
+
+void	ft_background_minimap(t_game *game)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (y < 662)
+	{
+		x = 0;
+		while (x < 662)
+		{
+			mlx_put_pixel(game->map->minimap, x, y, 0xFFFFFFFF);
+			x++;
+		}
+		y++;
+	}
+}
+
 void	ft_paint_minimap(t_game *game)
 {
 	int	y;
@@ -85,9 +86,9 @@ void	ft_paint_minimap(t_game *game)
 		while (game->map->map[y][x])
 		{
 			if (game->map->map[y][x] == '1')
-				ft_paint(game, y, x, 0x000000);
-			else if (ft_strchr("NSEW", game->map->map[y][x]) != 0)
-				ft_paint(game, y, x, 0xE01312);
+				ft_paint(game, y, x, 0x00000000);
+			else if (ft_strchr("NSEW", game->map->map[y][x]))
+				ft_paint(game, y, x, 0xFF0000FF);
 			x++;
 		}
 		y++;
