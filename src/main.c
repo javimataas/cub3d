@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 19:32:55 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/12/04 18:46:35 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/12/04 19:12:10 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_cub3d(t_game *game)
 	if (!game->mlx)
 		ft_error(game, ERR_MLX_FAIL);
 	ft_load_textures(game);
-	// ft_init_minimap(game);
+	ft_init_minimap(game);
 	mlx_loop(game->mlx);
 	mlx_terminate(game->mlx);
 	ft_clear(game);
@@ -44,8 +44,8 @@ int	main(int argc, char **argv)
 			if (ft_check_player(game)
 				&& ft_check_walls(game, game->map->map))
 			{
-				ft_print_texts(*game);
-				ft_print_map(game);
+				// ft_print_texts(*game);
+				// ft_print_map(game);
 				ft_cub3d(game);
 				// mlx_key_hook(game->mlx, &escape_hook, (void *)(game));
 				// mlx_resize_hook(game->mlx, &hook_screen, (void *)(game));
