@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:06:53 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/12/04 19:20:16 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/12/05 16:20:28 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ void		ft_load_textures(t_game *game);
 /* Minimap */
 void		ft_init_minimap(t_game *game);
 void		ft_background_minimap(t_game *game);
-void		ft_walls_minimap(t_game *game);
+void		ft_paint_minimap(t_game *game);
 
 /* Hooks */
 void		escape_hook(mlx_key_data_t keydata, void *param);
