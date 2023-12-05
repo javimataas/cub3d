@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 13:53:48 by jariza-o          #+#    #+#             */
-/*   Updated: 2023/12/05 16:19:36 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/12/05 16:47:45 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_init_minimap(t_game *game)
 	if (mlx_image_to_window(game->mlx, game->map->minimap, 0, 0) < 0)
 		ft_error(game, ERR_MLX_FAIL);
 	ft_background_minimap(game);
-	ft_walls_minimap(game);
+	ft_paint_minimap(game);
 }
 
 void	ft_background_minimap(t_game *game)
