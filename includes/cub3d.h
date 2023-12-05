@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:06:53 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/12/05 16:20:28 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/12/05 18:27:09 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_textures
 {
 	char				*id;
 	char				*path;
+	int					color;
 	mlx_image_t			*image;
 	struct s_textures	*prev;
 	struct s_textures	*next;
@@ -80,6 +81,7 @@ void		ft_lstadd_back_texts(t_textures **lst, t_textures *new);
 /* Load Textures in Struct */
 void		ft_load_struct(t_game *game);
 void		ft_select_texts(t_game *game, char *line);
+void		ft_pixel(t_game *game);
 
 /* Load Map */
 void		ft_reserve_map(t_game *game);
