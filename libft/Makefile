@@ -3,18 +3,18 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+         #
+#    By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 17:59:17 by jmatas-p          #+#    #+#              #
-#    Updated: 2023/11/29 16:52:01 by jmatas-p         ###   ########.fr        #
+#    Updated: 2023/12/09 18:16:47 by jariza-o         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	libft.a
 
-CC		=	GCC
+CC		=	gcc
 
-FLAGS	= 	-Wall -Werror -Wextra -I libft.h
+FLAGS	= 	-Wall -Werror -Wextra
 
 AR		=	ar crs
 
