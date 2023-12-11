@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 19:32:55 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/12/10 15:34:33 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/12/11 15:42:24 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	main(int argc, char **argv)
 	game = NULL;
 	if (argc == 2)
 	{
-		if (ft_check_cub(argv[1]))
+		if (ft_check_cub(argv[1]) && ft_check_file(argv[1]))
 		{
 			game = ft_init_map(argv[1]);
 			if (ft_check_player(game)

@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:21:05 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/12/02 16:53:28 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/12/11 15:29:05 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_error(t_game *game, int error)
 	}
 	else if (error == ERR_WRNG_EXT)
 	{
-		printf("Error: Wrong file extension\n");
+		printf("Error: Wrong file\n");
 		exit (1);
 	}
 	else if (error == ERR_MLLC_FAIL)

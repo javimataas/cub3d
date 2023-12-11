@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:29:43 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/12/02 15:30:13 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/12/11 15:44:29 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,17 @@ int	ft_check_cub(char *file)
 		&& file[i - 3] == 'c' && file[i - 4] == '.' && file[i - 5])
 		return (1);
 	return (0);
+}
+
+int	ft_check_file(char *file)
+{
+	int	fd;
+
+	fd = open(file, O_RDONLY);
+	if (fd == -1)
+		return (0);
+	close (fd);
+	return (1);
 }
 
 int	ft_check_png(char *file)
