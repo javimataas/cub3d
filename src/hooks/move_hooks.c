@@ -6,27 +6,30 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 13:12:30 by jariza-o          #+#    #+#             */
-/*   Updated: 2023/12/10 15:27:56 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/12/11 18:10:42 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-
-
-void	move_hooks(mlx_key_data_t keydata, void *param)
+void	ft_paint(t_game *game, int y, int x, int color)
 {
-	t_game	*game;
+	int	i;
+	int	n;
+	
+	i = -1;
+	while ((y + (++i)) < (y + 14))
+	{
+		n = -1;
+		while ((x + (++n)) < (x + 14))
+			mlx_put_pixel(game->map->minimap, x + n, y + i, color);
+	}
+}
 
-	game = (t_game *)param;
-	(void)game;
-	printf("JNJKNJK");
-	if (keydata.key == MLX_KEY_W)
-		printf("W\n");
-	else if (keydata.key == MLX_KEY_S)
-		printf("S\n");
-	else if (keydata.key == MLX_KEY_A)
-		printf("A\n");
-	else if (keydata.key == MLX_KEY_D)
-		printf("D\n");
+void	w_key(t_game *game)
+{
+	//printf("W %f %f hola \n", game->player->minimap.y, game->player->minimap.x);
+	ft_paint_line_x(game, game->player->minimap.y + 14, game->player->minimap.x, 0xFFFFFFFF);
+	game->player->minimap.y -= 1;
+	ft_paint(game, game->player->minimap.y, game->player->minimap.x, 0xFF0000FF);
 }

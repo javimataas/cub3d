@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 19:32:55 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/12/11 15:42:24 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/12/11 17:35:04 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ void	ft_leaks(void)
 
 void	ft_cub3d(t_game *game)
 {
-	mlx_set_setting(MLX_MAXIMIZED, true);
-	game->mlx = mlx_init(1920, 1080, "Cub3D", true);
+	game->mlx = mlx_init(1920, 1080, "Cub3D", false);
 	if (!game->mlx)
 		ft_error(game, ERR_MLX_FAIL);
 	mlx_key_hook(game->mlx, &ft_init_hooks, (void *)(game));

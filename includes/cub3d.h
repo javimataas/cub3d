@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:06:53 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/12/11 15:44:57 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/12/11 20:00:24 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,18 @@ typedef struct s_map
 	t_textures	*texts;
 }				t_map;
 
+typedef struct s_player
+{
+	t_coord	minimap;
+	t_coord	map;
+}				t_player;
+
 typedef struct s_game
 {
 	char		**file;
 	mlx_t		*mlx;
 	t_map		*map;
+	t_player	*player;
 }				t_game;
 
 /* Init */
@@ -128,9 +135,14 @@ void		ft_load_textures(t_game *game);
 
 /* MAP */
 /* Minimap */
+t_coord		ft_paint_min(t_game *game, int y, int x, int color);
+void		ft_paint_line_x(t_game *game, int y, int x, int color);
+void		ft_paint_line_y(t_game *game, int y, int x, int color);
 void		ft_init_minimap(t_game *game);
 void		ft_background_minimap(t_game *game);
 void		ft_paint_minimap(t_game *game);
+int			ft_check_minimap_colision(t_game *game, int y, int x);
+
 /* Floor and Cloud */
 void		ft_init_colormap(t_game *game);
 
