@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:06:53 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/12/10 15:40:16 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/12/11 15:44:57 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ int			ft_reserve_matrix(char *path);
 void		ft_error(t_game *game, int error);
 
 /* Extension Checker */
+int			ft_check_file(char *file);
 int			ft_check_cub(char *file);
 int			ft_check_png(char *file);
 
