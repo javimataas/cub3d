@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 17:27:35 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/12/11 20:10:56 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/12/12 16:21:32 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	ft_paint(t_game *game, int y, int x, int color)
 void	w_key(t_game *game)
 {
 	printf("W\n");
-	if (!ft_check_minimap_colision(game, game->player->minimap.y - 1, game->player->minimap.x))
+	if (!ft_check_minimap_colision_x(game, game->player->minimap.y - 1, game->player->minimap.x, 'w'))
 		return ;
 	ft_paint(game, game->player->minimap.y, game->player->minimap.x, 0xFFFFFFFF);
 	game->player->minimap.y -= 1;
@@ -60,7 +60,7 @@ void	w_key(t_game *game)
 void	s_key(t_game *game)
 {
 	printf("S\n");
-	if (!ft_check_minimap_colision(game, game->player->minimap.y + 1, game->player->minimap.x))
+	if (!ft_check_minimap_colision_x(game, game->player->minimap.y + 1, game->player->minimap.x, 's'))
 		return ;
 	ft_paint(game, game->player->minimap.y, game->player->minimap.x, 0xFFFFFFFF);
 	game->player->minimap.y += 1;
@@ -70,6 +70,8 @@ void	s_key(t_game *game)
 void	a_key(t_game *game)
 {
 	printf("A\n");
+	if (!ft_check_minimap_colision_y(game, game->player->minimap.y, game->player->minimap.x - 1))
+		return ;
 	ft_paint(game, game->player->minimap.y, game->player->minimap.x, 0xFFFFFFFF);
 	game->player->minimap.x -= 1;
 	ft_paint(game, game->player->minimap.y, game->player->minimap.x, 0xFF0000FF);
@@ -77,6 +79,8 @@ void	a_key(t_game *game)
 void	d_key(t_game *game)
 {
 	printf("D\n");
+	if (!ft_check_minimap_colision_y(game, game->player->minimap.y, game->player->minimap.x + 1))
+		return ;
 	ft_paint(game, game->player->minimap.y, game->player->minimap.x, 0xFFFFFFFF);
 	game->player->minimap.x += 1;
 	ft_paint(game, game->player->minimap.y, game->player->minimap.x, 0xFF0000FF);

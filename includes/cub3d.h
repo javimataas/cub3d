@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:06:53 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/12/11 20:00:24 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/12/12 16:13:59 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,7 +141,8 @@ void		ft_paint_line_y(t_game *game, int y, int x, int color);
 void		ft_init_minimap(t_game *game);
 void		ft_background_minimap(t_game *game);
 void		ft_paint_minimap(t_game *game);
-int			ft_check_minimap_colision(t_game *game, int y, int x);
+int			ft_check_minimap_colision_x(t_game *game, int y, int x, char letter);
+int			ft_check_minimap_colision_y(t_game *game, int y, int x);
 
 /* Floor and Cloud */
 void		ft_init_colormap(t_game *game);
