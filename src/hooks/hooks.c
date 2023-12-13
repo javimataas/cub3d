@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 17:27:35 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/12/13 16:03:47 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/12/13 18:58:24 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,25 @@ void	ft_paint(t_game *game, int y, int x, int color)
 	}
 }
 
-void	w_key(t_game *game)
+void	ws_key(t_game *game, int key)
 {
-	printf("W\n");
-	if (!ft_check_minimap_colision_x(game, game->player->minimap.y - 1, game->player->minimap.x, 'w'))
-		return ;
+	int	move_speed;
+	int	new_x;
+	int new_y;
+	
+	move_speed = MV_SPEED;
+	if (key == MLX_KEY_W)
+		move_speed *= -1;
+	// if (!ft_check_minimap_colision_x(game, game->player->minimap.y - 1, game->player->minimap.x, 'w'))
+	// 	return ;
+	new_x = game->player->minimap.x + (move_speed * sin(game->player->angulorotacion));
+	new_y = game->player->minimap.y + (move_speed * cos(game->player->angulorotacion));
+	ft_printf("%d -   %f\n", new_x, game->player->minimap.x);
+	ft_printf("%d -   %f\n", new_y, game->player->minimap.y);
 	ft_paint(game, game->player->minimap.y, game->player->minimap.x, 0xFFFFFFFF);
-	game->player->minimap.y -= 1;
-	ft_paint(game, game->player->minimap.y, game->player->minimap.x, 0xFF0000FF);
+	ft_paint(game, new_y, new_x, 0xFF0000FF);
+	game->player->minimap.y = new_y; 
+	game->player->minimap.x = new_x;
 }
 
 void	s_key(t_game *game)
@@ -94,19 +105,31 @@ void	ft_init_hooks(mlx_key_data_t keydata, void *param)
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 		escape_hook(game);
 	else if (mlx_is_key_down(game->mlx, MLX_KEY_W))
-		w_key(game);
+		ws_key(game, MLX_KEY_W);
 	else if (mlx_is_key_down(game->mlx, MLX_KEY_S))
-		s_key(game);
+		ws_key(game, MLX_KEY_S);
 	else if (mlx_is_key_down(game->mlx, MLX_KEY_A))
 		a_key(game);
 	else if (mlx_is_key_down(game->mlx, MLX_KEY_D))
 		d_key(game);
-	else if (keydata.key == MLX_KEY_LEFT)
+	else if (keydata.key == MLX_KEY_LEFT && keydata.action == MLX_RELEASE)
+	{
 		printf("LEFT\n");
+		if (game->player->angulorotacion == 270)
+			game->player->angulorotacion = 0;
+		else
+			game->player->angulorotacion += 90;
 		//left_key(game);
-	else if (keydata.key == MLX_KEY_RIGHT)
+	}
+	else if (keydata.key == MLX_KEY_RIGHT && keydata.action == MLX_RELEASE)
+	{
 		printf("RIGHT\n");
+		if (game->player->angulorotacion == 0)
+			game->player->angulorotacion = 270;
+		else
+			game->player->angulorotacion -= 90;
 		//right_key(game);
+	}
 	// mlx_key_hook(game->mlx, &move_hooks, (void *)(game));
 	// mlx_resize_hook(game->mlx, &hook_screen, (void *)(game));
 }
