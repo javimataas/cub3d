@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:06:53 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/12/13 16:43:12 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/12/13 18:37:50 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
+# include <math.h>
 
+
+# define MV_SPEED	10
 enum			e_datatype
 {
 	ERR_WRNG_ARGS,
@@ -64,7 +67,7 @@ typedef struct s_map
 typedef struct s_player
 {
 	t_coord	minimap;
-	t_coord	map;
+	double	angulorotacion;
 }				t_player;
 
 typedef struct s_game

@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 17:34:43 by jariza-o          #+#    #+#             */
-/*   Updated: 2023/12/11 16:42:06 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/12/13 18:56:24 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ t_game	*ft_init_map(char *path)
 		exit (1);
 	}
 	game->player = malloc(sizeof(t_coord));
+	game->player->angulorotacion = 0;
 	if (!game->map)
 	{
 		printf("Error: Malloc fail\n");
