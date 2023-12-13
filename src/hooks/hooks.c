@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 17:27:35 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/12/12 16:21:32 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/12/13 16:03:47 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ void	s_key(t_game *game)
 void	a_key(t_game *game)
 {
 	printf("A\n");
-	if (!ft_check_minimap_colision_y(game, game->player->minimap.y, game->player->minimap.x - 1))
-		return ;
+	// if (!ft_check_minimap_colision_y(game, game->player->minimap.y, game->player->minimap.x - 1))
+	// 	return ;
 	ft_paint(game, game->player->minimap.y, game->player->minimap.x, 0xFFFFFFFF);
 	game->player->minimap.x -= 1;
 	ft_paint(game, game->player->minimap.y, game->player->minimap.x, 0xFF0000FF);
@@ -79,8 +79,8 @@ void	a_key(t_game *game)
 void	d_key(t_game *game)
 {
 	printf("D\n");
-	if (!ft_check_minimap_colision_y(game, game->player->minimap.y, game->player->minimap.x + 1))
-		return ;
+	// if (!ft_check_minimap_colision_y(game, game->player->minimap.y, game->player->minimap.x + 1))
+	// 	return ;
 	ft_paint(game, game->player->minimap.y, game->player->minimap.x, 0xFFFFFFFF);
 	game->player->minimap.x += 1;
 	ft_paint(game, game->player->minimap.y, game->player->minimap.x, 0xFF0000FF);

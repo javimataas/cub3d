@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 19:25:02 by jariza-o          #+#    #+#             */
-/*   Updated: 2023/12/12 16:34:12 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/12/13 16:01:31 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,27 +45,27 @@ int	ft_check_minimap_colision_x(t_game *game, int y, int x, char letter)
 	}
 	return (1);
 }
-int	ft_check_minimap_colision_y(t_game *game, int y, int x)
-{
-	int	ry;
-	int	rx;
-	int	i;
-	int	n;
-	i = -1;
-	while (game->map->map[++i])
-	{
-		ry = (i * 14) + 14;
-		if (ry == y)
-		{
-			n = -1;
-			while (game->map->map[i][++n])
-			{
-				rx = x * 14;
-				if (rx >= (x) && rx <= (x + 14))
-					if (game->map->map[i][n] == '1')
-						return (0);
-			}
-		}
-	}
-	return (1);
-}
+// int	ft_check_minimap_colision_y(t_game *game, int y, int x)
+// {
+// 	int	ry;
+// 	int	rx;
+// 	int	i;
+// 	int	n;
+// 	i = -1;
+// 	while (game->map->map[++i])
+// 	{
+// 		ry = (i * 14) + 14;
+// 		if (ry == y)
+// 		{
+// 			n = -1;
+// 			while (game->map->map[i][++n])
+// 			{
+// 				rx = x * 14;
+// 				if (rx >= (x) && rx <= (x + 14))
+// 					if (game->map->map[i][n] == '1')
+// 						return (0);
+// 			}
+// 		}
+// 	}
+// 	return (1);
+// }
