@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 19:14:05 by jariza-o          #+#    #+#             */
-/*   Updated: 2023/12/09 19:48:11 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/12/11 17:35:20 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	ft_background_map(t_game *game)
 		}
 		y++;
 	}
-		printf("JNJN\n");
 	while (y < 1080)
 	{
 		x = 0;

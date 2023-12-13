@@ -6,18 +6,37 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 13:53:48 by jariza-o          #+#    #+#             */
-/*   Updated: 2023/12/09 19:31:45 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/12/11 19:04:17 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/cub3d.h"
 
-void	ft_paint(t_game *game, int y, int x, int color)
+void	ft_paint_line_x(t_game *game, int y, int x, int color)
+{
+	int	n;
+
+	n = -1;
+	while ((x + (++n)) < (x + 14))
+		mlx_put_pixel(game->map->minimap, x + n, y, color);
+}
+
+void	ft_paint_line_y(t_game *game, int y, int x, int color)
+{
+	int	n;
+
+	n = -1;
+	while ((y + (++n)) < (y + 14))
+		mlx_put_pixel(game->map->minimap, x, y + n, color);
+}
+
+t_coord	ft_paint_min(t_game *game, int y, int x, int color)
 {
 	int	i;
 	int	n;
 	int	ry;
 	int	rx;
+	t_coord	coord;
 
 	i = -1;
 	ry = 0;
@@ -36,12 +55,15 @@ void	ft_paint(t_game *game, int y, int x, int color)
 			rx++;
 	}
 	i = -1;
+	coord.x = rx;
+	coord.y = ry;
 	while ((ry + (++i)) < (ry + 14))
 	{
 		n = -1;
 		while ((rx + (++n)) < (rx + 14))
 			mlx_put_pixel(game->map->minimap, rx + n, ry + i, color);
 	}
+	return (coord);
 }
 
 void	ft_init_minimap(t_game *game)
@@ -76,7 +98,7 @@ void	ft_background_minimap(t_game *game)
 void	ft_paint_minimap(t_game *game)
 {
 	int	y;
-	int	x;
+	int	x; 
 
 	y = 0;
 	while (game->map->map[y])
@@ -85,9 +107,9 @@ void	ft_paint_minimap(t_game *game)
 		while (game->map->map[y][x])
 		{
 			if (game->map->map[y][x] == '1')
-				ft_paint(game, y, x, 0x00000000);
+				ft_paint_min(game, y, x, 0x00000000);
 			else if (ft_strchr("NSEW", game->map->map[y][x]))
-				ft_paint(game, y, x, 0xFF0000FF);
+				game->player->minimap = ft_paint_min(game, y, x, 0xFF0000FF);
 			x++;
 		}
 		y++;
