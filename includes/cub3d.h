@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:06:53 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/12/13 19:29:32 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2023/12/14 15:53:37 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 
 
 # define MV_SPEED	2
-# define PI 3.14159265359
 
 enum			e_datatype
 {
@@ -127,13 +126,6 @@ char		**ft_add_extra_rows(char **map);
 t_coord		ft_get_player_coord(char **map);
 int			ft_contains_str(char *str, char *container);
 
-/* UTILS */
-/* Free functions */
-void		ft_clear(t_game *game);
-
-/* Print Functions */
-void		ft_print_texts(t_game game);
-void		ft_print_map(t_game *game);
 
 /* TEXTURES */
 void		ft_load_textures(t_game *game);
@@ -156,5 +148,16 @@ void		ft_init_colormap(t_game *game);
 void		ft_init_hooks(mlx_key_data_t keydata, void *param);
 void		escape_hook(t_game *game);
 void		hook_screen(int32_t width, int32_t height, void *param);
+
+/* UTILS */
+/* Free functions */
+void		ft_clear(t_game *game);
+
+/* Print Functions */
+void		ft_print_texts(t_game game);
+void		ft_print_map(t_game *game);
+
+/* Convert grades to radianes */
+double	ft_radianes(double angolugiro);
 
 #endif
