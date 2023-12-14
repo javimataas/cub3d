@@ -6,7 +6,7 @@
 #    By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/16 19:23:22 by jmatas-p          #+#    #+#              #
-#    Updated: 2023/12/11 20:00:53 by jariza-o         ###   ########.fr        #
+#    Updated: 2023/12/14 15:53:55 by jariza-o         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ NAME	=	cub3d
 SRC		=	src/main.c \
 			src/errors/error.c src/errors/map_checker/extensions_checker.c src/errors/map_checker/check_walls.c src/errors/map_checker/check_utils.c src/errors/map_checker/check_player.c \
 			src/init_structs/init.c src/init_structs/map/init_map_texts.c src/init_structs/map/init_map.c src/init_structs/map/init_utils.c src/init_structs/map/convert_color.c \
-			src/utils/print_utils.c src/utils/clean.c \
+			src/utils/print_utils.c src/utils/clean.c src/utils/radianes.c\
 			src/render/textures.c src/render/minimap/minimap.c src/render/minimap/walls.c src/render/map/map.c \
 			src/hooks/hooks.c \
 
