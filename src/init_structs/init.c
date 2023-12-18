@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 17:34:43 by jariza-o          #+#    #+#             */
-/*   Updated: 2023/12/14 17:29:15 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2023/12/18 16:36:43 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_game	*ft_init_map(char *path)
 		free (game);
 		exit (1);
 	}
-	game->player = malloc(sizeof(t_coord));
+	game->player = malloc(sizeof(t_player));
 	if (!game->map)
 	{
 		printf("Error: Malloc fail\n");

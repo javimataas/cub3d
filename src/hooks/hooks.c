@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 17:27:35 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/12/14 19:37:39 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/12/18 17:30:39 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,17 +47,56 @@ void	ft_paint(t_game *game, int y, int x, int color)
 	}
 }
 
-int	ft_colision(t_game *game, t_coord new_coord, int key)
+int	ft_colision(t_game *game, t_player *new_coord, int key)
 {
 	int	y;
 	int	x;
 
-	y = new_coord.y / 14;
-	x = new_coord.x / 14;
+	y = new_coord->minimap.y / 14;
+	x = new_coord->minimap.x / 14;
 	(void)key;
 	printf("MAPA: %c Y: %d X: %d\n", game->map->map[y][x], y, x);
 	// if (key == MLX_KEY_S && game->map->map[y][x] == '0' && game->map->map[y][x - 1] == '1')
 	//  	return (0);
+
+	if (new_coord->minimap.y < game->player->minimap.y && new_coord->minimap.x == game->player->minimap.x)
+	{
+		y = new_coord->minimap.y / 14;
+		x = new_coord->minimap.x / 14;
+	}
+	else if (new_coord->minimap.y < game->player->minimap.y && new_coord->minimap.x < game->player->minimap.x)
+	{
+		// MIRAR QUE CONTACTA CON LA ESQUINA SUPERIOR IZQ
+	}
+	else if (new_coord->minimap.y == game->player->minimap.y && new_coord->minimap.x < game->player->minimap.x)
+	{
+		// MIRAR QUE CONTACTA con la izquierda
+	}
+	else if (new_coord->minimap.y > game->player->minimap.y && new_coord->minimap.x < game->player->minimap.x)
+	{
+		// MIRAR QUE CONTACTA con ESQUINA inferior izq
+	}
+	else if (new_coord->minimap.y > game->player->minimap.y && new_coord->minimap.x == game->player->minimap.x)
+	{
+		// MIRAR QUE CONTACTA abajo
+	}
+	else if (new_coord->minimap.y > game->player->minimap.y && new_coord->minimap.x > game->player->minimap.x)
+	{
+		// MIRAR QUE CONTACTA esquina inferior der
+	}
+	else if (new_coord->minimap.y == game->player->minimap.y && new_coord->minimap.x > game->player->minimap.x)
+	{
+		// MIRAR QUE CONTACTA derecha
+	}
+	else if (new_coord->minimap.y < game->player->minimap.y && new_coord->minimap.x > game->player->minimap.x)
+	{
+		// MIRAR QUE CONTACTA esquina superior derecha
+	}
+	else if (new_coord->minimap.y < game->player->minimap.y && new_coord->minimap.x == game->player->minimap.x)
+	{
+		// MIRAR QUE CONTACTA hacia arriba
+	}
+	
 	if (game->map->map[y][x] == '1')
 	{
 		printf("CHOCAAA MAPA: %c Y: %d X: %d\n", game->map->map[y][x], y, x);
@@ -68,8 +107,8 @@ int	ft_colision(t_game *game, t_coord new_coord, int key)
 
 void	ws_key(t_game *game, int key)
 {
-	int		move_speed;
-	t_coord	new_coord;
+	int			move_speed;
+	t_player	*new_coord;
 	
 	move_speed = MV_SPEED;
 	if (key == MLX_KEY_W)
@@ -78,17 +117,18 @@ void	ws_key(t_game *game, int key)
 	// 	return ;
 	// printf("sin: %f\n", sin(ft_radianes(game->player->angrot)));
 	// printf("cos: %f\n", cos(ft_radianes(game->player->angrot)));
-	new_coord.x = game->player->minimap.x + (move_speed * sin(ft_radianes(game->player->angrot)));
-	new_coord.y = game->player->minimap.y + (move_speed * cos(ft_radianes(game->player->angrot)));
-	printf("X: %f Y: %f\n", new_coord.x, new_coord.y);
+	new_coord->minimap.x = game->player->minimap.x + (move_speed * sin(ft_radianes(game->player->angrot)));
+	new_coord->minimap.y = game->player->minimap.y + (move_speed * cos(ft_radianes(game->player->angrot)));
+	printf("X: %f Y: %f\n", new_coord->minimap.x, new_coord->minimap.y);
 	if (!ft_colision(game, new_coord, key))
 		return ;
 	// ft_printf("new_x: %d\n", new_x);
 	// ft_printf("new_y: %d\n", new_y);
 	ft_paint(game, game->player->minimap.y, game->player->minimap.x, 0xFFFFFFFF);
-	ft_paint(game, new_coord.y, new_coord.x, 0xFF0000FF);
-	game->player->minimap.y = new_coord.y;
-	game->player->minimap.x = new_coord.x;
+	ft_paint(game, new_coord->minimap.y, new_coord->minimap.x, 0xFF0000FF);
+	game->player->minimap.y = new_coord->minimap.y;
+	game->player->minimap.x = new_coord->minimap.x;
+	ft_calc_coords(game->player);
 }
 
 void	ad_key(t_game *game, int key)
@@ -106,6 +146,7 @@ void	ad_key(t_game *game, int key)
 	ft_paint(game, new_coord.y, new_coord.x, 0xFF0000FF);
 	game->player->minimap.y = new_coord.y;
 	game->player->minimap.x = new_coord.x;
+	ft_calc_coords(game->player);
 }
 
 void	ft_init_hooks(mlx_key_data_t keydata, void *param)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:06:53 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/12/14 17:32:44 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2023/12/18 17:15:05 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,9 @@ typedef struct s_map
 typedef struct s_player
 {
 	t_coord	minimap;
+	t_coord	p_down_left;
+	t_coord	p_up_right;
+	t_coord	p_down_right;
 	double	angrot;
 }				t_player;
 
@@ -139,6 +142,7 @@ void		ft_init_minimap(t_game *game);
 void		ft_background_minimap(t_game *game);
 void		ft_paint_minimap(t_game *game);
 int			ft_check_minimap_colision_x(t_game *game, int y, int x, char letter);
+void		ft_calc_coords(t_player *player);
 // int			ft_check_minimap_colision_y(t_game *game, int y, int x);
 
 /* Floor and Cloud */

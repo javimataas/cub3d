@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 13:53:48 by jariza-o          #+#    #+#             */
-/*   Updated: 2023/12/11 19:04:17 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/12/18 17:14:54 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,14 @@ t_coord	ft_paint_min(t_game *game, int y, int x, int color)
 	return (coord);
 }
 
+void	ft_calc_coords(t_player *player)
+{
+	player->p_down_left.y = player->minimap.y + 14;
+	player->p_up_right.x = player->minimap.x + 14;
+	player->p_down_right.y = player->minimap.y + 14;
+	player->p_down_right.x = player->minimap.x + 14;
+}
+
 void	ft_init_minimap(t_game *game)
 {
 	game->map->minimap = mlx_new_image(game->mlx, 662, 331);
@@ -75,6 +83,7 @@ void	ft_init_minimap(t_game *game)
 		ft_error(game, ERR_MLX_FAIL);
 	ft_background_minimap(game);
 	ft_paint_minimap(game);
+	ft_calc_coords(game);
 }
 
 void	ft_background_minimap(t_game *game)
