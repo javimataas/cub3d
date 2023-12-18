@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 13:53:48 by jariza-o          #+#    #+#             */
-/*   Updated: 2023/12/18 17:14:54 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/12/18 17:56:28 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	ft_init_minimap(t_game *game)
 		ft_error(game, ERR_MLX_FAIL);
 	ft_background_minimap(game);
 	ft_paint_minimap(game);
-	ft_calc_coords(game);
+	ft_calc_coords(game->player);
 }
 
 void	ft_background_minimap(t_game *game)

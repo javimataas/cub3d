@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 17:27:35 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/12/18 17:30:39 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/12/18 17:57:15 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ int	ft_colision(t_game *game, t_player *new_coord, int key)
 void	ws_key(t_game *game, int key)
 {
 	int			move_speed;
-	t_player	*new_coord;
+	t_player	*new_coord = NULL;
 	
 	move_speed = MV_SPEED;
 	if (key == MLX_KEY_W)
