@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:06:53 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/12/18 17:15:05 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/12/19 16:12:53 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,6 +143,7 @@ void		ft_background_minimap(t_game *game);
 void		ft_paint_minimap(t_game *game);
 int			ft_check_minimap_colision_x(t_game *game, int y, int x, char letter);
 void		ft_calc_coords(t_player *player);
+int			ft_colision(t_game *game, t_player *new_coord);
 // int			ft_check_minimap_colision_y(t_game *game, int y, int x);
 
 /* Floor and Cloud */

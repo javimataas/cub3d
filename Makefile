@@ -6,7 +6,7 @@
 #    By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/16 19:23:22 by jmatas-p          #+#    #+#              #
-#    Updated: 2023/12/14 15:53:55 by jariza-o         ###   ########.fr        #
+#    Updated: 2023/12/19 16:14:15 by jariza-o         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ SRC		=	src/main.c \
 			src/utils/print_utils.c src/utils/clean.c src/utils/radianes.c\
 			src/render/textures.c src/render/minimap/minimap.c src/render/minimap/walls.c src/render/map/map.c \
 			src/hooks/hooks.c \
+			src/colissions/colission.c \
 
 OBJ		=	$(SRC:.c=.o)
 
