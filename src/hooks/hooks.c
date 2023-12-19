@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 17:27:35 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/12/18 17:57:15 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/12/19 10:04:46 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,8 @@ int	ft_colision(t_game *game, t_player *new_coord, int key)
 {
 	int	y;
 	int	x;
-
 	y = new_coord->minimap.y / 14;
 	x = new_coord->minimap.x / 14;
-	(void)key;
 	printf("MAPA: %c Y: %d X: %d\n", game->map->map[y][x], y, x);
 	// if (key == MLX_KEY_S && game->map->map[y][x] == '0' && game->map->map[y][x - 1] == '1')
 	//  	return (0);
@@ -67,35 +65,58 @@ int	ft_colision(t_game *game, t_player *new_coord, int key)
 	else if (new_coord->minimap.y < game->player->minimap.y && new_coord->minimap.x < game->player->minimap.x)
 	{
 		// MIRAR QUE CONTACTA CON LA ESQUINA SUPERIOR IZQ
+		y = new_coord->minimap.y / 14;
+		x = new_coord->minimap.x / 14;
 	}
 	else if (new_coord->minimap.y == game->player->minimap.y && new_coord->minimap.x < game->player->minimap.x)
 	{
 		// MIRAR QUE CONTACTA con la izquierda
+		y = new_coord->minimap.y / 14;
+		x = new_coord->minimap.x / 14;
 	}
 	else if (new_coord->minimap.y > game->player->minimap.y && new_coord->minimap.x < game->player->minimap.x)
 	{
 		// MIRAR QUE CONTACTA con ESQUINA inferior izq
+		y = new_coord->minimap.y / 14;
+		x = new_coord->minimap.x / 14;
 	}
 	else if (new_coord->minimap.y > game->player->minimap.y && new_coord->minimap.x == game->player->minimap.x)
 	{
 		// MIRAR QUE CONTACTA abajo
+		y = new_coord->minimap.y / 14;
+		x = new_coord->minimap.x / 14;
 	}
 	else if (new_coord->minimap.y > game->player->minimap.y && new_coord->minimap.x > game->player->minimap.x)
 	{
 		// MIRAR QUE CONTACTA esquina inferior der
+		y = new_coord->minimap.y / 14;
+		x = new_coord->minimap.x / 14;
 	}
 	else if (new_coord->minimap.y == game->player->minimap.y && new_coord->minimap.x > game->player->minimap.x)
 	{
 		// MIRAR QUE CONTACTA derecha
+		y = new_coord->minimap.y / 14;
+		x = new_coord->minimap.x / 14;
 	}
 	else if (new_coord->minimap.y < game->player->minimap.y && new_coord->minimap.x > game->player->minimap.x)
 	{
 		// MIRAR QUE CONTACTA esquina superior derecha
+		y = new_coord->minimap.y / 14;
+		x = new_coord->minimap.x / 14;
 	}
 	else if (new_coord->minimap.y < game->player->minimap.y && new_coord->minimap.x == game->player->minimap.x)
 	{
 		// MIRAR QUE CONTACTA hacia arriba
+		y = new_coord->minimap.y / 14;
+		x = new_coord->minimap.x / 14;
 	}
+
+
+	//NO FUNCIONA BIEN
+	if (key == MLX_KEY_W)
+		y--;
+	else if (key == MLX_KEY_A)
+		x--;
 	
 	if (game->map->map[y][x] == '1')
 	{
@@ -108,11 +129,12 @@ int	ft_colision(t_game *game, t_player *new_coord, int key)
 void	ws_key(t_game *game, int key)
 {
 	int			move_speed;
-	t_player	*new_coord = NULL;
-	
+	t_player	*new_coord;
+
 	move_speed = MV_SPEED;
 	if (key == MLX_KEY_W)
 		move_speed *= -1;
+	new_coord = malloc(sizeof(t_player));
 	// if (!ft_check_minimap_colision_x(game, game->player->minimap.y - 1, game->player->minimap.x, 'w'))
 	// 	return ;
 	// printf("sin: %f\n", sin(ft_radianes(game->player->angrot)));
@@ -134,18 +156,21 @@ void	ws_key(t_game *game, int key)
 void	ad_key(t_game *game, int key)
 {
 
-	int		move_speed;
-	t_coord	new_coord;
+	int			move_speed;
+	t_player	*new_coord;
 	
 	move_speed = MV_SPEED;
 	if (key == MLX_KEY_A)
 		move_speed *= -1;
-	new_coord.x = game->player->minimap.x + (move_speed * sin(ft_radianes(game->player->angrot) + M_PI / 2));
-	new_coord.y = game->player->minimap.y + (move_speed * cos(ft_radianes(game->player->angrot)+ M_PI / 2));
+	new_coord = malloc(sizeof(t_player));
+	new_coord->minimap.x = game->player->minimap.x + (move_speed * sin(ft_radianes(game->player->angrot) + M_PI / 2));
+	new_coord->minimap.y = game->player->minimap.y + (move_speed * cos(ft_radianes(game->player->angrot)+ M_PI / 2));
+	if (!ft_colision(game, new_coord, key))
+		return ;
 	ft_paint(game, game->player->minimap.y, game->player->minimap.x, 0xFFFFFFFF);
-	ft_paint(game, new_coord.y, new_coord.x, 0xFF0000FF);
-	game->player->minimap.y = new_coord.y;
-	game->player->minimap.x = new_coord.x;
+	ft_paint(game, new_coord->minimap.y, new_coord->minimap.x, 0xFF0000FF);
+	game->player->minimap.y = new_coord->minimap.y;
+	game->player->minimap.x = new_coord->minimap.x;
 	ft_calc_coords(game->player);
 }
 
