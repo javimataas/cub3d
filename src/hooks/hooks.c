@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 17:27:35 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/12/19 16:13:19 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/12/20 17:54:43 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,17 +56,16 @@ void	ws_key(t_game *game, int key)
 	if (key == MLX_KEY_W)
 		move_speed *= -1;
 	new_coord = malloc(sizeof(t_player));
-	// if (!ft_check_minimap_colision_x(game, game->player->minimap.y - 1, game->player->minimap.x, 'w'))
-	// 	return ;
-	// printf("sin: %f\n", sin(ft_radianes(game->player->angrot)));
-	// printf("cos: %f\n", cos(ft_radianes(game->player->angrot)));
 	new_coord->minimap.x = game->player->minimap.x + (move_speed * sin(ft_radianes(game->player->angrot)));
 	new_coord->minimap.y = game->player->minimap.y + (move_speed * cos(ft_radianes(game->player->angrot)));
 	printf("X: %f Y: %f\n", new_coord->minimap.x, new_coord->minimap.y);
-	if (!ft_colision(game, new_coord))
+	if (!ft_front_colision(game, new_coord) || !ft_back_colision(game, new_coord))
 		return ;
-	// ft_printf("new_x: %d\n", new_x);
-	// ft_printf("new_y: %d\n", new_y);
+	// if (!ft_colision(game, new_coord))
+	// 	return ;
+	// if ((new_coord->minimap.y < game->player->minimap.y && new_coord->minimap.x == game->player->minimap.x))
+	// 	if (!ft_back_colision(game, new_coord)) // || !ft_back_colision(game, new_coord))
+	// 		return ;
 	ft_paint(game, game->player->minimap.y, game->player->minimap.x, 0xFFFFFFFF);
 	ft_paint(game, new_coord->minimap.y, new_coord->minimap.x, 0xFF0000FF);
 	game->player->minimap.y = new_coord->minimap.y;
@@ -86,8 +85,10 @@ void	ad_key(t_game *game, int key)
 	new_coord = malloc(sizeof(t_player));
 	new_coord->minimap.x = game->player->minimap.x + (move_speed * sin(ft_radianes(game->player->angrot) + M_PI / 2));
 	new_coord->minimap.y = game->player->minimap.y + (move_speed * cos(ft_radianes(game->player->angrot)+ M_PI / 2));
-	if (!ft_colision(game, new_coord))
+	if (!ft_right_colision(game, new_coord) || !ft_left_colision(game, new_coord))
 		return ;
+	// if (!ft_colision(game, new_coord))
+	// 	return ;
 	ft_paint(game, game->player->minimap.y, game->player->minimap.x, 0xFFFFFFFF);
 	ft_paint(game, new_coord->minimap.y, new_coord->minimap.x, 0xFF0000FF);
 	game->player->minimap.y = new_coord->minimap.y;

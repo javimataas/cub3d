@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:06:53 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/12/19 16:12:53 by jariza-o         ###   ########.fr       */
+/*   Updated: 2023/12/20 17:54:21 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <math.h>
 
 
-# define MV_SPEED	2
+# define MV_SPEED	3
 
 enum			e_datatype
 {
@@ -144,6 +144,10 @@ void		ft_paint_minimap(t_game *game);
 int			ft_check_minimap_colision_x(t_game *game, int y, int x, char letter);
 void		ft_calc_coords(t_player *player);
 int			ft_colision(t_game *game, t_player *new_coord);
+int			ft_front_colision(t_game *game, t_player *new_coord);
+int			ft_back_colision(t_game *game, t_player *new_coord);
+int			ft_right_colision(t_game *game, t_player *new_coord);
+int			ft_left_colision(t_game *game, t_player *new_coord);
 // int			ft_check_minimap_colision_y(t_game *game, int y, int x);
 
 /* Floor and Cloud */
