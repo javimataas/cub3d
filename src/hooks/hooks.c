@@ -6,7 +6,7 @@
 /*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 17:27:35 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/12/14 17:32:31 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2023/12/20 17:56:43 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,6 +142,8 @@ void	ft_init_hooks(mlx_key_data_t keydata, void *param)
 		printf("angulo: %f\n", game->player->angrot);
 		//right_key(game);
 	}
+	// ft_paint_rays(game);
+	ft_display_pov(game);
 	// mlx_key_hook(game->mlx, &move_hooks, (void *)(game));
 	// mlx_resize_hook(game->mlx, &hook_screen, (void *)(game));
 }

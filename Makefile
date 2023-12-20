@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+         #
+#    By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/16 19:23:22 by jmatas-p          #+#    #+#              #
-#    Updated: 2023/12/14 15:53:55 by jariza-o         ###   ########.fr        #
+#    Updated: 2023/12/20 17:57:23 by jmatas-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ SRC		=	src/main.c \
 			src/init_structs/init.c src/init_structs/map/init_map_texts.c src/init_structs/map/init_map.c src/init_structs/map/init_utils.c src/init_structs/map/convert_color.c \
 			src/utils/print_utils.c src/utils/clean.c src/utils/radianes.c\
 			src/render/textures.c src/render/minimap/minimap.c src/render/minimap/walls.c src/render/map/map.c \
-			src/hooks/hooks.c \
+			src/hooks/hooks.c src/rays/rays.c src/rays/rays_check.c src/rays/rays_utils.c src/rays/pov.c \
 
 OBJ		=	$(SRC:.c=.o)
 

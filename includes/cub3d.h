@@ -6,7 +6,7 @@
 /*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:06:53 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/12/14 17:32:44 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2023/12/20 17:53:07 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,9 @@
 # include <fcntl.h>
 # include <math.h>
 
-
-# define MV_SPEED	2
+# define MV_SPEED		2
+# define TILESIZE_2D	14
+# define TILESIZE_3D	64
 
 enum			e_datatype
 {
@@ -63,6 +64,8 @@ typedef struct s_map
 	char		**map;
 	mlx_image_t	*minimap;
 	t_textures	*texts;
+	int			height;
+	int			width;
 }				t_map;
 
 typedef struct s_player
@@ -71,12 +74,21 @@ typedef struct s_player
 	double	angrot;
 }				t_player;
 
+typedef struct s_rays
+{
+	float	ang;
+	double	dist;
+	t_coord	hit;
+	char	dir;
+}				t_rays;
+
 typedef struct s_game
 {
 	char		**file;
 	mlx_t		*mlx;
 	t_map		*map;
 	t_player	*player;
+	t_rays		*rays;
 }				t_game;
 
 /* Init */
@@ -158,6 +170,18 @@ void		ft_print_texts(t_game game);
 void		ft_print_map(t_game *game);
 
 /* Convert grades to radianes */
-double	ft_radianes(double angolugiro);
+double		ft_radianes(double angolugiro);
+
+/* Rays */
+void		ft_paint_rays(t_game *game);
+
+/* Rays Check */
+void		ft_check_horz(t_game *game, t_coord *start, t_coord *end, int i);
+void		ft_check_vert(t_game *game, t_coord *start, t_coord *end, int i);
+
+/* Rays Utils */
+void		ft_inc_step(t_coord step, t_coord *end, int *k);
+t_coord		ft_red_coord(t_coord c);
+void		ft_draw_line(t_game *game, mlx_image_t *img, t_coord start, t_coord end);
 
 #endif
