@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 19:14:05 by jariza-o          #+#    #+#             */
-/*   Updated: 2023/12/11 17:35:20 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/01/10 19:09:58 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,14 @@ void	ft_background_map(t_game *game)
 	while (y < 540)
 	{
 		x = 0;
-		while (x < 1920)
+		while (x < game->final_s_width)
 		{
 			mlx_put_pixel(game->map->img, x, y, c);
 			x++;
 		}
 		y++;
 	}
-	while (y < 1080)
+	while (y < S_HEIGHT)
 	{
 		x = 0;
 		while (x < 1920)
@@ -55,7 +55,7 @@ void	ft_background_map(t_game *game)
 void	ft_init_colormap(t_game *game)
 {
 	ft_pixel(game);
-	game->map->img = mlx_new_image(game->mlx, 1920, 1080);
+	game->map->img = mlx_new_image(game->mlx, game->final_s_width, S_HEIGHT);
 	if (!game->map->img)
 		ft_error(game, ERR_MLX_FAIL);
 	if (mlx_image_to_window(game->mlx, game->map->img, 0, 0) < 0)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   walls.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 19:25:02 by jariza-o          #+#    #+#             */
-/*   Updated: 2023/12/13 16:01:31 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/01/08 19:12:24 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ int	ft_check_minimap_colision_x(t_game *game, int y, int x, char letter)
 		n = -1;
 		while (game->map->map[i][++n])
 		{
-			aux_ry = i * 14;
+			aux_ry = i * TSIZE_2D;
 			if (letter == 'w') 
-				aux_ry += 14;
+				aux_ry += TSIZE_2D;
 			ry = aux_ry;
-			while (ry < (aux_ry + 14))
+			while (ry < (aux_ry + TSIZE_2D))
 			{
-				rx = n * 14;
-				while (rx < (n * 14 + 14))
+				rx = n * TSIZE_2D;
+				while (rx < (n * TSIZE_2D + TSIZE_2D))
 				{
 					if ((ry == y - s/2 || ry == y + s/2) && (rx == x - s/2 || rx == x + s/2) && game->map->map[i][n] == '1')
 						return (0);
@@ -54,14 +54,14 @@ int	ft_check_minimap_colision_x(t_game *game, int y, int x, char letter)
 // 	i = -1;
 // 	while (game->map->map[++i])
 // 	{
-// 		ry = (i * 14) + 14;
+// 		ry = (i * TSIZE_2D) + TSIZE_2D;
 // 		if (ry == y)
 // 		{
 // 			n = -1;
 // 			while (game->map->map[i][++n])
 // 			{
-// 				rx = x * 14;
-// 				if (rx >= (x) && rx <= (x + 14))
+// 				rx = x * TSIZE_2D;
+// 				if (rx >= (x) && rx <= (x + TSIZE_2D))
 // 					if (game->map->map[i][n] == '1')
 // 						return (0);
 // 			}

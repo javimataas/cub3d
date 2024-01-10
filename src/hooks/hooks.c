@@ -6,7 +6,7 @@
 /*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 17:27:35 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/12/20 17:56:43 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2024/01/10 18:48:24 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ void	ft_paint(t_game *game, int y, int x, int color)
 	int	n;
 	
 	i = -1;
-	while ((y + (++i)) < (y + 14))
+	while ((y + (++i)) < (y + TSIZE_2D))
 	{
 		n = -1;
-		while ((x + (++n)) < (x + 14))
+		while ((x + (++n)) < (x + TSIZE_2D))
 			mlx_put_pixel(game->map->minimap, x + n, y + i, color);
 	}
 }
@@ -143,6 +143,7 @@ void	ft_init_hooks(mlx_key_data_t keydata, void *param)
 		//right_key(game);
 	}
 	// ft_paint_rays(game);
+	ft_rays(game);
 	ft_display_pov(game);
 	// mlx_key_hook(game->mlx, &move_hooks, (void *)(game));
 	// mlx_resize_hook(game->mlx, &hook_screen, (void *)(game));

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 16:57:41 by jariza-o          #+#    #+#             */
-/*   Updated: 2023/12/02 17:04:16 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/01/10 18:41:56 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,27 @@
 void	ft_load_struct(t_game *game)
 {
 	int	i;
+	t_textures	*aux;
 
 	i = 0;
+	aux = game->map->texts;
 	while (game->file[i])
 	{
 		if (!ft_is_texts(game->file[i]))
 			break ;
-		ft_select_texts(game, game->file[i]);
+		game->map->texts = ft_select_texts(game, game->file[i]);
+		printf("%s\n", game->map->texts->path);
+		if (game->map->texts->next)
+			game->map->texts = game->map->texts->next;
 		i++;
 	}
+	game->map->texts = aux;
 	game->map->start_map = i;
 	if (!ft_check_texts(game))
 		ft_error(game, ERR_MISS_TEXTS);
 }
 
-void	ft_select_texts(t_game *game, char *line) // como estoy uasnado aux no dbería de perderse la referencia
+t_textures	*ft_select_texts(t_game *game, char *line) // como estoy uasnado aux no dbería de perderse la referencia
 {
 	int			i;
 	int			n;
@@ -68,7 +74,7 @@ void	ft_select_texts(t_game *game, char *line) // como estoy uasnado aux no dber
 		ft_error(game, ERR_DUP_TEXTS);
 	aux->path = (char *)ft_calloc((len + 1), sizeof(char));
 	if (!aux->path)
-		return ;
+		return (NULL);
 	i = 0;
 	while (line && line[n] && line[n] != '\n')
 	{
@@ -77,6 +83,7 @@ void	ft_select_texts(t_game *game, char *line) // como estoy uasnado aux no dber
 		n++;
 	}
 	free (id);
+	return (aux);
 }
 
 void	ft_reserve_map(t_game *game)

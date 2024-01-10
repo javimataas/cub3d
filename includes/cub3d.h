@@ -6,7 +6,7 @@
 /*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:06:53 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/12/20 17:53:07 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2024/01/10 19:34:40 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,13 @@
 # include <fcntl.h>
 # include <math.h>
 
-# define MV_SPEED		2
-# define TILESIZE_2D	14
-# define TILESIZE_3D	64
+# define S_HEIGHT	1080
+# define S_WIDTH	1920
+# define MV_SPEED	2
+# define TSIZE_2D	14
+# define TSIZE_3D	64
+# define DEPTH		1.7
+# define DEF		8
 
 enum			e_datatype
 {
@@ -84,12 +88,22 @@ typedef struct s_rays
 
 typedef struct s_game
 {
-	char		**file;
-	mlx_t		*mlx;
-	t_map		*map;
-	t_player	*player;
-	t_rays		*rays;
-}				t_game;
+	char				**file;
+	mlx_t				*mlx;
+	t_map				*map;
+	t_player			*player;
+	t_rays				*rays;
+	t_coord				start;
+	t_coord				end;
+	t_coord				pix;
+	mlx_image_t			*img3d;
+	mlx_texture_t		**textures;
+	int					h_line;
+	int					pov_ang;
+	int					final_s_width;
+	float				ty_step;
+	long unsigned int	c_pix;
+}					t_game;
 
 /* Init */
 /* Init Struct */
@@ -103,7 +117,7 @@ void		ft_lstadd_back_texts(t_textures **lst, t_textures *new);
 
 /* Load Textures in Struct */
 void		ft_load_struct(t_game *game);
-void		ft_select_texts(t_game *game, char *line);
+t_textures		*ft_select_texts(t_game *game, char *line);
 void		ft_pixel(t_game *game);
 
 /* Load Map */
@@ -138,7 +152,6 @@ char		**ft_add_extra_rows(char **map);
 t_coord		ft_get_player_coord(char **map);
 int			ft_contains_str(char *str, char *container);
 
-
 /* TEXTURES */
 void		ft_load_textures(t_game *game);
 
@@ -172,16 +185,13 @@ void		ft_print_map(t_game *game);
 /* Convert grades to radianes */
 double		ft_radianes(double angolugiro);
 
+/* POV (3D) */
+int			ft_display_pov(t_game *game);
+
+/* C_Pixel */
+unsigned long	ft_get_pix_color(mlx_texture_t *text, int x_tex, int y_tex);
+
 /* Rays */
-void		ft_paint_rays(t_game *game);
-
-/* Rays Check */
-void		ft_check_horz(t_game *game, t_coord *start, t_coord *end, int i);
-void		ft_check_vert(t_game *game, t_coord *start, t_coord *end, int i);
-
-/* Rays Utils */
-void		ft_inc_step(t_coord step, t_coord *end, int *k);
-t_coord		ft_red_coord(t_coord c);
-void		ft_draw_line(t_game *game, mlx_image_t *img, t_coord start, t_coord end);
+void    ft_rays(t_game *game);
 
 #endif
