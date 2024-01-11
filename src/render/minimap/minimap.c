@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 13:53:48 by jariza-o          #+#    #+#             */
-/*   Updated: 2023/12/18 17:56:28 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/01/11 16:34:31 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ft_paint_line_y(t_game *game, int y, int x, int color)
 		mlx_put_pixel(game->map->minimap, x, y + n, color);
 }
 
-t_coord	ft_paint_min(t_game *game, int y, int x, int color)
+t_coord	ft_paint_min(t_game *game, int y, int x, uint32_t color)
 {
 	int	i;
 	int	n;
@@ -81,7 +81,7 @@ void	ft_init_minimap(t_game *game)
 		ft_error(game, ERR_MLX_FAIL);
 	if (mlx_image_to_window(game->mlx, game->map->minimap, 0, 0) < 0)
 		ft_error(game, ERR_MLX_FAIL);
-	ft_background_minimap(game);
+	// ft_background_minimap(game);
 	ft_paint_minimap(game);
 	ft_calc_coords(game->player);
 }
@@ -116,7 +116,9 @@ void	ft_paint_minimap(t_game *game)
 		while (game->map->map[y][x])
 		{
 			if (game->map->map[y][x] == '1')
-				ft_paint_min(game, y, x, 0x00000000);
+				ft_paint_min(game, y, x, 0x000000FF);
+			else if (game->map->map[y][x] == '0')
+				ft_paint_min(game, y, x, 0xFFFFFFFF);
 			else if (ft_strchr("NSEW", game->map->map[y][x]))
 				game->player->minimap = ft_paint_min(game, y, x, 0xFF0000FF);
 			x++;

@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:06:53 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/12/20 17:54:21 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/01/11 16:30:10 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,7 @@ void		ft_load_textures(t_game *game);
 
 /* MAP */
 /* Minimap */
-t_coord		ft_paint_min(t_game *game, int y, int x, int color);
+t_coord		ft_paint_min(t_game *game, int y, int x, uint32_t color);
 void		ft_paint_line_x(t_game *game, int y, int x, int color);
 void		ft_paint_line_y(t_game *game, int y, int x, int color);
 void		ft_init_minimap(t_game *game);
