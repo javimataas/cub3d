@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:06:53 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/12/20 17:54:21 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/01/11 18:25:39 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,28 +58,31 @@ typedef struct s_textures
 typedef struct s_map
 {
 	mlx_image_t	*img;
-	t_coord		player_pos;
 	int			start_map;
 	char		**map;
-	mlx_image_t	*minimap;
 	t_textures	*texts;
 }				t_map;
 
+typedef struct s_minimap
+{
+	mlx_image_t	*img;
+	mlx_image_t	*player;
+}				t_minimap;
+
 typedef struct s_player
 {
+	t_coord	player_pos;
 	t_coord	minimap;
-	t_coord	p_down_left;
-	t_coord	p_up_right;
-	t_coord	p_down_right;
 	double	angrot;
 }				t_player;
 
 typedef struct s_game
 {
-	char		**file;
-	mlx_t		*mlx;
-	t_map		*map;
-	t_player	*player;
+	char			**file;
+	mlx_t			*mlx;
+	t_map			*map;
+	t_minimap		*minimap;
+	t_player		*player;
 }				t_game;
 
 /* Init */
@@ -135,20 +138,8 @@ void		ft_load_textures(t_game *game);
 
 /* MAP */
 /* Minimap */
-t_coord		ft_paint_min(t_game *game, int y, int x, int color);
-void		ft_paint_line_x(t_game *game, int y, int x, int color);
-void		ft_paint_line_y(t_game *game, int y, int x, int color);
-void		ft_init_minimap(t_game *game);
-void		ft_background_minimap(t_game *game);
-void		ft_paint_minimap(t_game *game);
-int			ft_check_minimap_colision_x(t_game *game, int y, int x, char letter);
-void		ft_calc_coords(t_player *player);
-int			ft_colision(t_game *game, t_player *new_coord);
-int			ft_front_colision(t_game *game, t_player *new_coord);
-int			ft_back_colision(t_game *game, t_player *new_coord);
-int			ft_right_colision(t_game *game, t_player *new_coord);
-int			ft_left_colision(t_game *game, t_player *new_coord);
-// int			ft_check_minimap_colision_y(t_game *game, int y, int x);
+void  		ft_init_minimap(t_game *game);
+void		ft_paint_player(t_game *game);
 
 /* Floor and Cloud */
 void		ft_init_colormap(t_game *game);

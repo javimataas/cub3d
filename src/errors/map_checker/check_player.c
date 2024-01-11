@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 17:24:48 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/12/19 15:40:55 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/01/11 17:18:09 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ int	ft_check_player(t_game *game)
 			if (ft_strchr("NSEW", game->map->map[i][j]))
 			{
 				game->player->angrot = ft_get_angle(game->map->map[i][j]);
-				game->map->player_pos.x = j;
-				game->map->player_pos.y = i;
+				game->player->player_pos.x = j;
+				game->player->player_pos.y = i;
 				player++;
 			}
 		}
