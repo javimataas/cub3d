@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 19:14:05 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/01/11 17:56:04 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/01/13 16:31:28 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,6 @@ void	ft_init_colormap(t_game *game)
 	if (mlx_image_to_window(game->mlx, game->map->img, 0, 0) < 0)
 		ft_error(game, ERR_MLX_FAIL);
 	ft_background_map(game);
+	game->map->img->instances[0].z = 1;
 }
 
