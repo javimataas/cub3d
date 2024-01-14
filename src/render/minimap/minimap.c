@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 13:53:48 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/01/13 16:48:02 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/01/14 12:12:34 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	ft_paint_elements(t_game *game)
 		{
 			if (game->map->map[y][x] == '1')
 				ft_paint_min(game, y, x, 0x000000FF);
-			else if (game->map->map[y][x] == '0')
+			else if (game->map->map[y][x] == '0' || ft_strchr("NSEW", game->map->map[y][x]))
 				ft_paint_min(game, y, x, 0xFFFFFFFF);
 			x++;
 		}
@@ -69,16 +69,27 @@ void	ft_paint_elements(t_game *game)
 	}
 }
 
-// int	ft_calc_size(t_game *game, )
-// {
-	
-// }
+int	ft_calc_size(t_game *game, int letter) //COMPROBAR PORQUE NO VA BIEN
+{
+	int	size;
+
+	size = 0;
+	printf("1 linea mapa: %s\n", game->map->map[0]);
+	if (letter == 0)
+		while (game->map->map[size])
+			size++;
+	else if (letter == 1)
+		while (game->map->map[0][size])
+			size++;
+	return (size * 10);
+}
 
 void	ft_paint_minimap(t_game *game, int img)
 {
 	if (img)
 		mlx_delete_image(game->mlx, game->minimap->img);
-	game->minimap->img = mlx_new_image(game->mlx, 1000, 1000); // CALCULAR TAMAÑO QUE VA A TENER EL MAPA
+	printf("Ancho: %d, Largo %d\n", ft_calc_size(game, 0), ft_calc_size(game, 1));
+	game->minimap->img = mlx_new_image(game->mlx, 340, ft_calc_size(game, 1)); //ft_calc_size(game, 0), ft_calc_size(game, 1)); // CALCULAR TAMAÑO QUE VA A TENER EL MAPA
 	if (mlx_image_to_window(game->mlx, game->minimap->img, 0, 0) < 0) // CALCULAR DONDE EMPIEZA EL MAPA
 		ft_error(game, ERR_MLX_FAIL);
 	ft_paint_elements(game);
