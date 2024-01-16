@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 16:57:41 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/01/16 16:31:44 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/01/16 18:49:26 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,17 @@ void	ft_load_struct(t_game *game)
 	i = 0;
 	while (game->file[i])
 	{
-		if (!ft_is_texts(game->file[i]))
-			break ;
-		ft_select_texts(game, game->file[i]);
-		i++;
+		if (ft_is_empty(game->file[i]))
+		{
+			i++;
+		}
+		else
+		{
+			if (!ft_is_texts(game->file[i]))
+				break ;
+			ft_select_texts(game, game->file[i]);
+			i++;
+		}
 	}
 	game->map->start_map = i;
 	if (!ft_check_texts(game))
@@ -76,6 +83,8 @@ void	ft_select_texts(t_game *game, char *line) // como estoy uasnado aux no dber
 		i++;
 		n++;
 	}
+
+	printf("LOAD STRUCT: %s %s\n", aux->id, aux->path);
 	free (id);
 }
 

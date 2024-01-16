@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 19:32:55 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/01/16 16:30:54 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/01/16 18:53:01 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void	ft_cub3d(t_game *game)
 		ft_error(game, ERR_MLX_FAIL);
 	mlx_key_hook(game->mlx, &ft_init_hooks, (void *)(game));
 	ft_load_textures(game);
+						printf("ALCACHOFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n");
+	printf("DDDD\n");
 	ft_init_colormap(game);
 	ft_init_minimap(game);
 	mlx_loop(game->mlx);

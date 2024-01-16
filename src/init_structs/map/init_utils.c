@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 15:30:49 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/01/16 17:13:15 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/01/16 18:49:19 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,12 @@ int	ft_is_texts(char *line)
 		i++;
 	while (line && line[i] && (line[i] != ' ' && line[i] != '\t'))
 	{
+		printf("letter: %c\n", line[i]);
 		id[n] = line[i];
 		n++;
 		i++;
 	}
+	printf("FT_IS_TEXTS: %s\n", id);
 	if (ft_strcmp(id, "NO") && ft_strcmp(id, "SO") && ft_strcmp(id, "WE")
 		&& ft_strcmp(id, "EA") && ft_strcmp(id, "F") && ft_strcmp(id, "C"))
 	{
@@ -62,8 +64,8 @@ int	ft_check_texts(t_game *game)
 	aux = game->map->texts;
 	while (aux)
 	{
-		// printf("%s\n", aux->id);
-		// printf("%s\n", aux->path);
+		// printf("ID: %s\n", aux->id);
+		// printf("PATH: %s\n", aux->path);
 		if (aux->path == NULL)
 			return (0);
 		aux = aux->next;
@@ -105,16 +107,14 @@ int	ft_check_texts(t_game *game)
 // 	return (matrix);
 // }
 
-int	ft_is_map(char *line, int is_map)
+int	ft_is_map(char *line)
 {
 	int	i;
 
 	i = 0;
-	if (is_map == 1)
-		return (1);
 	while (line[i])
 	{
-		if (ft_strchr(" 10NSEW", line[i]))
+		if (!ft_strchr(" 10NSEW", line[i]))
 			i++;
 		else
 			return (1);
@@ -137,19 +137,12 @@ char	**ft_read_file(char *path)
 	is_map = 0;
 	while (line != NULL)
 	{
-		if (ft_is_empty(line) == 1)
-		{
+		// if (ft_is_map(line))
+		// 	is_map = 1;
+		if (ft_is_empty(line) == 1 && is_map == 1)
 			free(line);
-			// if (is_map == 1)
-			// {
-			// 	//FREE CORRECT BAD FREE
-			// 	printf("Error: Invalid map, Empty Lines in the map\n");
-			// 	exit(1);
-			// }
-		}
 		else
 		{
-			is_map = ft_is_map(line, is_map);
 			matrix[i] = ft_strdup(line);
 			i++;
 			free (line);
