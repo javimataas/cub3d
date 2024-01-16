@@ -6,13 +6,13 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 17:34:43 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/01/15 19:04:29 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/01/16 16:30:05 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-t_game	*ft_init_map(char *path)
+t_game	*ft_init_map(char *path) // REVOSAR PORQUE CUANDO FALLAN LOS MALLOC NO LIBERO LO ANTERIOR RESERVADO
 {
 	t_game	*game;
 
@@ -38,7 +38,7 @@ t_game	*ft_init_map(char *path)
 		exit (1);
 	}
 	game->player = malloc(sizeof(t_player));
-	if (!game->map)
+	if (!game->player)
 	{
 		printf("Error: Malloc fail\n");
 		free (game);

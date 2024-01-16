@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 19:32:55 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/01/15 19:09:59 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/01/16 16:30:54 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	ft_leaks(void)
 void	ft_cub3d(t_game *game)
 {
 	game->mlx = mlx_init(1920, 1080, "Cub3D", false);
-						printf("EL FICHERO ES ESTE: \n");
 	if (!game->mlx)
 		ft_error(game, ERR_MLX_FAIL);
 	mlx_key_hook(game->mlx, &ft_init_hooks, (void *)(game));

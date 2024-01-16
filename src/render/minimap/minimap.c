@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 13:53:48 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/01/15 17:02:10 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/01/16 16:31:18 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ int	ft_calc_size(t_game *game, int letter) //COMPROBAR PORQUE NO VA BIEN
 	int	size;
 
 	size = 0;
-	printf("1 linea mapa: %s\n", game->map->map[0]);
 	if (letter == 0)
 		while (game->map->map[size])
 			size++;
@@ -88,7 +87,6 @@ void	ft_paint_minimap(t_game *game, int img)
 {
 	if (img)
 		mlx_delete_image(game->mlx, game->minimap->img);
-	printf("Ancho: %d, Largo %d\n", ft_calc_size(game, 0), ft_calc_size(game, 1));
 	game->minimap->img = mlx_new_image(game->mlx, ft_calc_size(game, 1), ft_calc_size(game, 0)); //ft_calc_size(game, 0), ft_calc_size(game, 1)); // CALCULAR TAMAÑO QUE VA A TENER EL MAPA
 	if (mlx_image_to_window(game->mlx, game->minimap->img, 0, 0) < 0) // CALCULAR DONDE EMPIEZA EL MAPA
 		ft_error(game, ERR_MLX_FAIL);

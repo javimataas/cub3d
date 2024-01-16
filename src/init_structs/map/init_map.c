@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 16:57:41 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/01/15 19:04:00 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/01/16 16:31:44 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,7 @@ void	ft_load_struct(t_game *game)
 	while (game->file[i])
 	{
 		if (!ft_is_texts(game->file[i]))
-		{
-			printf("NO ES TEXTURA: %s\n\n", game->file[i]);
 			break ;
-		}
 		ft_select_texts(game, game->file[i]);
 		i++;
 	}
@@ -79,7 +76,6 @@ void	ft_select_texts(t_game *game, char *line) // como estoy uasnado aux no dber
 		i++;
 		n++;
 	}
-	printf("INIT MAP PATH TEXT ES: %s\n", aux->path);
 	free (id);
 }
 
