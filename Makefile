@@ -6,7 +6,7 @@
 #    By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/16 19:23:22 by jmatas-p          #+#    #+#              #
-#    Updated: 2024/01/10 19:34:56 by jmatas-p         ###   ########.fr        #
+#    Updated: 2024/01/16 17:30:09 by jmatas-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ SRC		=	src/main.c \
 			src/init_structs/init.c src/init_structs/map/init_map_texts.c src/init_structs/map/init_map.c src/init_structs/map/init_utils.c src/init_structs/map/convert_color.c \
 			src/utils/print_utils.c src/utils/clean.c src/utils/radianes.c\
 			src/render/textures.c src/render/minimap/minimap.c src/render/minimap/walls.c src/render/map/map.c \
-			src/hooks/hooks.c src/rays/pov.c src/rays/c_pixel.c src/rays/rays.c \
+			src/hooks/hooks.c src/rays/pov.c src/rays/c_pixel.c src/rays/rays.c src/rays/rays_utils.c \
 
 OBJ		=	$(SRC:.c=.o)
 

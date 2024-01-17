@@ -6,7 +6,7 @@
 /*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 17:27:35 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/01/10 18:48:24 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2024/01/17 18:14:05 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,8 @@ void	ad_key(t_game *game, int key)
 	move_speed = MV_SPEED;
 	if (key == MLX_KEY_A)
 		move_speed *= -1;
-	new_coord.x = game->player->minimap.x + (move_speed * sin(ft_radianes(game->player->angrot) + M_PI / 2));
-	new_coord.y = game->player->minimap.y + (move_speed * cos(ft_radianes(game->player->angrot)+ M_PI / 2));
+	new_coord.x = game->player->minimap.x + (move_speed * sin(ft_radianes(game->player->angrot) + PI / 2));
+	new_coord.y = game->player->minimap.y + (move_speed * cos(ft_radianes(game->player->angrot)+ PI / 2));
 	ft_paint(game, game->player->minimap.y, game->player->minimap.x, 0xFFFFFFFF);
 	ft_paint(game, new_coord.y, new_coord.x, 0xFF0000FF);
 	game->player->minimap.y = new_coord.y;
@@ -88,7 +88,7 @@ void	ad_key(t_game *game, int key)
 	// int		despl;
 	// t_coord	new_coord;
 	
-	// despl = M_PI / 2;
+	// despl = PI / 2;
 	// if (key == MLX_KEY_A)
 	// 	despl *= -1;
 	// ft_printf("x: %d\n", game->player->minimap.x);
@@ -99,8 +99,8 @@ void	ad_key(t_game *game, int key)
 	// printf("cos: %f\n", cos(ft_radianes(game->player->angrot)));
 	// ft_printf("new_x: %d\n", new_coord.x);
 	// ft_printf("new_y: %d\n", new_coord.y);
-	// // new_coord.x = game->player->minimap.x + cos(ft_radianes(game->player->angrot) + (M_PI / 2)) * MV_SPEED * 0.5;
-	// // new_coord.y = game->player->minimap.x - sin(ft_radianes(game->player->angrot) + (M_PI / 2)) * MV_SPEED * 0.5;
+	// // new_coord.x = game->player->minimap.x + cos(ft_radianes(game->player->angrot) + (PI / 2)) * MV_SPEED * 0.5;
+	// // new_coord.y = game->player->minimap.x - sin(ft_radianes(game->player->angrot) + (PI / 2)) * MV_SPEED * 0.5;
 	// ft_paint(game, game->player->minimap.y, game->player->minimap.x, 0xFFFFFFFF);
 	// ft_paint(game, new_coord.y, new_coord.x, 0xFF0000FF);
 	// game->player->minimap.y = new_coord.y;
@@ -142,9 +142,15 @@ void	ft_init_hooks(mlx_key_data_t keydata, void *param)
 		printf("angulo: %f\n", game->player->angrot);
 		//right_key(game);
 	}
-	// ft_paint_rays(game);
-	ft_rays(game);
-	ft_display_pov(game);
 	// mlx_key_hook(game->mlx, &move_hooks, (void *)(game));
 	// mlx_resize_hook(game->mlx, &hook_screen, (void *)(game));
+}
+
+void	ft_update(void *param)
+{
+	t_game	*game;
+
+	game = (t_game *)param;
+	ft_rays(game);
+	ft_display_pov(game);
 }

@@ -6,7 +6,7 @@
 /*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 17:57:11 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/01/10 19:09:31 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2024/01/17 18:39:08 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,25 +30,25 @@ void	ft_get_pix_x(t_game *g, int i, mlx_texture_t **text)
 	{
 		*text = g->textures[0];
 		g->pix.x = (int)(g->rays[i].hit.x) % TSIZE_3D;
-		if (g->rays[i].ang > M_PI)
+		if (g->rays[i].ang > PI)
 		{
 			*text = g->textures[1];
 			g->pix.x = (TSIZE_3D - g->pix.x - 1) * (*text)->width / TSIZE_3D;
 		}
 		else
-			g->pix.x *= (*text)->width / TSIZE_3D;
+			g->pix.x = g->pix.x * (*text)->width / TSIZE_3D;
 	}
 	else
 	{
 		*text = g->textures[2];
 		g->pix.x = (int)(g->rays[i].hit.y) % TSIZE_3D;
-		if (g->rays[i].ang > M_PI / 2 && g->rays[i].ang < M_PI / 2 * 3)
+		if (g->rays[i].ang > PI / 2 && g->rays[i].ang < PI / 2 * 3)
 		{
 			*text = g->textures[3];
 			g->pix.x = (TSIZE_3D - g->pix.x - 1) * (*text)->width / TSIZE_3D;
 		}
 		else
-			g->pix.x *= (*text)->width / TSIZE_3D;
+			g->pix.x = g->pix.x * (*text)->width / TSIZE_3D;
 	}
 }
 
@@ -89,19 +89,18 @@ int	ft_display_pov(t_game *game)
 	int				j;
 	mlx_texture_t	*texture;
 
-	i = game->player->angrot - 1;
+	i = game->pov_ang - 1;
 	init_pov_display(game);
 	while (i >= 0)
 	{
 		j = 0;
-		printf("i: %d\n", i);
-		while (j < game->final_s_width / game->player->angrot)
+		while (j < game->final_s_width / game->pov_ang)
 		{
 			game->pix.y = 0;
 			ft_get_pix_x(game, i, &texture);
-			game->h_line = 1080 / game->rays[i].dist * TSIZE_3D * DEPTH;
+			game->h_line = S_HEIGHT / game->rays[i].dist * TSIZE_3D * DEPTH;
 			game->ty_step = texture->height / (float)game->h_line;
-			game->start.y = (1080 - game->h_line) / 2;
+			game->start.y = (S_HEIGHT - game->h_line) / 2;
 			game->end.x = game->start.x;
 			game->end.y = game->start.y + game->h_line;
 			ft_draw_pixels(game, texture);
@@ -110,9 +109,5 @@ int	ft_display_pov(t_game *game)
 		}
 		i--;
 	}
-	printf("start.x: %f\n", game->start.x);
-	printf("start.y: %f\n", game->start.y);
-	printf("end.x: %f\n", game->end.x);
-	printf("end.y: %f\n", game->end.y);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:06:53 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/01/10 19:34:40 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2024/01/17 18:40:18 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,13 @@
 # include <fcntl.h>
 # include <math.h>
 
+# define PI			3.14159
 # define S_HEIGHT	1080
 # define S_WIDTH	1920
 # define MV_SPEED	2
-# define TSIZE_2D	14
+# define TSIZE_2D	8
 # define TSIZE_3D	64
-# define DEPTH		1.7
+# define DEPTH		1.0
 # define DEF		8
 
 enum			e_datatype
@@ -80,10 +81,11 @@ typedef struct s_player
 
 typedef struct s_rays
 {
-	float	ang;
-	double	dist;
-	t_coord	hit;
-	char	dir;
+	float				ang;
+	double				dist;
+	t_coord				hit;
+	char				dir;
+	long unsigned int	color;
 }				t_rays;
 
 typedef struct s_game
@@ -97,6 +99,7 @@ typedef struct s_game
 	t_coord				end;
 	t_coord				pix;
 	mlx_image_t			*img3d;
+	mlx_image_t			*img2d;
 	mlx_texture_t		**textures;
 	int					h_line;
 	int					pov_ang;
@@ -107,91 +110,97 @@ typedef struct s_game
 
 /* Init */
 /* Init Struct */
-t_game		*ft_init_map(char *path);
+t_game			*ft_init_map(char *path);
 
 /* Create t_textures */
-void		ft_init_map_textures(t_game *game);
-t_textures	*ft_lstnew_texts(void);
-t_textures	*ft_lstlast_texts(t_textures *lst);
-void		ft_lstadd_back_texts(t_textures **lst, t_textures *new);
+void			ft_init_map_textures(t_game *game);
+t_textures		*ft_lstnew_texts(void);
+t_textures		*ft_lstlast_texts(t_textures *lst);
+void			ft_lstadd_back_texts(t_textures **lst, t_textures *new);
 
 /* Load Textures in Struct */
-void		ft_load_struct(t_game *game);
+void			ft_load_struct(t_game *game);
 t_textures		*ft_select_texts(t_game *game, char *line);
-void		ft_pixel(t_game *game);
+void			ft_pixel(t_game *game);
 
 /* Load Map */
-void		ft_reserve_map(t_game *game);
-void		ft_load_map(t_game *game);
+void			ft_reserve_map(t_game *game);
+void			ft_load_map(t_game *game);
 
 /* Init Utils */
-int			ft_is_empty(char *line);
-int			ft_is_texts(char *line);
-int			ft_check_texts(t_game *game);
-char		**ft_read_file(char *path);
-int			ft_reserve_matrix(char *path);
+int				ft_is_empty(char *line);
+int				ft_is_texts(char *line);
+int				ft_check_texts(t_game *game);
+char			**ft_read_file(char *path);
+int				ft_reserve_matrix(char *path);
 
 /* Map Checker */
-void		ft_error(t_game *game, int error);
+void			ft_error(t_game *game, int error);
 
 /* Extension Checker */
-int			ft_check_file(char *file);
-int			ft_check_cub(char *file);
-int			ft_check_png(char *file);
+int				ft_check_file(char *file);
+int				ft_check_cub(char *file);
+int				ft_check_png(char *file);
 
 /* Check Walls */
-int			ft_check_walls(t_game *game, char **map);
+int				ft_check_walls(t_game *game, char **map);
 
 /* Check Player */
-int			ft_check_player(t_game *game);
+int				ft_check_player(t_game *game);
 
 /* Checker Utils */
-int			ft_get_len_x(char **map);
-int			ft_get_len_y(char **map);
-char		**ft_add_extra_rows(char **map);
-t_coord		ft_get_player_coord(char **map);
-int			ft_contains_str(char *str, char *container);
+int				ft_get_len_x(char **map);
+int				ft_get_len_y(char **map);
+char			**ft_add_extra_rows(char **map);
+t_coord			ft_get_player_coord(char **map);
+int				ft_contains_str(char *str, char *container);
 
 /* TEXTURES */
-void		ft_load_textures(t_game *game);
+void			ft_load_textures(t_game *game);
 
 /* MAP */
 /* Minimap */
-t_coord		ft_paint_min(t_game *game, int y, int x, int color);
-void		ft_paint_line_x(t_game *game, int y, int x, int color);
-void		ft_paint_line_y(t_game *game, int y, int x, int color);
-void		ft_init_minimap(t_game *game);
-void		ft_background_minimap(t_game *game);
-void		ft_paint_minimap(t_game *game);
-int			ft_check_minimap_colision_x(t_game *game, int y, int x, char letter);
+t_coord			ft_paint_min(t_game *game, int y, int x, int color);
+void			ft_paint_line_x(t_game *game, int y, int x, int color);
+void			ft_paint_line_y(t_game *game, int y, int x, int color);
+void			ft_init_minimap(t_game *game);
+void			ft_background_minimap(t_game *game);
+void			ft_paint_minimap(t_game *game);
+int				ft_check_minimap_colision_x(t_game *game, int y, int x, char letter);
 // int			ft_check_minimap_colision_y(t_game *game, int y, int x);
 
 /* Floor and Cloud */
-void		ft_init_colormap(t_game *game);
+void			ft_init_colormap(t_game *game);
 
 /* Hooks */
-void		ft_init_hooks(mlx_key_data_t keydata, void *param);
-void		escape_hook(t_game *game);
-void		hook_screen(int32_t width, int32_t height, void *param);
+void			ft_init_hooks(mlx_key_data_t keydata, void *param);
+void			escape_hook(t_game *game);
+void			hook_screen(int32_t width, int32_t height, void *param);
+void			ft_update(void *param);
 
 /* UTILS */
 /* Free functions */
-void		ft_clear(t_game *game);
+void			ft_clear(t_game *game);
 
 /* Print Functions */
-void		ft_print_texts(t_game game);
-void		ft_print_map(t_game *game);
+void			ft_print_texts(t_game game);
+void			ft_print_map(t_game *game);
 
 /* Convert grades to radianes */
-double		ft_radianes(double angolugiro);
+double			ft_radianes(double angolugiro);
 
 /* POV (3D) */
-int			ft_display_pov(t_game *game);
+int				ft_display_pov(t_game *game);
 
 /* C_Pixel */
 unsigned long	ft_get_pix_color(mlx_texture_t *text, int x_tex, int y_tex);
+void			ft_fish_eye(t_game *game, int i);
 
 /* Rays */
-void    ft_rays(t_game *game);
+void			ft_rays(t_game *game);
+
+/* Rays Utils */
+void			ft_check_h(t_game *game, t_coord *start, t_coord *end, int i);
+void			ft_check_v(t_game *game, t_coord *start, t_coord *end, int i);
 
 #endif

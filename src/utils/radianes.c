@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   radianes.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 15:28:17 by jariza-o          #+#    #+#             */
-/*   Updated: 2023/12/14 15:52:40 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/01/17 18:14:15 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 double	ft_radianes(double angolugiro)
 {
-	return (angolugiro * (M_PI / 180));
+	return (angolugiro * (PI / 180));
 }
