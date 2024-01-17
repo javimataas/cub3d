@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 18:07:15 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/01/16 18:55:54 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/01/17 15:12:51 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ static void	ft_check_pngpath(t_game *game)
 		if (!ft_strcmp(aux->id, "F") || !ft_strcmp(aux->id, "C"))
 			ft_check_rgb(game, aux);
 		aux = aux->next;
-	printf("jjjjjjjj\n");
 	}
 }
 
@@ -74,6 +73,7 @@ void	ft_load_textures(t_game *game)
 
 	aux = game->map->texts;
 	ft_check_pngpath(game);
+	printf("jjjjjjjj\n");
 	while (aux && (ft_strcmp(aux->id, "F") && ft_strcmp(aux->id, "C")))
 	{
 		text = mlx_load_png(aux->path);

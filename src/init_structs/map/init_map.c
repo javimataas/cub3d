@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 16:57:41 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/01/16 18:49:26 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/01/17 17:21:05 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,25 @@ void	ft_load_struct(t_game *game)
 		ft_error(game, ERR_MISS_TEXTS);
 }
 
+int		ft_check_id(char *line)
+{
+	int	i;
+	int	n;
+
+	i = 0;
+	n = 0;
+	while (line && line[i] && (line[i] == ' ' || line[i] == '\t'))
+		i++;
+	while (line && line[i] && (line[i] != ' ' && line[i] != '\t'))
+	{
+		i++;
+		n++;
+	}
+	if (n > 2)
+		return (0);
+	return (1);
+}
+
 void	ft_select_texts(t_game *game, char *line) // como estoy uasnado aux no dbería de perderse la referencia
 {
 	int			i;
@@ -44,6 +63,8 @@ void	ft_select_texts(t_game *game, char *line) // como estoy uasnado aux no dber
 	int			len;
 	t_textures	*aux;
 
+	if (!ft_check_id(line))
+		ft_error(game, ERR_WRNG_ID);
 	id = (char *)ft_calloc(3, sizeof(char));
 	if (!id)
 		ft_error(game, ERR_MLLC_FAIL);

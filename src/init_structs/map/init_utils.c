@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 15:30:49 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/01/16 18:49:19 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/01/17 17:03:02 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,12 @@ int	ft_is_texts(char *line)
 	n = 0;
 	while (line[i] && (line[i] == ' ' || line[i] == '\t'))
 		i++;
-	while (line && line[i] && (line[i] != ' ' && line[i] != '\t'))
+	while (line && line[i] && (line[i] != ' ' && line[i] != '\t') && n < 2)
 	{
-		printf("letter: %c\n", line[i]);
 		id[n] = line[i];
 		n++;
 		i++;
 	}
-	printf("FT_IS_TEXTS: %s\n", id);
 	if (ft_strcmp(id, "NO") && ft_strcmp(id, "SO") && ft_strcmp(id, "WE")
 		&& ft_strcmp(id, "EA") && ft_strcmp(id, "F") && ft_strcmp(id, "C"))
 	{
@@ -107,20 +105,20 @@ int	ft_check_texts(t_game *game)
 // 	return (matrix);
 // }
 
-int	ft_is_map(char *line)
-{
-	int	i;
+// int	ft_is_map(char *line)
+// {
+// 	int	i;
 
-	i = 0;
-	while (line[i])
-	{
-		if (!ft_strchr(" 10NSEW", line[i]))
-			i++;
-		else
-			return (1);
-	}
-	return (0);
-}
+// 	i = 0;
+// 	while (line[i])
+// 	{
+// 		if (!ft_strchr(" 10NSEW", line[i]))
+// 			i++;
+// 		else
+// 			return (1);
+// 	}
+// 	return (0);
+// }
 
 char	**ft_read_file(char *path)
 {

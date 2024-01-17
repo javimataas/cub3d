@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:06:53 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/01/13 16:33:34 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/01/17 17:18:03 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ enum			e_datatype
 	ERR_MAP_FAIL,
 	ERR_NO_PLAYER,
 	ERR_PNG_FAIL,
-	ERR_COLOR_FAIL
+	ERR_COLOR_FAIL,
+	ERR_WRNG_ID
 };
 
 typedef struct s_coord
