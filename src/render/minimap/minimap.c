@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 13:53:48 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/01/16 16:31:18 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/01/18 18:55:46 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,11 +83,45 @@ int	ft_calc_size(t_game *game, int letter) //COMPROBAR PORQUE NO VA BIEN
 	return ((size * 10) + 10); //añado +10 para que vaya bien, revisarlo bien
 }
 
+// int	ft_pos_map(t_game *game, int letter)
+// {
+// 	int	calculate;
+// 	int	y;
+// 	int	x;
+// 	int	counter;
+
+// 	counter = 12;
+// 	y = game->player->player_pos.y;
+// 	x = game->player->player_pos.x;
+	
+// 	while (counter > 0)
+// 	{
+// 		x--;
+// 		counter--;
+// 	}
+// 	counter = 0;
+// 	if (x > 0)
+// 	{
+// 		while (x > 0)
+// 		{
+// 			x--;
+// 			counter--;
+// 		}
+// 	}
+// 	else 
+// 	{
+// 		while (game->map->map[y][counter])
+// 	}
+
+	
+// }
+
 void	ft_paint_minimap(t_game *game, int img)
 {
 	if (img)
 		mlx_delete_image(game->mlx, game->minimap->img);
-	game->minimap->img = mlx_new_image(game->mlx, ft_calc_size(game, 1), ft_calc_size(game, 0)); //ft_calc_size(game, 0), ft_calc_size(game, 1)); // CALCULAR TAMAÑO QUE VA A TENER EL MAPA
+	game->minimap->img = mlx_new_image(game->mlx, ft_calc_size(game, 1), ft_calc_size(game, 0)); // CALCULAR TAMAÑO QUE VA A TENER EL MAPA
+	// if (mlx_image_to_window(game->mlx, game->minimap->img, ft_pos_map(game, 0), ft_pos_map(game, 1)) < 0) // CALCULAR DONDE EMPIEZA EL MAPA
 	if (mlx_image_to_window(game->mlx, game->minimap->img, 0, 0) < 0) // CALCULAR DONDE EMPIEZA EL MAPA
 		ft_error(game, ERR_MLX_FAIL);
 	ft_paint_elements(game);

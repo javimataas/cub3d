@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 16:57:41 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/01/17 17:21:05 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/01/18 15:15:38 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,8 +104,6 @@ void	ft_select_texts(t_game *game, char *line) // como estoy uasnado aux no dber
 		i++;
 		n++;
 	}
-
-	printf("LOAD STRUCT: %s %s\n", aux->id, aux->path);
 	free (id);
 }
 

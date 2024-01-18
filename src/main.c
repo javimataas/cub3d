@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 19:32:55 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/01/17 17:00:43 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/01/18 15:25:42 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,9 @@ void	ft_cub3d(t_game *game)
 	game->mlx = mlx_init(1920, 1080, "Cub3D", false);
 	if (!game->mlx)
 		ft_error(game, ERR_MLX_FAIL);
+	printf("Player POS: %f %f\n", game->player->player_pos.y, game->player->player_pos.x);
 	mlx_key_hook(game->mlx, &ft_init_hooks, (void *)(game));
 	ft_load_textures(game);
-						printf("ALCACHOFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n");
-	printf("DDDD\n");
 	ft_init_colormap(game);
 	ft_init_minimap(game);
 	mlx_loop(game->mlx);

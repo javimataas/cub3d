@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 17:34:43 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/01/17 17:08:25 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/01/18 15:16:29 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,8 @@ t_game	*ft_init_map(char *path) // REVOSAR PORQUE CUANDO FALLAN LOS MALLOC NO LI
 	}
 	game->map->map = NULL;
 	game->file = ft_read_file(path);
-			printf("FILE:\n");
-		ft_print_str_array(game->file);
 	ft_init_map_textures(game);
 	ft_load_struct(game);
-			printf("\n\n\n______________________\n\n\n");
 	ft_reserve_map(game);
 	ft_load_map(game);
 	return (game);

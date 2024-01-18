@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 15:30:49 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/01/17 17:03:02 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/01/18 15:17:24 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,6 @@ int	ft_check_texts(t_game *game)
 	aux = game->map->texts;
 	while (aux)
 	{
-		// printf("ID: %s\n", aux->id);
-		// printf("PATH: %s\n", aux->path);
 		if (aux->path == NULL)
 			return (0);
 		aux = aux->next;
