@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 18:12:23 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/01/17 17:50:10 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/01/23 17:01:05 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,6 @@ int	ft_walls(char **map)
 		ft_flood_fill(map, floor.y, floor.x);
 		floor = ft_has_floor(map);
 	}
-	ft_print_str_array(map);
 	if (ft_char_count(map, ' ') != valid || !ft_contains_str(map[1], "1 \n")
 		|| !ft_contains_str(map[ft_get_len_y(map) - 2], "1 \n"))
 	{

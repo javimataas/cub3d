@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 17:27:35 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/01/11 17:46:57 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/01/23 18:40:17 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,40 @@ void	ft_paint(t_game *game, int y, int x, int color)
 	}
 }
 
+// int	ft_colision(t_game *game, t_player *new_coord)
+// {
+// 	int	y;
+// 	int	x;
+// 	y = new_coord->minimap.y / 10;
+// 	x = new_coord->minimap.x / 10;
+// 	printf("MAPA: %c Y: %d X: %d\n", game->map->map[y][x], y, x);
+// 	//comprueba que se mueve en horizontal o vertical
+// 	if ((new_coord->minimap.y < game->player->minimap.y && new_coord->minimap.x == game->player->minimap.x) && (game->player->angrot == 0 || game->player->angrot == 180 || game->player->angrot == 270 || game->player->angrot == 90))
+// 		y--;
+// 	else if ((new_coord->minimap.y == game->player->minimap.y && new_coord->minimap.x < game->player->minimap.x) && (game->player->angrot == 0 || game->player->angrot == 180 || game->player->angrot == 270 || game->player->angrot == 90))
+// 		x--;
+// 	else if ((new_coord->minimap.y < game->player->minimap.y && new_coord->minimap.x < game->player->minimap.x) || (new_coord->minimap.y < game->player->minimap.y && new_coord->minimap.x > game->player->minimap.x))
+// 		y--;
+// 	else if (new_coord->minimap.y > game->player->minimap.y && new_coord->minimap.x < game->player->minimap.x)
+// 		x--;
+	
+// 	// else if (new_coord->minimap.y < game->player->minimap.y && new_coord->minimap.x < game->player->minimap.x)
+// 	// 	x = (new_coord->minimap.x + 14) / 14;
+	
+// 	if (game->map->map[y][x] == '1')
+// 	{
+// 		printf("CHOCAAA MAPA: %c Y: %d X: %d\n", game->map->map[y][x], y, x);
+// 		return (0);
+// 	}
+// 	// NUEVO
+// 	// game->player->player_pos.y = y;
+// 	// game->player->player_pos.x = x;
+// 	return (1);
+// }
+
 // void	ws_key(t_game *game, int key)
 // {
-	
+
 // }
 
 // void	ad_key(t_game *game, int key)
