@@ -6,7 +6,7 @@
 /*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:06:53 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/01/17 18:40:18 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2024/01/23 19:13:23 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@
 # define PI			3.14159
 # define S_HEIGHT	1080
 # define S_WIDTH	1920
-# define MV_SPEED	2
-# define TSIZE_2D	8
-# define TSIZE_3D	64
+# define MV_SPEED	1
+# define TSIZE_2D	10
+# define TSIZE_3D	10
 # define DEPTH		1.0
 # define DEF		8
 

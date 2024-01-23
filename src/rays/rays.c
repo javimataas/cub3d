@@ -6,7 +6,7 @@
 /*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 18:48:30 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/01/17 18:25:01 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2024/01/23 17:14:42 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ void	ft_rays(t_game *game)
 
 	i = 0;
 	ray_angle = 0.0174 / DEF;
-	printf("POV_ANG: %d\n", game->pov_ang);
 	game->rays[i].ang = game->player->angrot - (game->pov_ang / 2 * ray_angle);
 	while (i < game->pov_ang)
 		ft_loop_rays(game, ray_angle, &i);

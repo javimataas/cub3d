@@ -6,7 +6,7 @@
 /*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 17:27:35 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/01/17 18:14:05 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2024/01/23 19:08:06 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,14 @@ void	ws_key(t_game *game, int key)
 	t_coord	new_coord;
 	
 	move_speed = MV_SPEED;
-	if (key == MLX_KEY_W)
+	if (key == MLX_KEY_S)
 		move_speed *= -1;
 	// if (!ft_check_minimap_colision_x(game, game->player->minimap.y - 1, game->player->minimap.x, 'w'))
 	// 	return ;
 	// printf("sin: %f\n", sin(ft_radianes(game->player->angrot)));
 	// printf("cos: %f\n", cos(ft_radianes(game->player->angrot)));
-	new_coord.x = game->player->minimap.x + (move_speed * sin(ft_radianes(game->player->angrot)));
-	new_coord.y = game->player->minimap.y + (move_speed * cos(ft_radianes(game->player->angrot)));
+	new_coord.x = game->player->minimap.x + (move_speed * cos(game->player->angrot));
+	new_coord.y = game->player->minimap.y + (move_speed * sin(game->player->angrot));
 	// ft_printf("new_x: %d\n", new_x);
 	// ft_printf("new_y: %d\n", new_y);
 	ft_paint(game, game->player->minimap.y, game->player->minimap.x, 0xFFFFFFFF);
@@ -78,8 +78,8 @@ void	ad_key(t_game *game, int key)
 	move_speed = MV_SPEED;
 	if (key == MLX_KEY_A)
 		move_speed *= -1;
-	new_coord.x = game->player->minimap.x + (move_speed * sin(ft_radianes(game->player->angrot) + PI / 2));
-	new_coord.y = game->player->minimap.y + (move_speed * cos(ft_radianes(game->player->angrot)+ PI / 2));
+	new_coord.x = game->player->minimap.x + (move_speed * sin(game->player->angrot));
+	new_coord.y = game->player->minimap.y + (move_speed * cos(game->player->angrot));
 	ft_paint(game, game->player->minimap.y, game->player->minimap.x, 0xFFFFFFFF);
 	ft_paint(game, new_coord.y, new_coord.x, 0xFF0000FF);
 	game->player->minimap.y = new_coord.y;
@@ -122,23 +122,21 @@ void	ft_init_hooks(mlx_key_data_t keydata, void *param)
 		ad_key(game, MLX_KEY_A);
 	else if (mlx_is_key_down(game->mlx, MLX_KEY_D))
 		ad_key(game, MLX_KEY_D);
-	else if (keydata.key == MLX_KEY_LEFT)
+	else if (keydata.key == MLX_KEY_RIGHT)
 	{
 		printf("LEFT\n");
-		if (game->player->angrot == 359)
-			game->player->angrot = 0;
-		else
-			game->player->angrot += 1;
+		game->player->angrot -= 0.04;
+		if (game->player->angrot < 0)
+			game->player->angrot += 2 * PI;
 		printf("angulo: %f\n", game->player->angrot);
 		//left_key(game);
 	}
-	else if (keydata.key == MLX_KEY_RIGHT)
+	else if (keydata.key == MLX_KEY_LEFT)
 	{
 		printf("RIGHT\n");
-		if (game->player->angrot == 0)
-			game->player->angrot = 359;
-		else
-			game->player->angrot -= 1;
+		game->player->angrot += 0.04;
+		if (game->player->angrot >= 2 * PI)
+			game->player->angrot -= 2 * PI;
 		printf("angulo: %f\n", game->player->angrot);
 		//right_key(game);
 	}
