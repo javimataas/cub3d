@@ -3,17 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 17:34:43 by jariza-o          #+#    #+#             */
-/*   Updated: 2023/12/14 17:29:15 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2024/01/18 15:16:29 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-t_game	*ft_init_map(char *path)
+t_game	*ft_init_map(char *path) // REVOSAR PORQUE CUANDO FALLAN LOS MALLOC NO LIBERO LO ANTERIOR RESERVADO
 {
+	(void)path;
 	t_game	*game;
 
 	game = malloc(sizeof(t_game));
@@ -30,8 +31,15 @@ t_game	*ft_init_map(char *path)
 		free (game);
 		exit (1);
 	}
-	game->player = malloc(sizeof(t_coord));
-	if (!game->map)
+	game->minimap = malloc(sizeof(t_map));
+	if (!game->minimap)
+	{
+		printf("Error: Malloc fail\n");
+		free (game);
+		exit (1);
+	}
+	game->player = malloc(sizeof(t_player));
+	if (!game->player)
 	{
 		printf("Error: Malloc fail\n");
 		free (game);
