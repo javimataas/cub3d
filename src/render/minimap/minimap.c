@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 13:53:48 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/01/24 17:11:37 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/01/24 19:17:35 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,6 @@ int	ft_calc_size(t_game *game, int letter)
 			y++;	
 		}
 	}
-	printf("SIZE: %d\n", size);
 	return ((long_line * 10) + 10); //añado +10 para que vaya bien, revisarlo bien
 }
 

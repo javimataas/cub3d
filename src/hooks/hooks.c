@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 17:27:35 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/01/24 17:13:45 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/01/24 19:16:41 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,25 +66,6 @@ int	ft_colision(t_game *game, t_player *new_coord)
 	return (1);
 }
 
-void	ws_key(t_game *game, int key)
-{
-	int			move_speed;
-	t_player	*new_coord;
-
-	move_speed = MV_SPEED;
-	if (key == MLX_KEY_W)
-		move_speed *= -1;
-	new_coord = malloc(sizeof(t_player));
-	new_coord->minimap.x = game->player->minimap.x + (move_speed * sin(ft_radianes(game->player->angrot)));
-	new_coord->minimap.y = game->player->minimap.y + (move_speed * cos(ft_radianes(game->player->angrot)));
-	printf("X: %f Y: %f\n", new_coord->minimap.x, new_coord->minimap.y);
-	if (!ft_colision(game, new_coord))
-		return ;
-	ft_paint_minimap(game, 1);
-	game->player->minimap.y = new_coord->minimap.y;
-	game->player->minimap.x = new_coord->minimap.x;
-}
-
 void	ft_change_player_position(t_game *game)
 {
 	int	y = game->player->player_pos.y;
@@ -112,24 +93,70 @@ void	ft_change_player_position(t_game *game)
 	if (game->player->minimap.x != game->player->player_pos.y)
 		game->player->player_pos.x = game->player->minimap.x;
 }
+void	ws_key(t_game *game, int key)
+{
+	// int			move_speed;
+	// t_player	*new_coord;
+
+	// move_speed = MV_SPEED;
+	// if (key == MLX_KEY_W)
+	// 	move_speed *= -1;
+	// new_coord = malloc(sizeof(t_player));
+	// new_coord->minimap.x = game->player->minimap.x + (move_speed * sin(ft_radianes(game->player->angrot)));
+	// new_coord->minimap.y = game->player->minimap.y + (move_speed * cos(ft_radianes(game->player->angrot)));
+	// printf("X: %f Y: %f\n", new_coord->minimap.x, new_coord->minimap.y);
+	// if (!ft_colision(game, new_coord))
+	// 	return ;
+	// ft_paint_minimap(game, 1);
+	// game->player->minimap.y = new_coord->minimap.y;
+	// game->player->minimap.x = new_coord->minimap.x;
+
+	if (key == MLX_KEY_W && game->map->map[(int)(game->player->player_pos.y - 1)][(int)(game->player->player_pos.x)] != '1')
+	{
+		printf("TRALARA\n");
+		game->map->map[(int)(game->player->player_pos.y)][(int)(game->player->player_pos.x)] = '0';
+		game->player->player_pos.y -= 1;
+		game->map->map[(int)(game->player->player_pos.y)][(int)(game->player->player_pos.x)] = 'N';
+		ft_paint_minimap(game, 1);
+	}
+	else if (game->map->map[(int)(game->player->player_pos.y + 1)][(int)(game->player->player_pos.x)] != '1')
+	{
+		game->map->map[(int)(game->player->player_pos.y)][(int)(game->player->player_pos.x)] = '0';
+		game->player->player_pos.y += 1;
+		game->map->map[(int)(game->player->player_pos.y)][(int)(game->player->player_pos.x)] = 'N';
+		ft_paint_minimap(game, 1);
+	}
+}
+
 
 void	ad_key(t_game *game, int key)
 {
-	int			move_speed;
-	t_player	*new_coord;
+	// int			move_speed;
+	// t_player	*new_coord;
 
-	move_speed = MV_SPEED;
-	if (key == MLX_KEY_A)
-		move_speed *= -1;
-	new_coord = malloc(sizeof(t_player));
-	new_coord->minimap.x = game->player->minimap.x + (move_speed * sin(ft_radianes(game->player->angrot) + M_PI / 2));
-	new_coord->minimap.y = game->player->minimap.y + (move_speed * cos(ft_radianes(game->player->angrot)+ M_PI / 2));
-	if (!ft_colision(game, new_coord))
-		return ;
-	game->player->minimap.y = new_coord->minimap.y;
-	game->player->minimap.x = new_coord->minimap.x;
-	ft_change_player_position(game);
-	ft_paint_minimap(game, 1);
+	// move_speed = MV_SPEED;
+	// if (key == MLX_KEY_A)
+	// 	move_speed *= -1;
+	// new_coord = malloc(sizeof(t_player));
+	// new_coord->minimap.x = game->player->minimap.x + (move_speed * sin(ft_radianes(game->player->angrot) + M_PI / 2));
+	// new_coord->minimap.y = game->player->minimap.y + (move_speed * cos(ft_radianes(game->player->angrot)+ M_PI / 2));
+	// if (!ft_colision(game, new_coord))
+	// 	return ;
+	// game->player->minimap.y = new_coord->minimap.y;
+	// game->player->minimap.x = new_coord->minimap.x;
+	// ft_change_player_position(game);
+	// ft_paint_minimap(game, 1);
+
+	if (key == MLX_KEY_A && game->map->map[(int)(game->player->player_pos.y)][(int)(game->player->player_pos.x - 1)] != '1')
+	{
+		game->player->player_pos.x -= 1;
+		ft_paint_minimap(game, 1);
+	}
+	else if (game->map->map[(int)(game->player->player_pos.y)][(int)(game->player->player_pos.x + 1)] != '1')
+	{
+		game->player->player_pos.x += 1;
+		ft_paint_minimap(game, 1);
+	}
 }
 
 void	ft_init_hooks(mlx_key_data_t keydata, void *param)
