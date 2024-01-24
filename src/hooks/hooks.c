@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 17:27:35 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/01/23 18:40:17 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/01/24 17:13:45 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ft_paint(t_game *game, int y, int x, int color)
 {
 	int	i;
 	int	n;
-	
+
 	i = -1;
 	while ((y + (++i)) < (y + 14))
 	{
@@ -47,46 +47,90 @@ void	ft_paint(t_game *game, int y, int x, int color)
 	}
 }
 
-// int	ft_colision(t_game *game, t_player *new_coord)
-// {
-// 	int	y;
-// 	int	x;
-// 	y = new_coord->minimap.y / 10;
-// 	x = new_coord->minimap.x / 10;
-// 	printf("MAPA: %c Y: %d X: %d\n", game->map->map[y][x], y, x);
-// 	//comprueba que se mueve en horizontal o vertical
-// 	if ((new_coord->minimap.y < game->player->minimap.y && new_coord->minimap.x == game->player->minimap.x) && (game->player->angrot == 0 || game->player->angrot == 180 || game->player->angrot == 270 || game->player->angrot == 90))
-// 		y--;
-// 	else if ((new_coord->minimap.y == game->player->minimap.y && new_coord->minimap.x < game->player->minimap.x) && (game->player->angrot == 0 || game->player->angrot == 180 || game->player->angrot == 270 || game->player->angrot == 90))
-// 		x--;
-// 	else if ((new_coord->minimap.y < game->player->minimap.y && new_coord->minimap.x < game->player->minimap.x) || (new_coord->minimap.y < game->player->minimap.y && new_coord->minimap.x > game->player->minimap.x))
-// 		y--;
-// 	else if (new_coord->minimap.y > game->player->minimap.y && new_coord->minimap.x < game->player->minimap.x)
-// 		x--;
-	
-// 	// else if (new_coord->minimap.y < game->player->minimap.y && new_coord->minimap.x < game->player->minimap.x)
-// 	// 	x = (new_coord->minimap.x + 14) / 14;
-	
-// 	if (game->map->map[y][x] == '1')
-// 	{
-// 		printf("CHOCAAA MAPA: %c Y: %d X: %d\n", game->map->map[y][x], y, x);
-// 		return (0);
-// 	}
-// 	// NUEVO
-// 	// game->player->player_pos.y = y;
-// 	// game->player->player_pos.x = x;
-// 	return (1);
-// }
+int	ft_colision(t_game *game, t_player *new_coord)
+{
+	int	y;
+	int	x;
 
-// void	ws_key(t_game *game, int key)
-// {
+	y = (int)new_coord->minimap.y / 10;
+	x = (int)new_coord->minimap.x / 10;
+	printf("MAPA: %c Y: %d X: %d\n", game->map->map[y][x], y, x);
+	if (game->map->map[y][x] == '1')
+	{
+		printf("CHOCAAA MAPA: %c Y: %d X: %d\n", game->map->map[y][x], y, x);
+		return (0);
+	}
+	// NUEVO
+	// game->player->player_pos.y = y;
+	// game->player->player_pos.x = x;
+	return (1);
+}
 
-// }
+void	ws_key(t_game *game, int key)
+{
+	int			move_speed;
+	t_player	*new_coord;
 
-// void	ad_key(t_game *game, int key)
-// {
+	move_speed = MV_SPEED;
+	if (key == MLX_KEY_W)
+		move_speed *= -1;
+	new_coord = malloc(sizeof(t_player));
+	new_coord->minimap.x = game->player->minimap.x + (move_speed * sin(ft_radianes(game->player->angrot)));
+	new_coord->minimap.y = game->player->minimap.y + (move_speed * cos(ft_radianes(game->player->angrot)));
+	printf("X: %f Y: %f\n", new_coord->minimap.x, new_coord->minimap.y);
+	if (!ft_colision(game, new_coord))
+		return ;
+	ft_paint_minimap(game, 1);
+	game->player->minimap.y = new_coord->minimap.y;
+	game->player->minimap.x = new_coord->minimap.x;
+}
 
-// }
+void	ft_change_player_position(t_game *game)
+{
+	int	y = game->player->player_pos.y;
+	int	x = game->player->player_pos.x;
+	int	new_y = (int)(game->player->minimap.y / 10);
+	int	new_x = (int)(game->player->minimap.x / 10);
+
+	if (y != new_y && x != new_x)
+	{
+		game->map->map[y][x] = '0';
+		game->map->map[new_y][new_x] = 'N';
+	}
+	else if (y == new_y && x != new_x)
+	{
+		game->map->map[y][x] = '0';
+		game->map->map[y][new_x] = 'N';
+	}
+	if (y != new_y && x == new_x)
+	{
+		game->map->map[y][x] = '0';
+		game->map->map[new_y][x] = 'N';
+	}
+	if (game->player->minimap.y != game->player->player_pos.y)
+		game->player->player_pos.y = game->player->minimap.x;
+	if (game->player->minimap.x != game->player->player_pos.y)
+		game->player->player_pos.x = game->player->minimap.x;
+}
+
+void	ad_key(t_game *game, int key)
+{
+	int			move_speed;
+	t_player	*new_coord;
+
+	move_speed = MV_SPEED;
+	if (key == MLX_KEY_A)
+		move_speed *= -1;
+	new_coord = malloc(sizeof(t_player));
+	new_coord->minimap.x = game->player->minimap.x + (move_speed * sin(ft_radianes(game->player->angrot) + M_PI / 2));
+	new_coord->minimap.y = game->player->minimap.y + (move_speed * cos(ft_radianes(game->player->angrot)+ M_PI / 2));
+	if (!ft_colision(game, new_coord))
+		return ;
+	game->player->minimap.y = new_coord->minimap.y;
+	game->player->minimap.x = new_coord->minimap.x;
+	ft_change_player_position(game);
+	ft_paint_minimap(game, 1);
+}
 
 void	ft_init_hooks(mlx_key_data_t keydata, void *param)
 {
@@ -95,14 +139,14 @@ void	ft_init_hooks(mlx_key_data_t keydata, void *param)
 	game = (t_game *)param;
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 		escape_hook(game);
-	// else if (mlx_is_key_down(game->mlx, MLX_KEY_W))
-	// 	ws_key(game, MLX_KEY_W);
-	// else if (mlx_is_key_down(game->mlx, MLX_KEY_S))
-	// 	ws_key(game, MLX_KEY_S);
-	// else if (mlx_is_key_down(game->mlx, MLX_KEY_A))
-	// 	ad_key(game, MLX_KEY_A);
-	// else if (mlx_is_key_down(game->mlx, MLX_KEY_D))
-	// 	ad_key(game, MLX_KEY_D);
+	else if (mlx_is_key_down(game->mlx, MLX_KEY_W))
+		ws_key(game, MLX_KEY_W);
+	else if (mlx_is_key_down(game->mlx, MLX_KEY_S))
+		ws_key(game, MLX_KEY_S);
+	else if (mlx_is_key_down(game->mlx, MLX_KEY_A))
+		ad_key(game, MLX_KEY_A);
+	else if (mlx_is_key_down(game->mlx, MLX_KEY_D))
+		ad_key(game, MLX_KEY_D);
 	else if (keydata.key == MLX_KEY_LEFT)
 	{
 		printf("LEFT\n");

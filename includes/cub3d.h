@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:06:53 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/01/17 17:18:03 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/01/24 17:09:23 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <math.h>
-
 
 # define MV_SPEED	3
 
@@ -133,13 +132,12 @@ char		**ft_add_extra_rows(char **map);
 t_coord		ft_get_player_coord(char **map);
 int			ft_contains_str(char *str, char *container);
 
-
 /* TEXTURES */
 void		ft_load_textures(t_game *game);
 
 /* MAP */
 /* Minimap */
-void  		ft_init_minimap(t_game *game);
+void		ft_init_minimap(t_game *game);
 void		ft_paint_player(t_game *game);
 void		ft_paint_minimap(t_game *game, int img);
 
@@ -160,6 +158,6 @@ void		ft_print_texts(t_game game);
 void		ft_print_map(t_game *game);
 
 /* Convert grades to radianes */
-double	ft_radianes(double angolugiro);
+double		ft_radianes(double angolugiro);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 13:53:48 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/01/23 18:30:16 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/01/24 17:11:37 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 t_coord	ft_paint_min(t_game *game, int y, int x, int color)
 {
-	int	i;
-	int	n;
-	int	ry;
-	int	rx;
+	int		i;
+	int		n;
+	int		ry;
+	int		rx;
 	t_coord	coord;
 
 	i = -1;
@@ -79,8 +79,8 @@ int	ft_calc_size(t_game *game, int letter)
 	long_line = 0;
 	y = 0;
 	if (letter == 0)
-		while (game->map->map[size])
-			size++;
+		while (game->map->map[long_line])
+			long_line++;
 	else if (letter == 1)
 	{
 		while (game->map->map[y])
@@ -93,39 +93,9 @@ int	ft_calc_size(t_game *game, int letter)
 			y++;	
 		}
 	}
-	return ((size * 10) + 10); //añado +10 para que vaya bien, revisarlo bien
+	printf("SIZE: %d\n", size);
+	return ((long_line * 10) + 10); //añado +10 para que vaya bien, revisarlo bien
 }
-
-// int	ft_pos_map(t_game *game, int letter)
-// {
-// 	int	calculate;
-// 	int	y;
-// 	int	x;
-// 	int	counter;
-
-// 	counter = 12;
-// 	y = game->player->player_pos.y;
-// 	x = game->player->player_pos.x;
-	
-// 	while (counter > 0)
-// 	{
-// 		x--;
-// 		counter--;
-// 	}
-// 	counter = 0;
-// 	if (x > 0)
-// 	{
-// 		while (x > 0)
-// 		{
-// 			x--;
-// 			counter--;
-// 		}
-// 	}
-// 	else 
-// 	{
-// 		while (game->map->map[y][counter])
-// 	}
-// }
 
 int	ft_pos_map(t_game *game, int letter)
 {
@@ -197,7 +167,6 @@ void	ft_paint_minimap(t_game *game, int img)
 		mlx_delete_image(game->mlx, game->minimap->img);
 	game->minimap->img = mlx_new_image(game->mlx, ft_calc_size(game, 1), ft_calc_size(game, 0)); // CALCULAR TAMAÑO QUE VA A TENER EL MAPA
 	if (mlx_image_to_window(game->mlx, game->minimap->img, ft_pos_map(game, 0), ft_pos_map(game, 1)) < 0) // CALCULAR DONDE EMPIEZA EL MAPA
-	// if (mlx_image_to_window(game->mlx, game->minimap->img, 0, 0) < 0) // CALCULAR DONDE EMPIEZA EL MAPA
 		ft_error(game, ERR_MLX_FAIL);
 	ft_paint_elements(game);
 	game->minimap->img->instances[0].z = 0;
@@ -207,6 +176,4 @@ void	ft_init_minimap(t_game *game)
 {
 	ft_paint_player(game);
 	ft_paint_minimap(game, 0);
-
 }
-

@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 19:14:05 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/01/13 16:31:28 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/01/24 17:12:32 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	ft_background_map(t_game *game)
 {
-	int		x;
-	int		y;
-	int 	f;
-	int		c;
+	int			x;
+	int			y;
+	int			f;
+	int			c;
 	t_textures	*aux;
 
 	aux = game->map->texts;
@@ -65,4 +65,3 @@ void	ft_init_colormap(t_game *game)
 	ft_background_map(game);
 	game->map->img->instances[0].z = 1;
 }
-

@@ -6,13 +6,13 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 15:37:57 by jariza-o          #+#    #+#             */
-/*   Updated: 2023/12/04 17:14:33 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/01/24 17:12:55 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void ft_free_t_texture(t_textures *texts)
+void	ft_free_t_texture(t_textures *texts)
 {
 	t_textures	*aux;
 
@@ -31,6 +31,7 @@ void ft_free_t_texture(t_textures *texts)
 	}
 	texts = NULL;
 }
+
 void	ft_free_t_map(t_map *map)
 {
 	ft_free_t_texture(map->texts);
