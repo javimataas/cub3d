@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:06:53 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/01/24 17:09:23 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/01/29 22:21:58 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,9 @@ typedef struct s_player
 {
 	t_coord	player_pos;
 	t_coord	minimap;
+	t_coord	minimap_rup;
+	t_coord	minimap_ldown;
+	t_coord	minimap_rdown;
 	double	angrot;
 }				t_player;
 

@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 17:27:35 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/01/24 19:16:41 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/01/29 22:36:03 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,17 +93,24 @@ void	ft_change_player_position(t_game *game)
 	if (game->player->minimap.x != game->player->player_pos.y)
 		game->player->player_pos.x = game->player->minimap.x;
 }
+
 void	ws_key(t_game *game, int key)
 {
-	// int			move_speed;
-	// t_player	*new_coord;
+	int			move_speed;
+	t_player	*new_coord;
 
-	// move_speed = MV_SPEED;
-	// if (key == MLX_KEY_W)
-	// 	move_speed *= -1;
-	// new_coord = malloc(sizeof(t_player));
-	// new_coord->minimap.x = game->player->minimap.x + (move_speed * sin(ft_radianes(game->player->angrot)));
-	// new_coord->minimap.y = game->player->minimap.y + (move_speed * cos(ft_radianes(game->player->angrot)));
+	move_speed = MV_SPEED;
+	if (key == MLX_KEY_W)
+		move_speed *= -1;
+	new_coord = malloc(sizeof(t_player));
+	new_coord->minimap.x = game->player->minimap.x + (move_speed * sin(ft_radianes(game->player->angrot)));
+	new_coord->minimap.y = game->player->minimap.y + (move_speed * cos(ft_radianes(game->player->angrot)));
+	new_coord->minimap_rup.x = new_coord->minimap.x + 10;
+	new_coord->minimap_rup.y = new_coord->minimap.y;
+	new_coord->minimap_ldown.x = new_coord->minimap.x;
+	new_coord->minimap_rup.y = new_coord->minimap.y + 10;
+	new_coord->minimap_rdown.x = new_coord->minimap.x + 10;
+	new_coord->minimap_rdown.y = new_coord->minimap.y + 10;
 	// printf("X: %f Y: %f\n", new_coord->minimap.x, new_coord->minimap.y);
 	// if (!ft_colision(game, new_coord))
 	// 	return ;
