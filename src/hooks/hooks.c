@@ -6,7 +6,7 @@
 /*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 17:27:35 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/01/23 19:08:06 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2024/01/30 18:34:11 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	hook_screen(int32_t width, int32_t height, void *param)
 		exit (1);
 }
 
-void	ft_paint(t_game *game, int y, int x, int color)
+/*void	ft_paint(t_game *game, int y, int x, int color)
 {
 	int	i;
 	int	n;
@@ -45,9 +45,9 @@ void	ft_paint(t_game *game, int y, int x, int color)
 		while ((x + (++n)) < (x + TSIZE_2D))
 			mlx_put_pixel(game->map->minimap, x + n, y + i, color);
 	}
-}
+}*/
 
-void	ws_key(t_game *game, int key)
+/*void	ws_key(t_game *game, int key)
 {
 	int		move_speed;
 	t_coord	new_coord;
@@ -105,7 +105,7 @@ void	ad_key(t_game *game, int key)
 	// ft_paint(game, new_coord.y, new_coord.x, 0xFF0000FF);
 	// game->player->minimap.y = new_coord.y;
 	// game->player->minimap.x = new_coord.x;
-}
+}*/
 
 void	ft_init_hooks(mlx_key_data_t keydata, void *param)
 {
@@ -115,13 +115,13 @@ void	ft_init_hooks(mlx_key_data_t keydata, void *param)
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 		escape_hook(game);
 	else if (mlx_is_key_down(game->mlx, MLX_KEY_W))
-		ws_key(game, MLX_KEY_W);
+		w_key(game);
 	else if (mlx_is_key_down(game->mlx, MLX_KEY_S))
-		ws_key(game, MLX_KEY_S);
+		s_key(game);
 	else if (mlx_is_key_down(game->mlx, MLX_KEY_A))
-		ad_key(game, MLX_KEY_A);
+		a_key(game);
 	else if (mlx_is_key_down(game->mlx, MLX_KEY_D))
-		ad_key(game, MLX_KEY_D);
+		d_key(game);
 	else if (keydata.key == MLX_KEY_RIGHT)
 	{
 		printf("LEFT\n");

@@ -6,7 +6,7 @@
 /*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:06:53 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/01/23 19:13:23 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2024/01/30 18:33:04 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,6 +177,17 @@ void			ft_init_hooks(mlx_key_data_t keydata, void *param);
 void			escape_hook(t_game *game);
 void			hook_screen(int32_t width, int32_t height, void *param);
 void			ft_update(void *param);
+
+/* Move Hooks */
+void			ft_paint(t_game *game, int y, int x, int color);
+void			w_key(t_game *game);
+void			s_key(t_game *game);
+void			a_key(t_game *game);
+void			d_key(t_game *game);
+
+/* Hooks Utils */
+void			ft_paint(t_game *game, int y, int x, int color);
+int				ft_check_wall(float x, float y, t_game *game);
 
 /* UTILS */
 /* Free functions */

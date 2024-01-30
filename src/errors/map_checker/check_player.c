@@ -6,7 +6,7 @@
 /*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 17:24:48 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/01/23 18:59:14 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2024/01/30 18:00:08 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 double	ft_get_angle(char c)
 {
 	if (c == 'N')
-		return (270);
-	else if (c == 'S')
 		return (90);
+	else if (c == 'S')
+		return (270);
 	else if (c == 'E')
 		return (0);
 	else if (c == 'W')
