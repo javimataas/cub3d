@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 18:24:35 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/01/13 16:28:28 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/01/24 17:12:00 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,11 @@
 // 	game->minimap->player->instances[0].z = 2;
 // }
 
-void    ft_paint_player(t_game *game)
+void	ft_paint_player(t_game *game)
 {
-	int x;
-	int y;
-	
+	int	x;
+	int	y;
+
 	game->minimap->player = mlx_new_image(game->mlx, 10, 10);
 	if (!game->minimap->player)
 		ft_error(game, ERR_MLX_FAIL);

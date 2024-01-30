@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmatas-p <jmatas-p@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 17:53:57 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/05/11 17:18:43 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2024/01/24 17:06:50 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_buffer_charger(int fd, char *buffer)
 	{
 		rd = read(fd, new_buffer, BUFFER_SIZE);
 		if (rd == -1)
-		{	
+		{
 			free (buffer);
 			free(new_buffer);
 			return (NULL);

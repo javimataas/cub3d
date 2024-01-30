@@ -6,7 +6,7 @@
 #    By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/16 19:23:22 by jmatas-p          #+#    #+#              #
-#    Updated: 2024/01/15 18:05:39 by jariza-o         ###   ########.fr        #
+#    Updated: 2024/01/24 17:05:47 by jariza-o         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,7 +81,7 @@ re:			fclean all
 norminette:	
 			@echo "$(YELLOW)Norminette libft.$(END)"
 			@norminette ./libft
-			@echo "$(YELLOW)Norminette minishell.$(END)"
+			@echo "$(YELLOW)Norminette Cub3d.$(END)"
 			@norminette ./includes
 			@norminette ./src
 
