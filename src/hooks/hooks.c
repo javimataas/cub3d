@@ -6,7 +6,7 @@
 /*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 17:27:35 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/01/30 18:34:11 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2024/01/30 18:55:38 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	hook_screen(int32_t width, int32_t height, void *param)
 	game = (t_game *)param;
 	if (width < 1800 || height < 1100)
 		mlx_set_setting(MLX_STRETCH_IMAGE, true);
-	mlx_delete_image(game->mlx, game->map->img);
+	mlx_delete_image(game->mlx, game->map->img); //PORQUE ELIMINA LAS IMAGENES // HAY QUE ELIMINARLAS TODAS??
 	game->map->img = mlx_new_image(game->mlx, width, height);
 	if (mlx_image_to_window(game->mlx, game->map->img, 30, 30) < 0)
 		exit (1);

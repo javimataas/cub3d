@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 17:21:43 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/11/28 17:05:34 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/01/17 17:31:30 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_print_str_array(char **array)
 	i = 0;
 	while (array[i])
 	{
-		ft_printf("%s", array[i]);
+		ft_printf("%s\n", array[i]);
 		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 16:57:41 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/01/10 18:41:56 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2024/01/30 18:58:03 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,41 @@ void	ft_load_struct(t_game *game)
 	aux = game->map->texts;
 	while (game->file[i])
 	{
-		if (!ft_is_texts(game->file[i]))
-			break ;
-		game->map->texts = ft_select_texts(game, game->file[i]);
-		printf("%s\n", game->map->texts->path);
-		if (game->map->texts->next)
-			game->map->texts = game->map->texts->next;
-		i++;
+		if (ft_is_empty(game->file[i]))
+		{
+			i++;
+		}
+		else
+		{
+			if (!ft_is_texts(game->file[i]))
+				break ;
+			ft_select_texts(game, game->file[i]);
+			i++;
+		}
 	}
 	game->map->texts = aux;
 	game->map->start_map = i;
 	if (!ft_check_texts(game))
 		ft_error(game, ERR_MISS_TEXTS);
+}
+
+int		ft_check_id(char *line)
+{
+	int	i;
+	int	n;
+
+	i = 0;
+	n = 0;
+	while (line && line[i] && (line[i] == ' ' || line[i] == '\t'))
+		i++;
+	while (line && line[i] && (line[i] != ' ' && line[i] != '\t'))
+	{
+		i++;
+		n++;
+	}
+	if (n > 2)
+		return (0);
+	return (1);
 }
 
 t_textures	*ft_select_texts(t_game *game, char *line) // como estoy uasnado aux no dbería de perderse la referencia
@@ -43,6 +66,8 @@ t_textures	*ft_select_texts(t_game *game, char *line) // como estoy uasnado aux 
 	int			len;
 	t_textures	*aux;
 
+	if (!ft_check_id(line))
+		ft_error(game, ERR_WRNG_ID);
 	id = (char *)ft_calloc(3, sizeof(char));
 	if (!id)
 		ft_error(game, ERR_MLLC_FAIL);
@@ -76,7 +101,7 @@ t_textures	*ft_select_texts(t_game *game, char *line) // como estoy uasnado aux 
 	if (!aux->path)
 		return (NULL);
 	i = 0;
-	while (line && line[n] && line[n] != '\n')
+	while (line && line[n] && (line[n] != '\n' && line[n] != '\0'))
 	{
 		aux->path[i] = line[n];
 		i++;

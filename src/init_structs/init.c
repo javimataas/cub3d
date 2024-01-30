@@ -6,7 +6,7 @@
 /*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 17:34:43 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/01/17 18:41:32 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2024/01/30 18:56:22 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,9 @@ void	ft_set_map_size(t_game *game)
 	game->map->height = i;
 }
 
-t_game	*ft_init_map(char *path)
+t_game	*ft_init_map(char *path) // REVOSAR PORQUE CUANDO FALLAN LOS MALLOC NO LIBERO LO ANTERIOR RESERVADO
 {
+	(void)path;
 	t_game	*game;
 
 	game = malloc(sizeof(t_game));
@@ -77,8 +78,15 @@ t_game	*ft_init_map(char *path)
 		free (game);
 		exit (1);
 	}
-	game->player = malloc(sizeof(t_coord));
-	if (!game->map)
+	game->minimap = malloc(sizeof(t_map));
+	if (!game->minimap)
+	{
+		printf("Error: Malloc fail\n");
+		free (game);
+		exit (1);
+	}
+	game->player = malloc(sizeof(t_player));
+	if (!game->player)
 	{
 		printf("Error: Malloc fail\n");
 		free (game);

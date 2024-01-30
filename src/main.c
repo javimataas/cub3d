@@ -6,7 +6,7 @@
 /*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 19:32:55 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/01/16 18:56:18 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2024/01/30 18:53:48 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_cub3d(t_game *game)
 	ft_init_minimap(game);
 	mlx_loop(game->mlx);
 	mlx_terminate(game->mlx);
-	ft_clear(game);
+	ft_clear(game); // CAMBIE COSAS EN LA ESTRUCTURAS, VER CLEAR QUE CAMBIAR
 }
 
 int	main(int argc, char **argv)
@@ -40,7 +40,7 @@ int	main(int argc, char **argv)
 	game = NULL;
 	if (argc == 2)
 	{
-		if (ft_check_cub(argv[1]) && ft_check_file(argv[1]))
+		if (ft_check_cub(argv[1]) && ft_check_file(argv[1])) // SI PONGO INTRO AL FINAL DA SEGMENTATITON!!!!!
 		{
 			game = ft_init_map(argv[1]);
 			if (ft_check_player(game)

@@ -6,7 +6,7 @@
 /*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:21:05 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/01/10 17:20:03 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2024/01/30 18:53:58 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,11 @@ void	ft_error(t_game *game, int error)
 	else if (error == ERR_NO_PLAYER)
 		printf("Error: No player found in the map\n");
 	else if (error == ERR_PNG_FAIL)
-		printf("Error: The texture file ins't .png");
+		printf("Error: The texture file ins't .png\n");
 	else if (error == ERR_COLOR_FAIL)
-		printf("Error: The color for the texture is incorrect");
+		printf("Error: The color for the texture is incorrect\n");
+	else if (error == ERR_WRNG_ID)
+		printf("Error: One or more texture ID is incorrect\n");
 	ft_clear(game);
 	exit (1);
 }

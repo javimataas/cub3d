@@ -6,7 +6,7 @@
 /*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:06:53 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/01/30 18:33:04 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2024/01/30 18:52:57 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ enum			e_datatype
 	ERR_MAP_FAIL,
 	ERR_NO_PLAYER,
 	ERR_PNG_FAIL,
-	ERR_COLOR_FAIL
+	ERR_COLOR_FAIL,
+	ERR_WRNG_ID
 };
 
 typedef struct s_coord
@@ -64,17 +65,22 @@ typedef struct s_textures
 typedef struct s_map
 {
 	mlx_image_t	*img;
-	t_coord		player_pos;
 	int			start_map;
 	char		**map;
-	mlx_image_t	*minimap;
 	t_textures	*texts;
 	int			height;
 	int			width;
 }				t_map;
 
+typedef struct s_minimap
+{
+	mlx_image_t	*img;
+	mlx_image_t	*player;
+}				t_minimap;
+
 typedef struct s_player
 {
+	t_coord	player_pos;
 	t_coord	minimap;
 	double	angrot;
 }				t_player;
@@ -93,6 +99,7 @@ typedef struct s_game
 	char				**file;
 	mlx_t				*mlx;
 	t_map				*map;
+	t_minimap			*minimap;
 	t_player			*player;
 	t_rays				*rays;
 	t_coord				start;
@@ -160,14 +167,9 @@ void			ft_load_textures(t_game *game);
 
 /* MAP */
 /* Minimap */
-t_coord			ft_paint_min(t_game *game, int y, int x, int color);
-void			ft_paint_line_x(t_game *game, int y, int x, int color);
-void			ft_paint_line_y(t_game *game, int y, int x, int color);
-void			ft_init_minimap(t_game *game);
-void			ft_background_minimap(t_game *game);
-void			ft_paint_minimap(t_game *game);
-int				ft_check_minimap_colision_x(t_game *game, int y, int x, char letter);
-// int			ft_check_minimap_colision_y(t_game *game, int y, int x);
+void  		ft_init_minimap(t_game *game);
+void		ft_paint_player(t_game *game);
+void		ft_paint_minimap(t_game *game, int img);
 
 /* Floor and Cloud */
 void			ft_init_colormap(t_game *game);
