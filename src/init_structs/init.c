@@ -3,16 +3,63 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 17:34:43 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/01/24 17:15:20 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/01/30 19:46:03 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-t_game	*ft_init_map(char *path) // REVOSAR PORQUE CUANDO FALLAN LOS MALLOC NO LIBERO LO ANTERIOR RESERVADO
+void	ft_init_sizes(t_game *game)
+{
+	game->pov_ang = 60 * DEF;
+	if (S_WIDTH < game->pov_ang * 1.5)
+		game->final_s_width = game->pov_ang;
+	else if (S_WIDTH < game->pov_ang * 2.5 && S_WIDTH >= game->pov_ang
+		* 1.5)
+		game->final_s_width = game->pov_ang * 2;
+	else if (S_WIDTH < game->pov_ang * 3.5 && S_WIDTH >= game->pov_ang
+		* 2.5)
+		game->final_s_width = game->pov_ang * 3;
+	else
+		game->final_s_width = game->pov_ang * 4;
+}
+
+void	ft_load_game_textures(t_game *game)
+{
+	game->textures = ft_calloc(sizeof(mlx_texture_t *), 4);
+	game->textures[0] = mlx_load_png(game->map->texts->path);
+	game->textures[1] = mlx_load_png(game->map->texts->next->path);
+	game->textures[2] = mlx_load_png(game->map->texts->next->next->path);
+	game->textures[3] = mlx_load_png(game->map->texts->next->next->next->path);
+	if (game->textures[0] == NULL || game->textures[1] == NULL
+		|| game->textures[2] == NULL || game->textures[3] == NULL)
+		return (ft_error(game, ERR_MLX_FAIL));
+}
+
+void	ft_set_map_size(t_game *game)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	game->map->height = 0;
+	game->map->width = 0;
+	while (game->map->map[i])
+	{
+		j = 0;
+		while (game->map->map[i][j])
+			j++;
+		if (j > game->map->width)
+			game->map->width = j;
+		i++;
+	}
+	game->map->height = i;
+}
+
+t_game	*ft_init_map(char *path)
 {
 	t_game	*game;
 
@@ -31,15 +78,8 @@ t_game	*ft_init_map(char *path) // REVOSAR PORQUE CUANDO FALLAN LOS MALLOC NO LI
 		free (game);
 		exit (1);
 	}
-	game->minimap = malloc(sizeof(t_map));
-	if (!game->minimap)
-	{
-		printf("Error: Malloc fail\n");
-		free (game);
-		exit (1);
-	}
-	game->player = malloc(sizeof(t_player));
-	if (!game->player)
+	game->player = malloc(sizeof(t_coord));
+	if (!game->map)
 	{
 		printf("Error: Malloc fail\n");
 		free (game);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:06:53 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/01/30 17:07:47 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/01/30 19:41:17 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,7 @@ enum			e_datatype
 	ERR_MAP_FAIL,
 	ERR_NO_PLAYER,
 	ERR_PNG_FAIL,
-	ERR_COLOR_FAIL,
-	ERR_WRNG_ID
+	ERR_COLOR_FAIL
 };
 
 typedef struct s_coord
@@ -58,8 +57,10 @@ typedef struct s_textures
 typedef struct s_map
 {
 	mlx_image_t	*img;
+	t_coord		player_pos;
 	int			start_map;
 	char		**map;
+	mlx_image_t	*minimap;
 	t_textures	*texts;
 }				t_map;
 
@@ -73,7 +74,6 @@ typedef struct s_minimap
 
 typedef struct s_player
 {
-	t_coord	player_pos;
 	t_coord	minimap;
 	t_coord	minimap_rup;
 	t_coord	minimap_ldown;
@@ -83,12 +83,24 @@ typedef struct s_player
 
 typedef struct s_game
 {
-	char			**file;
-	mlx_t			*mlx;
-	t_map			*map;
-	t_minimap		*minimap;
-	t_player		*player;
-}				t_game;
+	char				**file;
+	mlx_t				*mlx;
+	t_map				*map;
+	t_minimap			*minimap;
+	t_player			*player;
+	t_rays				*rays;
+	t_coord				start;
+	t_coord				end;
+	t_coord				pix;
+	mlx_image_t			*img3d;
+	mlx_image_t			*img2d;
+	mlx_texture_t		**textures;
+	int					h_line;
+	int					pov_ang;
+	int					final_s_width;
+	float				ty_step;
+	long unsigned int	c_pix;
+}					t_game;
 
 /* Init */
 /* Init Struct */

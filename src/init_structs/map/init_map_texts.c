@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map_texts.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 15:35:36 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/01/15 19:02:14 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/01/30 19:46:09 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	ft_init_map_textures(t_game *game)
 	aux->next->next->next->id = "EA";
 	aux->next->next->next->next->id = "F";
 	aux->next->next->next->next->next->id = "C";
-	aux->next->next->next->next->next->next = NULL;
 	game->map->texts = aux;
 }
 

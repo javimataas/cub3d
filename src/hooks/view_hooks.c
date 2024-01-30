@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_str_array.c                               :+:      :+:    :+:   */
+/*   view_hooks.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/25 17:21:43 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/11/28 17:05:34 by jariza-o         ###   ########.fr       */
+/*   Created: 2023/12/10 13:34:01 by jariza-o          #+#    #+#             */
+/*   Updated: 2023/12/10 15:22:31 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../includes/cub3d.h"
 
-void	ft_print_str_array(char **array)
+void	view_hooks(mlx_key_data_t keydata, void *param)
 {
-	int		i;
+	t_game	*game;
 
-	if (array == NULL)
-		return ;
-	i = 0;
-	while (array[i])
-	{
-		ft_printf("%s", array[i]);
-		i++;
-	}
+	game = (t_game *)param;
+	(void)game;
+	// CAMBIAR COMPARACION EN LOS IF
+	if (keydata.key == MLX_KEY_LEFT)
+		printf("LEFT\n");
+		//left_key(game);
+	else if (keydata.key == MLX_KEY_RIGHT)
+		printf("RIGHT\n");
+		//right_key(game);
 }
