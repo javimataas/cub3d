@@ -6,7 +6,7 @@
 /*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 16:57:41 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/01/10 18:41:56 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2024/01/30 19:46:38 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,8 @@
 void	ft_load_struct(t_game *game)
 {
 	int	i;
-	t_textures	*aux;
 
 	i = 0;
-	aux = game->map->texts;
 	while (game->file[i])
 	{
 		if (!ft_is_texts(game->file[i]))
@@ -29,13 +27,31 @@ void	ft_load_struct(t_game *game)
 			game->map->texts = game->map->texts->next;
 		i++;
 	}
-	game->map->texts = aux;
 	game->map->start_map = i;
 	if (!ft_check_texts(game))
 		ft_error(game, ERR_MISS_TEXTS);
 }
 
-t_textures	*ft_select_texts(t_game *game, char *line) // como estoy uasnado aux no dbería de perderse la referencia
+int		ft_check_id(char *line)
+{
+	int	i;
+	int	n;
+
+	i = 0;
+	n = 0;
+	while (line && line[i] && (line[i] == ' ' || line[i] == '\t'))
+		i++;
+	while (line && line[i] && (line[i] != ' ' && line[i] != '\t'))
+	{
+		i++;
+		n++;
+	}
+	if (n > 2)
+		return (0);
+	return (1);
+}
+
+void	ft_select_texts(t_game *game, char *line) // como estoy uasnado aux no dbería de perderse la referencia
 {
 	int			i;
 	int			n;
@@ -74,7 +90,7 @@ t_textures	*ft_select_texts(t_game *game, char *line) // como estoy uasnado aux 
 		ft_error(game, ERR_DUP_TEXTS);
 	aux->path = (char *)ft_calloc((len + 1), sizeof(char));
 	if (!aux->path)
-		return (NULL);
+		return ;
 	i = 0;
 	while (line && line[n] && line[n] != '\n')
 	{
@@ -83,7 +99,6 @@ t_textures	*ft_select_texts(t_game *game, char *line) // como estoy uasnado aux 
 		n++;
 	}
 	free (id);
-	return (aux);
 }
 
 void	ft_reserve_map(t_game *game)

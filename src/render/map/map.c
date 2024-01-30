@@ -6,7 +6,7 @@
 /*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 19:14:05 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/01/10 19:09:58 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2024/01/30 19:47:15 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	ft_background_map(t_game *game)
 {
-	int		x;
-	int		y;
-	int 	f;
-	int		c;
+	int			x;
+	int			y;
+	int			f;
+	int			c;
 	t_textures	*aux;
 
 	aux = game->map->texts;
@@ -40,7 +40,7 @@ void	ft_background_map(t_game *game)
 		}
 		y++;
 	}
-	while (y < S_HEIGHT)
+	while (y < 1080)
 	{
 		x = 0;
 		while (x < 1920)
@@ -55,11 +55,10 @@ void	ft_background_map(t_game *game)
 void	ft_init_colormap(t_game *game)
 {
 	ft_pixel(game);
-	game->map->img = mlx_new_image(game->mlx, game->final_s_width, S_HEIGHT);
+	game->map->img = mlx_new_image(game->mlx, 1920, 1080);
 	if (!game->map->img)
 		ft_error(game, ERR_MLX_FAIL);
 	if (mlx_image_to_window(game->mlx, game->map->img, 0, 0) < 0)
 		ft_error(game, ERR_MLX_FAIL);
 	ft_background_map(game);
 }
-

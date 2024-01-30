@@ -6,7 +6,7 @@
 /*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 17:24:48 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/01/30 18:00:08 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2024/01/30 19:43:13 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,26 @@
 double	ft_get_angle(char c)
 {
 	if (c == 'N')
-		return (90);
-	else if (c == 'S')
-		return (270);
-	else if (c == 'E')
 		return (0);
-	else if (c == 'W')
+	else if (c == 'S')
 		return (180);
+	else if (c == 'E')
+		return (270);
+	else if (c == 'W')
+		return (90);
 	return (0);
+}
+
+void	ft_minimap_player(t_game *game)
+{
+	game->player->minimap.x = game->player->player_pos.x * 10;
+	game->player->minimap.y = game->player->player_pos.y * 10;
+	game->player->minimap_rup.x = game->player->minimap.x + 10;
+	game->player->minimap_rup.y = game->player->minimap.y;
+	game->player->minimap_ldown.x = game->player->minimap.x;
+	game->player->minimap_rup.y = game->player->minimap.y + 10;
+	game->player->minimap_rdown.x = game->player->minimap.x + 10;
+	game->player->minimap_rdown.y = game->player->minimap.y + 10;
 }
 
 int	ft_check_player(t_game *game)
@@ -40,11 +52,10 @@ int	ft_check_player(t_game *game)
 		{
 			if (ft_strchr("NSEW", game->map->map[i][j]))
 			{
-				game->player->angrot = ft_radianes(ft_get_angle(game->map->map[i][j]));
-				game->map->player_pos.x = j;
-				game->player->minimap.x = j;
-				game->map->player_pos.y = i;
-				game->player->minimap.y = i;
+				game->player->angrot = ft_get_angle(game->map->map[i][j]);
+				game->player->player_pos.x = j;
+				game->player->player_pos.y = i;
+				ft_minimap_player(game);
 				player++;
 			}
 		}

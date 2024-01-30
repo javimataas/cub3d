@@ -6,7 +6,7 @@
 /*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 17:34:43 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/01/17 18:41:32 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2024/01/30 19:46:03 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ t_game	*ft_init_map(char *path)
 {
 	t_game	*game;
 
+	(void)path;
 	game = malloc(sizeof(t_game));
 	if (!game)
 	{
@@ -86,13 +87,9 @@ t_game	*ft_init_map(char *path)
 	}
 	game->map->map = NULL;
 	game->file = ft_read_file(path);
-	ft_init_sizes(game);
-	game->rays = malloc(sizeof(t_rays) * game->pov_ang);
 	ft_init_map_textures(game);
 	ft_load_struct(game);
-	ft_load_game_textures(game);
 	ft_reserve_map(game);
 	ft_load_map(game);
-	ft_set_map_size(game);
 	return (game);
 }

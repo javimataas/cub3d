@@ -6,7 +6,7 @@
 /*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 19:32:55 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/01/16 18:56:18 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2024/01/30 19:42:40 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@ void	ft_leaks(void)
 
 void	ft_cub3d(t_game *game)
 {
-	game->mlx = mlx_init(game->final_s_width, S_HEIGHT, "Cub3D", false);
+	game->mlx = mlx_init(1920, 1080, "Cub3D", false);
 	if (!game->mlx)
 		ft_error(game, ERR_MLX_FAIL);
+	printf("Player POS: %f %f\n", game->player->player_pos.y, game->player->player_pos.x);
 	mlx_loop_hook(game->mlx, &ft_update, (void *)(game));
 	mlx_key_hook(game->mlx, &ft_init_hooks, (void *)(game));
 	ft_load_textures(game);
@@ -45,7 +46,11 @@ int	main(int argc, char **argv)
 			game = ft_init_map(argv[1]);
 			if (ft_check_player(game)
 				&& ft_check_walls(game, game->map->map))
+			{
+			// ft_print_texts(*game);
+			// ft_print_map(game);
 				ft_cub3d(game);
+			}
 		}
 		else
 			ft_error(game, ERR_WRNG_EXT);
