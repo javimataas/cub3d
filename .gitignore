@@ -1,10 +1,6 @@
 # Program
 cub3d
 
-# MLX42
-MLX42/src/mlx_frag_shader.c
-MLX42/src/mlx_vert_shader.c
-
 # VsCode
 .vscode
 
