@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_walls.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 18:12:23 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/01/30 19:43:21 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2024/01/24 17:14:42 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,36 @@ void	ft_space_map(char **map)
 	}
 }
 
+t_coord	ft_has_floor(char **map)
+{
+	int	i;
+	int	j;
+	t_coord	floor;
+
+	i = 0;
+	floor.x = 0;
+	floor.y = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (map[i][j] == '0')
+			{
+				floor.x = j;
+				floor.y = i;
+			}
+			j++;
+		}
+		i++;
+	}
+	return (floor);
+}
+
 int	ft_walls(char **map)
 {
 	t_coord	coord;
+	t_coord	floor;
 	int		valid;
 	int		y;
 	int		x;
@@ -97,6 +124,12 @@ int	ft_walls(char **map)
 	y = coord.y;
 	x = coord.x;
 	ft_flood_fill(map, y, x);
+	floor = ft_has_floor(map);
+	while (floor.x != 0 && floor.y != 0)
+	{
+		ft_flood_fill(map, floor.y, floor.x);
+		floor = ft_has_floor(map);
+	}
 	if (ft_char_count(map, ' ') != valid || !ft_contains_str(map[1], "1 \n")
 		|| !ft_contains_str(map[ft_get_len_y(map) - 2], "1 \n"))
 	{
