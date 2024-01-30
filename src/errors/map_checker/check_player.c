@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 17:24:48 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/12/19 15:40:55 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/01/30 22:34:01 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 double	ft_get_angle(char c)
 {
 	if (c == 'N')
-		return (0);
-	else if (c == 'S')
-		return (180);
-	else if (c == 'E')
-		return (270);
-	else if (c == 'W')
 		return (90);
+	else if (c == 'S')
+		return (270);
+	else if (c == 'E')
+		return (0);
+	else if (c == 'W')
+		return (180);
 	return (0);
 }
 
@@ -40,9 +40,11 @@ int	ft_check_player(t_game *game)
 		{
 			if (ft_strchr("NSEW", game->map->map[i][j]))
 			{
-				game->player->angrot = ft_get_angle(game->map->map[i][j]);
+				game->player->angrot = ft_radianes(ft_get_angle(game->map->map[i][j]));
 				game->map->player_pos.x = j;
+				game->player->minimap.x = j * 10;
 				game->map->player_pos.y = i;
+				game->player->minimap.y = i * 10;
 				player++;
 			}
 		}

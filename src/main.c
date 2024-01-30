@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 19:32:55 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/01/10 16:26:48 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/01/16 18:56:18 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@ void	ft_leaks(void)
 
 void	ft_cub3d(t_game *game)
 {
-	game->mlx = mlx_init(1920, 1080, "Cub3D", false);
+	game->mlx = mlx_init(game->final_s_width, S_HEIGHT, "Cub3D", false);
 	if (!game->mlx)
 		ft_error(game, ERR_MLX_FAIL);
+	mlx_loop_hook(game->mlx, &ft_update, (void *)(game));
 	mlx_key_hook(game->mlx, &ft_init_hooks, (void *)(game));
 	ft_load_textures(game);
 	ft_init_colormap(game);
@@ -44,13 +45,7 @@ int	main(int argc, char **argv)
 			game = ft_init_map(argv[1]);
 			if (ft_check_player(game)
 				&& ft_check_walls(game, game->map->map))
-			{
-				//ft_print_texts(*game);
-				ft_print_map(game);
 				ft_cub3d(game);
-				// mlx_key_hook(game->mlx, &escape_hook, (void *)(game));
-				// mlx_resize_hook(game->mlx, &hook_screen, (void *)(game));
-			}
 		}
 		else
 			ft_error(game, ERR_WRNG_EXT);

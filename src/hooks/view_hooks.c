@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_checker.h                                      :+:      :+:    :+:   */
+/*   view_hooks.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/21 18:10:03 by jmatas-p          #+#    #+#             */
-/*   Updated: 2023/11/26 16:56:02 by jariza-o         ###   ########.fr       */
+/*   Created: 2023/12/10 13:34:01 by jariza-o          #+#    #+#             */
+/*   Updated: 2023/12/10 15:22:31 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAP_CHECKER_H
-# define MAP_CHECKER_H
+#include "../../includes/cub3d.h"
 
-# include "cub3d.h"
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
+void	view_hooks(mlx_key_data_t keydata, void *param)
+{
+	t_game	*game;
 
-void	ft_error(int error);
-int		ft_check_extension(char *file);
-
-#endif
+	game = (t_game *)param;
+	(void)game;
+	// CAMBIAR COMPARACION EN LOS IF
+	if (keydata.key == MLX_KEY_LEFT)
+		printf("LEFT\n");
+		//left_key(game);
+	else if (keydata.key == MLX_KEY_RIGHT)
+		printf("RIGHT\n");
+		//right_key(game);
+}
