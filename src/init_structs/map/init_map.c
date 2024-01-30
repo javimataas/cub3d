@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 16:57:41 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/01/18 15:15:38 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/01/30 18:58:03 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 void	ft_load_struct(t_game *game)
 {
 	int	i;
+	t_textures	*aux;
 
 	i = 0;
+	aux = game->map->texts;
 	while (game->file[i])
 	{
 		if (ft_is_empty(game->file[i]))
@@ -31,6 +33,7 @@ void	ft_load_struct(t_game *game)
 			i++;
 		}
 	}
+	game->map->texts = aux;
 	game->map->start_map = i;
 	if (!ft_check_texts(game))
 		ft_error(game, ERR_MISS_TEXTS);
@@ -55,7 +58,7 @@ int		ft_check_id(char *line)
 	return (1);
 }
 
-void	ft_select_texts(t_game *game, char *line) // como estoy uasnado aux no dbería de perderse la referencia
+t_textures	*ft_select_texts(t_game *game, char *line) // como estoy uasnado aux no dbería de perderse la referencia
 {
 	int			i;
 	int			n;
@@ -96,7 +99,7 @@ void	ft_select_texts(t_game *game, char *line) // como estoy uasnado aux no dber
 		ft_error(game, ERR_DUP_TEXTS);
 	aux->path = (char *)ft_calloc((len + 1), sizeof(char));
 	if (!aux->path)
-		return ;
+		return (NULL);
 	i = 0;
 	while (line && line[n] && (line[n] != '\n' && line[n] != '\0'))
 	{
@@ -105,6 +108,7 @@ void	ft_select_texts(t_game *game, char *line) // como estoy uasnado aux no dber
 		n++;
 	}
 	free (id);
+	return (aux);
 }
 
 void	ft_reserve_map(t_game *game)

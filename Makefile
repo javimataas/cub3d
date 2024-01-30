@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+         #
+#    By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/16 19:23:22 by jmatas-p          #+#    #+#              #
-#    Updated: 2024/01/15 18:05:39 by jariza-o         ###   ########.fr        #
+#    Updated: 2024/01/30 18:47:52 by jmatas-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,12 +35,11 @@ NAME	=	cub3d
 SRC		=	src/main.c \
 			src/errors/error.c src/errors/map_checker/extensions_checker.c src/errors/map_checker/check_walls.c src/errors/map_checker/check_utils.c src/errors/map_checker/check_player.c \
 			src/init_structs/init.c src/init_structs/map/init_map_texts.c src/init_structs/map/init_map.c src/init_structs/map/init_utils.c src/init_structs/map/convert_color.c \
-			src/utils/print_utils.c src/utils/clean.c src/utils/radianes.c\
-			src/render/textures.c src/render/minimap/minimap.c src/render/minimap/player.c src/render/map/map.c \
-			src/hooks/hooks.c \
+			src/utils/print_utils.c src/utils/clean.c src/utils/radianes.c src/render/textures.c src/render/minimap/minimap.c \
+			src/render/map/map.c src/hooks/hooks.c src/hooks/move_hooks.c src/hooks/hooks_utils.c src/rays/pov.c \
+			src/rays/c_pixel.c src/rays/rays.c src/rays/rays_utils.c src/render/minimap/player.c \
 
 OBJ		=	$(SRC:.c=.o)
-
 
 .c.o:
 			@gcc ${CFLAGS} -c $< -o ${<:.c=.o}

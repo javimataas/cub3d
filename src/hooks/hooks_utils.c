@@ -1,18 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   radianes.c                                         :+:      :+:    :+:   */
+/*   hooks_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/14 15:28:17 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/01/17 18:14:15 by jmatas-p         ###   ########.fr       */
+/*   Created: 2024/01/30 18:32:01 by jmatas-p          #+#    #+#             */
+/*   Updated: 2024/01/30 18:36:19 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-double	ft_radianes(double angolugiro)
+void	ft_paint(t_game *game, int y, int x, int color)
 {
-	return (angolugiro * (PI / 180));
+	int	i;
+	int	n;
+
+	i = -1;
+	while ((y + (++i)) < (y + TSIZE_2D))
+	{
+		n = -1;
+		while ((x + (++n)) < (x + TSIZE_2D))
+			mlx_put_pixel(game->map->minimap, x + n, y + i, color);
+	}
+}
+
+int	ft_check_wall(float x, float y, t_game *game)
+{
+	int	i;
+	int	j;
+
+	j = x / TSIZE_3D;
+	i = y / TSIZE_3D;
+	if (game->map->map[i][j] == '1')
+		return (0);
+	return (1);
 }
