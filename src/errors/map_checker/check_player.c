@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_player.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 17:24:48 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/01/30 18:54:51 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2024/01/11 17:18:09 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 double	ft_get_angle(char c)
 {
 	if (c == 'N')
-		return (90);
-	else if (c == 'S')
-		return (270);
-	else if (c == 'E')
 		return (0);
-	else if (c == 'W')
+	else if (c == 'S')
 		return (180);
+	else if (c == 'E')
+		return (270);
+	else if (c == 'W')
+		return (90);
 	return (0);
 }
 

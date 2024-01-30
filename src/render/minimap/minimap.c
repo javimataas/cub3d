@@ -3,32 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 13:53:48 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/01/30 19:00:11 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2024/01/23 18:30:16 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/cub3d.h"
-
-void	ft_paint_line_x(t_game *game, int y, int x, int color)
-{
-	int	n;
-
-	n = -1;
-	while ((x + (++n)) < (x + TSIZE_2D))
-		mlx_put_pixel(game->map->minimap, x + n, y, color);
-}
-
-void	ft_paint_line_y(t_game *game, int y, int x, int color)
-{
-	int	n;
-
-	n = -1;
-	while ((y + (++n)) < (y + TSIZE_2D))
-		mlx_put_pixel(game->map->minimap, x, y + n, color);
-}
 
 t_coord	ft_paint_min(t_game *game, int y, int x, int color)
 {
@@ -43,7 +25,7 @@ t_coord	ft_paint_min(t_game *game, int y, int x, int color)
 	while (++i <= y)
 	{
 		n = -1;
-		while (++n != TSIZE_2D)
+		while (++n != 10)
 			ry++;
 	}
 	i = -1;
@@ -51,16 +33,16 @@ t_coord	ft_paint_min(t_game *game, int y, int x, int color)
 	while (++i <= x)
 	{
 		n = -1;
-		while (++n != TSIZE_2D)
+		while (++n != 10)
 			rx++;
 	}
 	i = -1;
 	coord.x = rx;
 	coord.y = ry;
-	while ((ry + (++i)) < (ry + TSIZE_2D))
+	while ((ry + (++i)) < (ry + 10))
 	{
 		n = -1;
-		while ((rx + (++n)) < (rx + TSIZE_2D))
+		while ((rx + (++n)) < (rx + 10))
 			mlx_put_pixel(game->minimap->img, rx + n, ry + i, color);
 	}
 	return (coord);
