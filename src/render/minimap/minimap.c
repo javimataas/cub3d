@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 13:53:48 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/01/24 19:17:35 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/01/30 16:38:19 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,7 @@ int	ft_pos_map(t_game *game, int letter)
 				counter++;
 			}
 		}
+		game->minimap->y_paint = moved * 10;
 	}
 	else if (letter == 0)
 	{
@@ -156,6 +157,7 @@ int	ft_pos_map(t_game *game, int letter)
 				counter++;
 			}
 		}
+		game->minimap->x_paint = moved * 10;
 	}
 	return (moved * 10);
 }

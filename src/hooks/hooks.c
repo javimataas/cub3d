@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 17:27:35 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/01/29 22:36:03 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/01/30 16:41:47 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,23 @@ int	ft_colision(t_game *game, t_player *new_coord)
 {
 	int	y;
 	int	x;
+	int	y_rup;
+	int	x_rup;
+	int	y_ldown;
+	int	x_ldown;
+	int	y_rdown;
+	int	x_rdown;
 
 	y = (int)new_coord->minimap.y / 10;
 	x = (int)new_coord->minimap.x / 10;
+	y_rup = (int)new_coord->minimap_rup.y / 10;
+	x_rup = (int)new_coord->minimap_rup.x / 10;
+	y_ldown = (int)new_coord->minimap_ldown.y / 10;
+	x_ldown = (int)new_coord->minimap_ldown.x / 10;
+	y_rdown = (int)new_coord->minimap_rdown.y / 10;
+	x_rdown = (int)new_coord->minimap_rdown.x / 10;
 	printf("MAPA: %c Y: %d X: %d\n", game->map->map[y][x], y, x);
-	if (game->map->map[y][x] == '1')
+	if (game->map->map[y][x] == '1' || game->map->map[y_rup][x_rup] == '1' || game->map->map[y_ldown][x_ldown] == '1' || game->map->map[y_rdown][x_rdown] == '1')
 	{
 		printf("CHOCAAA MAPA: %c Y: %d X: %d\n", game->map->map[y][x], y, x);
 		return (0);
@@ -66,32 +78,43 @@ int	ft_colision(t_game *game, t_player *new_coord)
 	return (1);
 }
 
-void	ft_change_player_position(t_game *game)
-{
-	int	y = game->player->player_pos.y;
-	int	x = game->player->player_pos.x;
-	int	new_y = (int)(game->player->minimap.y / 10);
-	int	new_x = (int)(game->player->minimap.x / 10);
+// void	ft_change_player_position(t_game *game, int y_paint, int x_paint)
+// {
+// 	int	y = game->player->player_pos.y;
+// 	int	x = game->player->player_pos.x;
+// 	int	new_y = (int)(game->player->minimap.y / 10);
+// 	int	new_x = (int)(game->player->minimap.x / 10);
 
-	if (y != new_y && x != new_x)
-	{
-		game->map->map[y][x] = '0';
-		game->map->map[new_y][new_x] = 'N';
-	}
-	else if (y == new_y && x != new_x)
-	{
-		game->map->map[y][x] = '0';
-		game->map->map[y][new_x] = 'N';
-	}
-	if (y != new_y && x == new_x)
-	{
-		game->map->map[y][x] = '0';
-		game->map->map[new_y][x] = 'N';
-	}
-	if (game->player->minimap.y != game->player->player_pos.y)
-		game->player->player_pos.y = game->player->minimap.x;
-	if (game->player->minimap.x != game->player->player_pos.y)
-		game->player->player_pos.x = game->player->minimap.x;
+// 	if (y != new_y && x != new_x)
+// 	{
+// 		game->map->map[y][x] = '0';
+// 		game->map->map[new_y][new_x] = 'N';
+// 	}
+// 	else if (y == new_y && x != new_x)
+// 	{
+// 		game->map->map[y][x] = '0';
+// 		game->map->map[y][new_x] = 'N';
+// 	}
+// 	if (y != new_y && x == new_x)
+// 	{
+// 		game->map->map[y][x] = '0';
+// 		game->map->map[new_y][x] = 'N';
+// 	}
+// 	if (game->player->minimap.y != game->player->player_pos.y)
+// 		game->player->player_pos.y = game->player->minimap.x;
+// 	if (game->player->minimap.x != game->player->player_pos.y)
+// 		game->player->player_pos.x = game->player->minimap.x;
+// }
+
+void	ft_paint_minimap_gaming(t_game *game)
+{
+	mlx_delete_image(game->mlx, game->minimap->img);
+	game->minimap->img = mlx_new_image(game->mlx, ft_calc_size(game, 1), ft_calc_size(game, 0)); // CALCULAR TAMAÑO QUE VA A TENER EL MAPA
+	if (mlx_image_to_window(game->mlx, game->minimap->img, game->minimap->x_paint, game->minimap->y_paint) < 0) // CALCULAR DONDE EMPIEZA EL MAPA
+		ft_error(game, ERR_MLX_FAIL);
+		printf("FUNCIONoooooooo\n");
+	ft_paint_elements(game);
+	game->minimap->img->instances[0].z = 0;
 }
 
 void	ws_key(t_game *game, int key)
@@ -108,31 +131,18 @@ void	ws_key(t_game *game, int key)
 	new_coord->minimap_rup.x = new_coord->minimap.x + 10;
 	new_coord->minimap_rup.y = new_coord->minimap.y;
 	new_coord->minimap_ldown.x = new_coord->minimap.x;
-	new_coord->minimap_rup.y = new_coord->minimap.y + 10;
+	new_coord->minimap_ldown.y = new_coord->minimap.y + 10;
 	new_coord->minimap_rdown.x = new_coord->minimap.x + 10;
 	new_coord->minimap_rdown.y = new_coord->minimap.y + 10;
 	// printf("X: %f Y: %f\n", new_coord->minimap.x, new_coord->minimap.y);
-	// if (!ft_colision(game, new_coord))
-	// 	return ;
-	// ft_paint_minimap(game, 1);
-	// game->player->minimap.y = new_coord->minimap.y;
-	// game->player->minimap.x = new_coord->minimap.x;
-
-	if (key == MLX_KEY_W && game->map->map[(int)(game->player->player_pos.y - 1)][(int)(game->player->player_pos.x)] != '1')
-	{
-		printf("TRALARA\n");
-		game->map->map[(int)(game->player->player_pos.y)][(int)(game->player->player_pos.x)] = '0';
-		game->player->player_pos.y -= 1;
-		game->map->map[(int)(game->player->player_pos.y)][(int)(game->player->player_pos.x)] = 'N';
-		ft_paint_minimap(game, 1);
-	}
-	else if (game->map->map[(int)(game->player->player_pos.y + 1)][(int)(game->player->player_pos.x)] != '1')
-	{
-		game->map->map[(int)(game->player->player_pos.y)][(int)(game->player->player_pos.x)] = '0';
-		game->player->player_pos.y += 1;
-		game->map->map[(int)(game->player->player_pos.y)][(int)(game->player->player_pos.x)] = 'N';
-		ft_paint_minimap(game, 1);
-	}
+	if (!ft_colision(game, new_coord))
+		return ;
+	printf("FUNCIONAAAA\n");
+	game->minimap->y_paint = (new_coord->minimap.y - game->player->minimap.y);
+	game->minimap->x_paint = (new_coord->minimap.x - game->player->minimap.x);
+	ft_paint_minimap_gaming(game);
+	new_coord->player_pos = game->player->player_pos;
+	game->player = new_coord;
 }
 
 
