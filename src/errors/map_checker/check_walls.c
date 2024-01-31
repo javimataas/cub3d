@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 18:12:23 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/01/24 17:14:42 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/01/30 22:38:16 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,8 @@ void	ft_space_map(char **map)
 
 t_coord	ft_has_floor(char **map)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	t_coord	floor;
 
 	i = 0;

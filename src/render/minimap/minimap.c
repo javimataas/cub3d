@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 13:53:48 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/01/30 16:38:19 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/01/30 22:49:33 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_coord	ft_paint_min(t_game *game, int y, int x, int color)
 	while (++i <= y)
 	{
 		n = -1;
-		while (++n != 10)
+		while (++n != TSIZE_2D)
 			ry++;
 	}
 	i = -1;
@@ -33,16 +33,16 @@ t_coord	ft_paint_min(t_game *game, int y, int x, int color)
 	while (++i <= x)
 	{
 		n = -1;
-		while (++n != 10)
+		while (++n != TSIZE_2D)
 			rx++;
 	}
 	i = -1;
 	coord.x = rx;
 	coord.y = ry;
-	while ((ry + (++i)) < (ry + 10))
+	while ((ry + (++i)) < (ry + TSIZE_2D))
 	{
 		n = -1;
-		while ((rx + (++n)) < (rx + 10))
+		while ((rx + (++n)) < (rx + TSIZE_2D))
 			mlx_put_pixel(game->minimap->img, rx + n, ry + i, color);
 	}
 	return (coord);
@@ -90,10 +90,10 @@ int	ft_calc_size(t_game *game, int letter)
 				size++;
 			if (long_line < size)
 				long_line = size;
-			y++;	
+			y++;
 		}
 	}
-	return ((long_line * 10) + 10); //añado +10 para que vaya bien, revisarlo bien
+	return ((long_line * TSIZE_2D) + TSIZE_2D); //añado +10 para que vaya bien, revisarlo bien
 }
 
 int	ft_pos_map(t_game *game, int letter)
@@ -103,8 +103,8 @@ int	ft_pos_map(t_game *game, int letter)
 	int	counter;
 	int	moved;
 
-	y = game->player->player_pos.y;
-	x = game->player->player_pos.x;
+	y = game->map->player_pos.y;
+	x = game->map->player_pos.x;
 	counter = 0;
 	moved = 0;
 	if (letter == 1)
@@ -131,7 +131,6 @@ int	ft_pos_map(t_game *game, int letter)
 				counter++;
 			}
 		}
-		game->minimap->y_paint = moved * 10;
 	}
 	else if (letter == 0)
 	{
@@ -157,7 +156,6 @@ int	ft_pos_map(t_game *game, int letter)
 				counter++;
 			}
 		}
-		game->minimap->x_paint = moved * 10;
 	}
 	return (moved * 10);
 }
