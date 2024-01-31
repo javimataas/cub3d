@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 13:53:48 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/01/30 22:49:33 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/01/31 16:26:48 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,7 +168,7 @@ void	ft_paint_minimap(t_game *game, int img)
 	if (mlx_image_to_window(game->mlx, game->minimap->img, ft_pos_map(game, 0), ft_pos_map(game, 1)) < 0) // CALCULAR DONDE EMPIEZA EL MAPA
 		ft_error(game, ERR_MLX_FAIL);
 	ft_paint_elements(game);
-	game->minimap->img->instances[0].z = 0;
+	game->minimap->img->instances[0].z = 1;
 }
 
 void	ft_init_minimap(t_game *game)

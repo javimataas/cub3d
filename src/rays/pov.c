@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pov.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 17:57:11 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/01/17 18:39:08 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2024/01/31 15:46:42 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	init_pov_display(t_game *game)
 	game->img3d = mlx_new_image(game->mlx, game->final_s_width, S_HEIGHT);
 	if (!game->img3d || (mlx_image_to_window(game->mlx, game->img3d, 0, 0) < 0))
 		return ;
-	game->img3d->instances[0].z = 1;
+	game->img3d->instances[0].z = 0; //ESTABA A 1
 }
 
 void	ft_get_pix_x(t_game *g, int i, mlx_texture_t **text)
