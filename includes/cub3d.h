@@ -77,6 +77,7 @@ typedef struct s_minimap
 {
 	mlx_image_t	*img;
 	mlx_image_t	*player;
+	t_coord		img_paint; //LO HE AÑADIDO Y AHORA NO LO USO
 }				t_minimap;
 
 typedef struct s_player
