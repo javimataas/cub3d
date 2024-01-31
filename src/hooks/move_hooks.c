@@ -26,10 +26,6 @@ void	w_key(t_game *game)
 		game->player->minimap.y -= sin(game->player->angrot) * MV_SPEED;
 	if (ft_check_wall(futur_pos.x, game->player->minimap.y, game) && ft_check_wall(game->player->minimap.x, futur_pos.y, game))
 		printf("PINBTAR\n");
-
-	// ft_paint(game, game->player->minimap.y,
-	//	game->player->minimap.x, 0xFFFFFFFF);
-	// ft_paint(game, futur_pos.y, futur_pos.x, 0xFF0000FF);
 }
 
 void	s_key(t_game *game)
