@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:06:53 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/02/01 16:35:00 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/02/01 16:43:02 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ typedef struct s_minimap
 {
 	mlx_image_t	*img;
 	mlx_image_t	*player;
-	t_coord		img_paint;
+	t_coord		img_paint; //LO HE AÑADIDO Y AHORA NO LO USO
 }				t_minimap;
 
 typedef struct s_player

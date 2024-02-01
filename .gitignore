@@ -4,6 +4,9 @@ cub3d
 # VsCode
 .vscode
 
+#MAC Finder
+.DS_Store
+
 # Prerequisites
 *.d
 

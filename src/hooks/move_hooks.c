@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 13:12:30 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/02/01 15:56:15 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/02/01 16:42:39 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,10 +104,6 @@ void	w_key(t_game *game)
 		printf("ESQUINA Y: %f X: %f\n", game->player->minimap.y, game->player->minimap.x);
 		ft_repaint_minimap(game, 1);
 	}
-
-	// ft_paint(game, game->player->minimap.y,
-	//	game->player->minimap.x, 0xFFFFFFFF);
-	// ft_paint(game, futur_pos.y, futur_pos.x, 0xFF0000FF);
 }
 
 void	s_key(t_game *game)
