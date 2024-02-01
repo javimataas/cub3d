@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:06:53 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/01/30 22:58:21 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/02/01 16:43:02 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,12 +168,12 @@ void			ft_load_textures(t_game *game);
 
 /* MAP */
 /* Minimap */
-void		ft_init_minimap(t_game *game);
-void		ft_paint_player(t_game *game);
-void		ft_paint_minimap(t_game *game, int img);
-int		ft_pos_map(t_game *game, int letter);
-int		ft_calc_size(t_game *game, int letter);
-void	ft_paint_elements(t_game *game);
+void			ft_init_minimap(t_game *game);
+void			ft_paint_player(t_game *game);
+void			ft_paint_minimap(t_game *game, int img);
+int				ft_pos_map(t_game *game, int letter);
+int				ft_calc_size(t_game *game, int letter);
+void			ft_paint_elements(t_game *game);
 
 /* Floor and Cloud */
 void			ft_init_colormap(t_game *game);
@@ -190,6 +190,7 @@ void			w_key(t_game *game);
 void			s_key(t_game *game);
 void			a_key(t_game *game);
 void			d_key(t_game *game);
+void			my_scrollhook(double xdelta, double ydelta, void* param);
 
 /* Hooks Utils */
 void			ft_paint(t_game *game, int y, int x, int color);
