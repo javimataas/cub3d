@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:06:53 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/02/01 16:43:02 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/02/05 17:39:23 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@
 # define PI			3.14159
 # define S_HEIGHT	1080
 # define S_WIDTH	1920
-# define MV_SPEED	1
-# define TSIZE_2D	10
-# define TSIZE_3D	10
-# define DEPTH		1.0
+# define MV_SPEED	6
+# define TSIZE_2D	8
+# define TSIZE_3D	64
+# define DEPTH		1.7
 # define DEF		8
 
 enum			e_datatype

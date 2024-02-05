@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   move_hooks.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 13:12:30 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/02/01 16:42:39 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/02/05 17:32:41 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int	ft_repos_minimap(t_game *game, int letter)
+/*int	ft_repos_minimap(t_game *game, int letter)
 {
 	int	y;
 	int	x;
@@ -74,7 +74,42 @@ int	ft_repos_minimap(t_game *game, int letter)
 		}
 	}
 	return (moved);
+}*/
+
+int ft_repos_minimap(t_game *game, int letter) {
+    int y = (int)game->player->minimap.y;
+    int x = (int)game->player->minimap.x;
+    int counter = 0;
+    int moved = 0;
+
+    // Determine direction based on letter value
+    int dy = (letter == 1) ? -1 : 0;
+    int dx = (letter == 1) ? 0 : -1;
+
+    while (y >= 0 && x >= 0 && game->map->map[y / 10][x / 10] && counter < 120) {
+        y += dy;
+        x += dx;
+        counter++;
+    }
+
+    // If counter reaches 120, continue moving until it's not possible
+    if (counter == 120) {
+        while (y >= 0 && x >= 0 && game->map->map[y / 10][x / 10]) {
+            y += dy;
+            x += dx;
+            moved++;
+        }
+        moved *= -1; // Adjust moved value
+    } else {
+        // Otherwise, continue moving in the same direction until counter reaches 120
+        while (counter < 120) {
+            moved++;
+            counter++;
+        }
+    }
+    return moved;
 }
+
 
 void	ft_repaint_minimap(t_game *game, int img)
 {
@@ -127,9 +162,9 @@ void	a_key(t_game *game)
 	t_coord	futur_pos;
 
 	futur_pos.x = game->player->minimap.x
-		+ cos(game->player->angrot + (PI / 2)) * MV_SPEED * 5;
+		+ cos(game->player->angrot + (PI / 2)) * MV_SPEED * 10;
 	futur_pos.y = game->player->minimap.y
-		- sin(game->player->angrot + (PI / 2)) * MV_SPEED * 5;
+		- sin(game->player->angrot + (PI / 2)) * MV_SPEED * 10;
 	if (ft_check_wall(futur_pos.x, game->player->minimap.y, game))
 		game->player->minimap.x += cos(game->player->angrot + (PI / 2))
 			* MV_SPEED;
@@ -145,9 +180,9 @@ void	d_key(t_game *game)
 	t_coord	futur_pos;
 
 	futur_pos.x = game->player->minimap.x
-		+ cos(game->player->angrot - (PI / 2)) * MV_SPEED * 5;
+		+ cos(game->player->angrot - (PI / 2)) * MV_SPEED * 10;
 	futur_pos.y = game->player->minimap.y
-		- sin(game->player->angrot - (PI / 2)) * MV_SPEED * 5;
+		- sin(game->player->angrot - (PI / 2)) * MV_SPEED * 10;
 	if (ft_check_wall(futur_pos.x, game->player->minimap.y, game))
 		game->player->minimap.x += cos(game->player->angrot - (PI / 2)) * MV_SPEED;
 	if (ft_check_wall(game->player->minimap.x, futur_pos.y, game))
