@@ -96,4 +96,5 @@ void	ft_update(void *param)
 	check_movement(game);
 	ft_rays(game);
 	ft_display_pov(game);
+	ft_animate(game);
 }
