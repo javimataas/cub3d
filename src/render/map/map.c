@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 19:14:05 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/01/31 15:47:53 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/02/05 15:30:57 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,6 @@ void	ft_init_colormap(t_game *game)
 		ft_error(game, ERR_MLX_FAIL);
 	game->map->img->instances[0].z = -1;
 	ft_background_map(game);
+	ft_paint_animation(game);
 }
 

@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 17:34:43 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/01/30 22:27:30 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/02/01 17:54:09 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,15 @@ t_game	*ft_init_map(char *path)
 		free (game);
 		exit (1);
 	}
-	game->minimap = malloc(sizeof(t_map));
+	game->minimap = malloc(sizeof(t_minimap));
 	if (!game->minimap)
+	{
+		printf("Error: Malloc fail\n");
+		free (game);
+		exit (1);
+	}
+	game->animation = malloc(sizeof(t_animation));
+	if (!game->animation)
 	{
 		printf("Error: Malloc fail\n");
 		free (game);

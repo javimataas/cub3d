@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:06:53 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/02/01 16:43:02 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/02/05 17:49:23 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,13 @@ typedef struct s_player
 	double	angrot;
 }				t_player;
 
+typedef struct s_animation
+{
+	mlx_image_t	*img;
+	mlx_image_t	*img_moved;
+	float		time;
+}				t_animation;
+
 typedef struct s_rays
 {
 	float				ang;
@@ -101,6 +108,7 @@ typedef struct s_game
 	mlx_t				*mlx;
 	t_map				*map;
 	t_minimap			*minimap;
+	t_animation			*animation;
 	t_player			*player;
 	t_rays				*rays;
 	t_coord				start;
@@ -220,5 +228,9 @@ void			ft_rays(t_game *game);
 /* Rays Utils */
 void			ft_check_h(t_game *game, t_coord *start, t_coord *end, int i);
 void			ft_check_v(t_game *game, t_coord *start, t_coord *end, int i);
+
+/* Animation */
+void			ft_paint_animation(t_game *game);
+void			ft_animate(t_game *game);
 
 #endif
