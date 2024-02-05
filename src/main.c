@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 19:32:55 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/02/01 16:21:56 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/02/05 17:55:59 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_cub3d(t_game *game)
 		ft_error(game, ERR_MLX_FAIL);
 	mlx_loop_hook(game->mlx, &ft_update, (void *)(game));
 	mlx_scroll_hook(game->mlx, &my_scrollhook, (void *)(game));
-	mlx_key_hook(game->mlx, &ft_init_hooks, (void *)(game));
+	mlx_key_hook(game->mlx, &ft_move_player, (void *)(game));
 	ft_load_textures(game);
 	ft_init_colormap(game);
 	ft_init_minimap(game);

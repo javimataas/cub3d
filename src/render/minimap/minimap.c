@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 13:53:48 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/01/31 16:26:48 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/02/05 18:40:36 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_coord	ft_paint_min(t_game *game, int y, int x, int color)
 	while (++i <= y)
 	{
 		n = -1;
-		while (++n != TSIZE_2D)
+		while (++n != 10)
 			ry++;
 	}
 	i = -1;
@@ -33,16 +33,16 @@ t_coord	ft_paint_min(t_game *game, int y, int x, int color)
 	while (++i <= x)
 	{
 		n = -1;
-		while (++n != TSIZE_2D)
+		while (++n != 10)
 			rx++;
 	}
 	i = -1;
 	coord.x = rx;
 	coord.y = ry;
-	while ((ry + (++i)) < (ry + TSIZE_2D))
+	while ((ry + (++i)) < (ry + 10))
 	{
 		n = -1;
-		while ((rx + (++n)) < (rx + TSIZE_2D))
+		while ((rx + (++n)) < (rx + 10))
 			mlx_put_pixel(game->minimap->img, rx + n, ry + i, color);
 	}
 	return (coord);
@@ -51,7 +51,7 @@ t_coord	ft_paint_min(t_game *game, int y, int x, int color)
 void	ft_paint_elements(t_game *game)
 {
 	int	y;
-	int	x; 
+	int	x;
 
 	y = 0;
 	while (game->map->map[y])
@@ -61,7 +61,8 @@ void	ft_paint_elements(t_game *game)
 		{
 			if (game->map->map[y][x] == '1')
 				ft_paint_min(game, y, x, 0x000000FF);
-			else if (game->map->map[y][x] == '0' || ft_strchr("NSEW", game->map->map[y][x]))
+			else if (game->map->map[y][x] == '0'
+				|| ft_strchr("NSEW", game->map->map[y][x]))
 				ft_paint_min(game, y, x, 0xFFFFFFFF);
 			x++;
 		}
@@ -93,7 +94,7 @@ int	ft_calc_size(t_game *game, int letter)
 			y++;
 		}
 	}
-	return ((long_line * TSIZE_2D) + TSIZE_2D); //añado +10 para que vaya bien, revisarlo bien
+	return ((long_line * 10) + 10); //añado +10 para que vaya bien, revisarlo bien
 }
 
 int	ft_pos_map(t_game *game, int letter)
