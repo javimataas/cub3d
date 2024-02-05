@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 13:12:30 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/02/01 16:42:39 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/02/05 15:36:57 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ void	w_key(t_game *game)
 	if (ft_check_wall(futur_pos.x, game->player->minimap.y, game) && ft_check_wall(game->player->minimap.x, futur_pos.y, game))
 	{
 		printf("ESQUINA Y: %f X: %f\n", game->player->minimap.y, game->player->minimap.x);
+		ft_animate(game);
 		ft_repaint_minimap(game, 1);
 	}
 }
