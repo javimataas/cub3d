@@ -6,7 +6,7 @@
 /*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 13:53:48 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/02/05 17:41:54 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2024/02/05 18:40:36 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,12 +110,12 @@ int	ft_pos_map(t_game *game, int letter)
 	moved = 0;
 	if (letter == 1)
 	{
-		while (y >= 0 && game->map->map[y][x] && counter < 10)
+		while (y >= 0 && game->map->map[y][x] && counter < 12)
 		{
 			y--;
 			counter++;
 		}
-		if (counter == 10)
+		if (counter == 12)
 		{
 			while (y >= 0 && game->map->map[y][x])
 			{
@@ -126,7 +126,7 @@ int	ft_pos_map(t_game *game, int letter)
 		}
 		else
 		{
-			while (counter < 10)
+			while (counter < 12)
 			{
 				moved++;
 				counter++;
@@ -135,12 +135,12 @@ int	ft_pos_map(t_game *game, int letter)
 	}
 	else if (letter == 0)
 	{
-		while (x >= 0 && game->map->map[y][x] && counter < 10)
+		while (x >= 0 && game->map->map[y][x] && counter < 12)
 		{
 			x--;
 			counter++;
 		}
-		if (counter == 10)
+		if (counter == 12)
 		{
 			while (x >= 0 && game->map->map[y][x])
 			{
@@ -151,7 +151,7 @@ int	ft_pos_map(t_game *game, int letter)
 		}
 		else
 		{
-			while (counter < 10)
+			while (counter < 12)
 			{
 				moved++;
 				counter++;

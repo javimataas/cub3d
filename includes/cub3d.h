@@ -6,7 +6,7 @@
 /*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:06:53 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/02/05 17:39:23 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2024/02/05 19:26:11 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,9 @@
 # define PI			3.14159
 # define S_HEIGHT	1080
 # define S_WIDTH	1920
-# define MV_SPEED	6
-# define TSIZE_2D	8
+# define MV_SPEED	5
 # define TSIZE_3D	64
-# define DEPTH		1.7
+# define DEPTH		2.0
 # define DEF		8
 
 enum			e_datatype
@@ -83,6 +82,7 @@ typedef struct s_minimap
 typedef struct s_player
 {
 	t_coord	minimap;
+	int		moving;
 	double	angrot;
 }				t_player;
 
@@ -179,8 +179,7 @@ void			ft_paint_elements(t_game *game);
 void			ft_init_colormap(t_game *game);
 
 /* Hooks */
-void			ft_init_hooks(mlx_key_data_t keydata, void *param);
-void			escape_hook(t_game *game);
+void			ft_move_player(mlx_key_data_t keydata, void *param);
 void			hook_screen(int32_t width, int32_t height, void *param);
 void			ft_update(void *param);
 
@@ -190,7 +189,8 @@ void			w_key(t_game *game);
 void			s_key(t_game *game);
 void			a_key(t_game *game);
 void			d_key(t_game *game);
-void			my_scrollhook(double xdelta, double ydelta, void* param);
+void			my_scrollhook(double xdelta, double ydelta, void *param);
+void			check_movement(t_game *game);
 
 /* Hooks Utils */
 void			ft_paint(t_game *game, int y, int x, int color);
