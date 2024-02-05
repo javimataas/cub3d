@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:06:53 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/02/05 15:36:34 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/02/05 17:49:23 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ typedef struct s_animation
 {
 	mlx_image_t	*img;
 	mlx_image_t	*img_moved;
+	float		time;
 }				t_animation;
 
 typedef struct s_rays

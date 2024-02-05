@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 17:27:35 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/02/01 18:18:05 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/02/05 17:49:15 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ void	ft_init_hooks(mlx_key_data_t keydata, void *param)
 		a_key(game);
 	else if (mlx_is_key_down(game->mlx, MLX_KEY_D))
 		d_key(game);
+	// else if (mlx_is_key_down(game->mlx, MLX_KEY_F))
+	// 	ft_animate(game);
 	else if (keydata.key == MLX_KEY_RIGHT)
 	{
 		printf("LEFT\n");
@@ -55,7 +57,6 @@ void	ft_init_hooks(mlx_key_data_t keydata, void *param)
 		if (game->player->angrot < 0)
 			game->player->angrot += 2 * PI;
 		printf("angulo: %f\n", game->player->angrot);
-		//left_key(game);
 	}
 	else if (keydata.key == MLX_KEY_LEFT)
 	{
@@ -64,10 +65,7 @@ void	ft_init_hooks(mlx_key_data_t keydata, void *param)
 		if (game->player->angrot >= 2 * PI)
 			game->player->angrot -= 2 * PI;
 		printf("angulo: %f\n", game->player->angrot);
-		//right_key(game);
 	}
-	// mlx_key_hook(game->mlx, &move_hooks, (void *)(game));
-	// mlx_resize_hook(game->mlx, &hook_screen, (void *)(game));
 }
 
 void	ft_update(void *param)
@@ -77,4 +75,5 @@ void	ft_update(void *param)
 	game = (t_game *)param;
 	ft_rays(game);
 	ft_display_pov(game);
+	ft_animate(game);
 }
