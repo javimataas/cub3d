@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_player.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 17:24:48 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/01/30 22:34:01 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/02/06 18:28:13 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ int	ft_check_player(t_game *game)
 			{
 				game->player->angrot = ft_radianes(ft_get_angle(game->map->map[i][j]));
 				game->map->player_pos.x = j;
-				game->player->minimap.x = j * 10;
+				game->player->minimap.x = j * TSIZE_3D;
 				game->map->player_pos.y = i;
-				game->player->minimap.y = i * 10;
+				game->player->minimap.y = i * TSIZE_3D;
 				player++;
 			}
 		}
