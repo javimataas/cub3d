@@ -6,7 +6,7 @@
 /*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 13:12:30 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/02/06 18:52:33 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2024/02/06 19:13:31 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	ft_repos_minimap(t_game *game, int letter)
 			y--;
 			counter++;
 		}
-		if (counter == 120)
+		if (counter == 12)
 		{
 			while (y >= 0 && game->map->map[y][x])
 			{
