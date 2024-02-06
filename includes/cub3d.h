@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:06:53 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/02/05 19:26:11 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2024/02/06 16:13:41 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,8 @@ typedef struct s_player
 
 typedef struct s_animation
 {
-	mlx_image_t	*img;
-	mlx_image_t	*img_moved;
+	mlx_image_t	*img[5];
+	// mlx_image_t	*img_moved;
 	float		time;
 }				t_animation;
 
