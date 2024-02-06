@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_hooks.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 13:12:30 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/02/05 19:30:22 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2024/02/06 15:47:12 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,8 +132,8 @@ void	w_key(t_game *game)
 		game->player->minimap.x += cos(game->player->angrot) * MV_SPEED;
 	if (ft_check_wall(game->player->minimap.x, futur_pos.y, game))
 		game->player->minimap.y -= sin(game->player->angrot) * MV_SPEED;
-	if (ft_check_wall(futur_pos.x, game->player->minimap.y, game) && ft_check_wall(game->player->minimap.x, futur_pos.y, game))
-		ft_repaint_minimap(game, 1);
+	// if (ft_check_wall(futur_pos.x, game->player->minimap.y, game) && ft_check_wall(game->player->minimap.x, futur_pos.y, game))
+	// 	ft_repaint_minimap(game, 1);
 }
 
 void	s_key(t_game *game)
@@ -146,8 +146,8 @@ void	s_key(t_game *game)
 		game->player->minimap.x -= cos(game->player->angrot) * MV_SPEED;
 	if (ft_check_wall(game->player->minimap.x, futur_pos.y, game))
 		game->player->minimap.y += sin(game->player->angrot) * MV_SPEED;
-	if (ft_check_wall(futur_pos.x, game->player->minimap.y, game) && ft_check_wall(game->player->minimap.x, futur_pos.y, game))
-		ft_repaint_minimap(game, 1);
+	// if (ft_check_wall(futur_pos.x, game->player->minimap.y, game) && ft_check_wall(game->player->minimap.x, futur_pos.y, game))
+	// 	ft_repaint_minimap(game, 1);
 }
 
 void	a_key(t_game *game)
@@ -162,8 +162,8 @@ void	a_key(t_game *game)
 		game->player->minimap.x += cos(game->player->angrot + (PI / 2)) * MV_SPEED;
 	if (ft_check_wall(game->player->minimap.x, futur_pos.y, game))
 		game->player->minimap.y -= sin(game->player->angrot + (PI / 2)) * MV_SPEED;
-	if (ft_check_wall(futur_pos.x, game->player->minimap.y, game) && ft_check_wall(game->player->minimap.x, futur_pos.y, game))
-		ft_repaint_minimap(game, 1);
+	// if (ft_check_wall(futur_pos.x, game->player->minimap.y, game) && ft_check_wall(game->player->minimap.x, futur_pos.y, game))
+	// 	ft_repaint_minimap(game, 1);
 }
 
 void	d_key(t_game *game)
@@ -178,8 +178,8 @@ void	d_key(t_game *game)
 		game->player->minimap.x += cos(game->player->angrot - (PI / 2)) * MV_SPEED;
 	if (ft_check_wall(game->player->minimap.x, futur_pos.y, game))
 		game->player->minimap.y -= sin(game->player->angrot - (PI / 2)) * MV_SPEED;
-	if (ft_check_wall(futur_pos.x, game->player->minimap.y, game) && ft_check_wall(game->player->minimap.x, futur_pos.y, game))
-		ft_repaint_minimap(game, 1);
+	// if (ft_check_wall(futur_pos.x, game->player->minimap.y, game) && ft_check_wall(game->player->minimap.x, futur_pos.y, game))
+	// 	ft_repaint_minimap(game, 1);
 }
 
 void	check_movement(t_game *game)
