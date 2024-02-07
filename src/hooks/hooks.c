@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 17:27:35 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/02/07 16:56:46 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/02/07 23:15:51 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	escape_hook(t_game *game)
 	mlx_close_window(game->mlx);
 	mlx_terminate(game->mlx);
 	ft_clear(game);
-	exit(1);
+	exit(0);
 }
 
 void	hook_screen(int32_t width, int32_t height, void *param)
