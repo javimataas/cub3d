@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 15:37:57 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/02/07 17:16:55 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/02/07 18:37:49 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_free_mlx_textures(t_game *game)
 	int	i;
 
 	i = 0;
-	while (i < 5)
+	while (i < 4)
 	{
 		if (game->textures[i] != NULL)
 		{
@@ -35,14 +35,9 @@ void	ft_free_t_texture(t_textures *texts)
 	while (texts)
 	{
 		aux = texts->next;
-		if (texts->id != NULL)
-		{
-			free (texts->id);
-			texts->id = NULL;
-		}
+		// ID NO SE LIBERA PORQUE ESTA A CASCOPPORRO
 		if (texts->path != NULL)
 		{
-			printf("%s\n", texts->path);
 			free (texts->path);
 			texts->path = NULL;
 		}

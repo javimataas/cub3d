@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 17:46:46 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/02/07 17:10:14 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/02/07 18:07:28 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,11 @@ void	ft_animate(t_game *game)
 	float	animation_switch_time;
 
 	animation_switch_time = 0.5f;
-	printf("delta_time: %f\n", game->mlx->delta_time);
 	game->animation->img_moved->instances[0].enabled = true;
 	game->animation->img->instances[0].enabled = false;
 	game->animation->time += game->mlx->delta_time;
 	if (game->animation->time >= animation_switch_time)
 	{
-		printf("ACUMULATOR %f\n", game->animation->time);
 		game->animation->img->instances[0].enabled = true;
 		game->animation->img_moved->instances[0].enabled = false;
 		game->animation->time = 0.0f;

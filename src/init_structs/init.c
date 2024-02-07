@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 17:34:43 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/02/01 17:54:09 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/02/07 19:42:02 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,8 @@ t_game	*ft_init_map(char *path)
 		free (game);
 		exit (1);
 	}
-	game->player = malloc(sizeof(t_coord));
-	if (!game->map)
+	game->player = malloc(sizeof(t_player));
+	if (!game->player)
 	{
 		printf("Error: Malloc fail\n");
 		free (game);
