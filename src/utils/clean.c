@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clean.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 15:37:57 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/02/07 19:51:54 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2024/02/07 22:11:10 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,12 @@ void	ft_free_mlx_textures(t_game *game)
 		{
 			mlx_delete_texture(game->textures[i]);
 			game->textures[i] = NULL;
+			printf("ELIMINADA TEXT: %d\n", i);
 		}
 		i++;
 	}
+	if (game->textures != NULL)
+		free (game->textures);
 }
 
 void	ft_free_t_texture(t_textures *texts)
@@ -64,6 +67,14 @@ void	ft_clear(t_game *game)
 {
 	ft_free_t_map(game->map);
 	ft_free_mlx_textures(game);
+	if (game->rays != NULL)
+		free (game->rays);
+	if (game->minimap != NULL)
+		free (game->minimap);
+	if (game->animation != NULL)
+		free (game->animation);
+	if (game->player != NULL)
+		free (game->player);
 	if (game->file != NULL)
 	{
 		ft_free_str_array(game->file);
