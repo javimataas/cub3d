@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+         #
+#    By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/16 19:23:22 by jmatas-p          #+#    #+#              #
-#    Updated: 2024/02/07 19:37:25 by jmatas-p         ###   ########.fr        #
+#    Updated: 2024/02/07 21:31:10 by jariza-o         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ HDRS		= 	includes
 LIBFT		=	libft/libft.a
 MLX42		=	MLX42/libmlx42.a
 
-CFLAGS		=	-Wall -Wextra -Werror
+CFLAGS		=	-Wall -Wextra -Werror -g
 GLFW_FLAGS	=	-framework Cocoa -framework OpenGL -framework IOKit -Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/"
 LINUX_DEP	=	$(PWD)/MLX42/libmlx42.a -Iinclude -ldl -lglfw -pthread -lm
 
