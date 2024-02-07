@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 19:14:05 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/02/07 15:48:39 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/02/07 17:07:17 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,27 +29,20 @@ void	ft_background_map(t_game *game)
 			c = aux->color;
 		aux = aux->next;
 	}
-	y = 0;
-	while (y < 540)
+	y = -1;
+	while (++y < 540)
 	{
-		x = 0;
+		x = -1;
 		if (y < 250)
-			x = 251;
-		while (x < game->final_s_width)
-		{
+			x = 250;
+		while (++x < game->final_s_width)
 			mlx_put_pixel(game->map->img, x, y, c);
-			x++;
-		}
-		y++;
 	}
 	while (y < S_HEIGHT)
 	{
-		x = 0;
-		while (x < game->final_s_width)
-		{
+		x = -1;
+		while (++x < game->final_s_width)
 			mlx_put_pixel(game->map->img, x, y, f);
-			x++;
-		}
 		y++;
 	}
 	game->map->img->instances[0].z = 0;

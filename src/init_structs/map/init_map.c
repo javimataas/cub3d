@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 16:57:41 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/01/30 22:59:16 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/02/07 17:04:45 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	ft_load_struct(t_game *game)
 		ft_error(game, ERR_MISS_TEXTS);
 }
 
-int		ft_check_id(char *line)
+int	ft_check_id(char *line)
 {
 	int	i;
 	int	n;
@@ -55,7 +55,7 @@ int		ft_check_id(char *line)
 	return (1);
 }
 
-void	ft_select_texts(t_game *game, char *line) // como estoy uasnado aux no dbería de perderse la referencia
+void	ft_select_texts(t_game *game, char *line)
 {
 	int			i;
 	int			n;

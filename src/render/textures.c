@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 18:07:15 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/01/30 22:41:26 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/02/07 17:11:00 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	ft_check_rgb(t_game *game, t_textures *texts)
 	int		n;
 
 	numbers = ft_split(texts->path, ',');
-	i = 0;
-	while (numbers && numbers[i])
+	i = -1;
+	while (numbers && numbers[++i])
 	{
 		n = -1;
 		while (numbers[i][++n])
@@ -34,10 +34,9 @@ void	ft_check_rgb(t_game *game, t_textures *texts)
 				}
 			}
 		}
-		i++;
 	}
-	i = 0;
-	while (numbers && numbers[i])
+	i = -1;
+	while (numbers && numbers[++i])
 	{
 		n = ft_atoi(numbers[i]);
 		if (n < 0 || n > 255)
@@ -45,7 +44,6 @@ void	ft_check_rgb(t_game *game, t_textures *texts)
 			ft_free_str_array(numbers);
 			ft_error(game, ERR_COLOR_FAIL);
 		}
-		i++;
 	}
 	ft_free_str_array(numbers);
 }
