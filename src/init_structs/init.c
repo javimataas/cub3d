@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 17:34:43 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/02/07 19:42:02 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/02/07 19:50:59 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,6 @@ void	ft_init_sizes(t_game *game)
 		game->final_s_width = game->pov_ang * 3;
 	else
 		game->final_s_width = game->pov_ang * 4;
-}
-
-void	ft_load_game_textures(t_game *game)
-{
-	game->textures = ft_calloc(sizeof(mlx_texture_t *), 4);
-	game->textures[0] = mlx_load_png(game->map->texts->path);
-	game->textures[1] = mlx_load_png(game->map->texts->next->path);
-	game->textures[2] = mlx_load_png(game->map->texts->next->next->path);
-	game->textures[3] = mlx_load_png(game->map->texts->next->next->next->path);
-	if (game->textures[0] == NULL || game->textures[1] == NULL
-		|| game->textures[2] == NULL || game->textures[3] == NULL)
-		return (ft_error(game, ERR_MLX_FAIL));
 }
 
 void	ft_set_map_size(t_game *game)
@@ -59,47 +47,45 @@ void	ft_set_map_size(t_game *game)
 	game->map->height = i;
 }
 
-t_game	*ft_init_map(char *path)
+void	free_game_structures(t_game *game)
+{
+	free(game->player);
+	free(game->animation);
+	free(game->minimap);
+	free(game->map);
+	free(game);
+}
+
+t_game	*allocate_game_structures(void)
 {
 	t_game	*game;
 
-	(void)path;
 	game = malloc(sizeof(t_game));
 	if (!game)
 	{
 		printf("Error: Malloc fail\n");
-		exit (1);
+		exit(1);
 	}
 	game->file = NULL;
 	game->map = malloc(sizeof(t_map));
-	if (!game->map)
-	{
-		printf("Error: Malloc fail\n");
-		free (game);
-		exit (1);
-	}
 	game->minimap = malloc(sizeof(t_minimap));
-	if (!game->minimap)
-	{
-		printf("Error: Malloc fail\n");
-		free (game);
-		exit (1);
-	}
 	game->animation = malloc(sizeof(t_animation));
-	if (!game->animation)
-	{
-		printf("Error: Malloc fail\n");
-		free (game);
-		exit (1);
-	}
 	game->player = malloc(sizeof(t_player));
-	if (!game->player)
+	if (!game->map || !game->minimap || !game->animation || !game->player)
 	{
 		printf("Error: Malloc fail\n");
-		free (game);
-		exit (1);
+		free_game_structures(game);
+		exit(1);
 	}
 	game->map->map = NULL;
+	return (game);
+}
+
+t_game	*ft_init_map(char *path)
+{
+	t_game	*game;
+
+	game = allocate_game_structures();
 	game->file = ft_read_file(path);
 	ft_init_sizes(game);
 	game->rays = malloc(sizeof(t_rays) * game->pov_ang);

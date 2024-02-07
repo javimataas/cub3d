@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 13:53:48 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/02/07 17:24:11 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/02/07 18:57:23 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,29 +20,17 @@ t_coord	ft_paint_min(t_game *game, int y, int x, int color)
 	int		rx;
 	t_coord	coord;
 
-	i = -1;
 	ry = 0;
-	while (++i <= y)
-	{
-		n = -1;
-		while (++n != 10)
-			ry++;
-	}
-	i = -1;
 	rx = 0;
-	while (++i <= x)
-	{
-		n = -1;
-		while (++n != 10)
-			rx++;
-	}
-	i = -1;
+	ft_block_loop(y, &ry);
+	ft_block_loop(x, &rx);
 	coord.x = rx;
 	coord.y = ry;
-	while ((ry + (++i)) < (ry + 10))
+	i = -1;
+	while (++i < 10)
 	{
 		n = -1;
-		while ((rx + (++n)) < (rx + 10))
+		while (++n < 10)
 			mlx_put_pixel(game->minimap->img, rx + n, ry + i, color);
 	}
 	return (coord);
@@ -95,75 +83,6 @@ int	ft_calc_size(t_game *game, int letter)
 		}
 	}
 	return ((long_line * 10) + 10);
-}
-
-int	ft_pos_map(t_game *game, int letter, int moving)
-{
-	int	y;
-	int	x;
-	int	counter;
-	int	moved;
-
-	y = game->map->player_pos.y;
-	x = game->map->player_pos.x;
-	if (moving)
-	{
-		y = (int)game->player->minimap.y / TSIZE_3D;
-		x = (int)game->player->minimap.x / TSIZE_3D;
-	}
-	counter = 0;
-	moved = 0;
-	if (letter == 1)
-	{
-		while (y >= 0 && game->map->map[y][x] && counter < 12)
-		{
-			y--;
-			counter++;
-		}
-		if (counter == 12)
-		{
-			while (y >= 0 && game->map->map[y][x])
-			{
-				y--;
-				moved++;
-			}
-			moved *= -1;
-		}
-		else
-		{
-			while (counter < 12)
-			{
-				moved++;
-				counter++;
-			}
-		}
-	}
-	else if (letter == 0)
-	{
-		while (x >= 0 && game->map->map[y][x] && counter < 12)
-		{
-			x--;
-			counter++;
-		}
-		if (counter == 12)
-		{
-			while (x >= 0 && game->map->map[y][x])
-			{
-				x--;
-				moved++;
-			}
-			moved *= -1;
-		}
-		else
-		{
-			while (counter < 12)
-			{
-				moved++;
-				counter++;
-			}
-		}
-	}
-	return (moved * 10);
 }
 
 void	ft_paint_minimap(t_game *game, int img, int moving)

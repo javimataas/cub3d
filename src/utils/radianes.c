@@ -6,13 +6,13 @@
 /*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 15:28:17 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/01/17 18:14:15 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2024/02/07 19:41:08 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-double	ft_radianes(double angolugiro)
+double	ft_rads(double angolugiro)
 {
 	return (angolugiro * (PI / 180));
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clean.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 15:37:57 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/02/07 18:37:49 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/02/07 19:51:54 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	ft_free_t_texture(t_textures *texts)
 	while (texts)
 	{
 		aux = texts->next;
-		// ID NO SE LIBERA PORQUE ESTA A CASCOPPORRO
 		if (texts->path != NULL)
 		{
 			free (texts->path);

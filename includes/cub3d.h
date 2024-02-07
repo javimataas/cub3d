@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:06:53 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/02/07 17:22:50 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/02/07 19:41:05 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define S_WIDTH	1920
 # define MV_SPEED	5
 # define TSIZE_3D	64
-# define DEPTH		2.0
+# define DEPTH		1.6
 # define DEF		8
 
 enum			e_datatype
@@ -148,7 +148,8 @@ int				ft_is_empty(char *line);
 int				ft_is_texts(char *line);
 int				ft_check_texts(t_game *game);
 char			**ft_read_file(char *path);
-int				ft_reserve_matrix(char *path);
+int				ft_res_mx(char *path);
+void	        ft_load_game_textures(t_game *game);
 
 /* Map Checker */
 void			ft_error(t_game *game, int error);
@@ -187,6 +188,7 @@ void			ft_paint_minimap(t_game *game, int img, int moving);
 int				ft_pos_map(t_game *game, int letter, int moving);
 int				ft_calc_size(t_game *game, int letter);
 void			ft_paint_elements(t_game *game);
+void	        ft_block_loop(int y, int *ry);
 
 /* Floor and Cloud */
 void			ft_init_colormap(t_game *game);
@@ -218,7 +220,7 @@ void			ft_print_texts(t_game game);
 void			ft_print_map(t_game *game);
 
 /* Convert grades to radianes */
-double			ft_radianes(double angolugiro);
+double			ft_rads(double angolugiro);
 
 /* POV (3D) */
 int				ft_display_pov(t_game *game);

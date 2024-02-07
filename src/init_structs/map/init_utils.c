@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 15:30:49 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/02/07 17:04:59 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/02/07 19:20:31 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ char	**ft_read_file(char *path)
 	int		i;
 	int		is_map;
 
-	matrix = (char **)ft_calloc((ft_reserve_matrix(path) + 1), sizeof(char *)); // +1 no deberia de ser necesario
+	matrix = (char **)ft_calloc((ft_res_mx(path) + 1), sizeof(char *));
 	fd = open(path, O_RDONLY);
 	line = get_next_line(fd);
 	i = 0;
@@ -98,7 +98,7 @@ char	**ft_read_file(char *path)
 	return (matrix);
 }
 
-int	ft_reserve_matrix(char *path)
+int	ft_res_mx(char *path)
 {
 	char	*line;
 	int		fd;

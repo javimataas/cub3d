@@ -3,14 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 18:07:15 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/02/07 17:11:00 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/02/07 19:17:39 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
+
+void	check_rgb_values(t_game *game, char **numbers)
+{
+	int	i;
+	int	n;
+
+	i = -1;
+	while (numbers && numbers[++i])
+	{
+		n = ft_atoi(numbers[i]);
+		if (n < 0 || n > 255)
+		{
+			ft_free_str_array(numbers);
+			ft_error(game, ERR_COLOR_FAIL);
+		}
+	}
+}
 
 void	ft_check_rgb(t_game *game, t_textures *texts)
 {
@@ -25,26 +42,14 @@ void	ft_check_rgb(t_game *game, t_textures *texts)
 		n = -1;
 		while (numbers[i][++n])
 		{
-			if (numbers[i][n] != '\n')
+			if (numbers[i][n] != '\n' && !ft_isdigit(numbers[i][n]))
 			{
-				if (numbers[i][n] < '0' || numbers[i][n] > '9')
-				{
-					ft_free_str_array(numbers);
-					ft_error(game, ERR_COLOR_FAIL);
-				}
+				ft_free_str_array(numbers);
+				ft_error(game, ERR_COLOR_FAIL);
 			}
 		}
 	}
-	i = -1;
-	while (numbers && numbers[++i])
-	{
-		n = ft_atoi(numbers[i]);
-		if (n < 0 || n > 255)
-		{
-			ft_free_str_array(numbers);
-			ft_error(game, ERR_COLOR_FAIL);
-		}
-	}
+	check_rgb_values(game, numbers);
 	ft_free_str_array(numbers);
 }
 

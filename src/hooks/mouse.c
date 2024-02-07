@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   mouse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 16:06:32 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/02/01 16:25:20 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/02/07 19:41:42 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void	my_scrollhook(double xdelta, double ydelta, void* param)
+void	my_scrollhook(double xdelta, double ydelta, void *param)
 {
 	t_game	*game;
 

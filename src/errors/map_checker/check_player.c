@@ -6,13 +6,13 @@
 /*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 17:24:48 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/02/06 18:28:13 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2024/02/07 19:40:57 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/cub3d.h"
 
-double	ft_get_angle(char c)
+double	ft_angle(char c)
 {
 	if (c == 'N')
 		return (90);
@@ -40,7 +40,7 @@ int	ft_check_player(t_game *game)
 		{
 			if (ft_strchr("NSEW", game->map->map[i][j]))
 			{
-				game->player->angrot = ft_radianes(ft_get_angle(game->map->map[i][j]));
+				game->player->angrot = ft_rads(ft_angle(game->map->map[i][j]));
 				game->map->player_pos.x = j;
 				game->player->minimap.x = j * TSIZE_3D;
 				game->map->player_pos.y = i;
