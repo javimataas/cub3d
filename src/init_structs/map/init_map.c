@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 16:57:41 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/02/07 19:31:44 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2024/02/07 23:12:53 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,41 @@ int	ft_check_id(char *line)
 	return (1);
 }
 
+char	*ft_get_id(t_game *game, char *line, int *i)
+{
+	int		n;
+	char	*id;
+
+	if (!ft_check_id(line))
+		ft_error(game, ERR_WRNG_ID);
+	id = (char *)ft_calloc(3, sizeof(char));
+	if (!id)
+		return (NULL);
+	n = 0;
+	while (line && line[(*i)] && (line[(*i)] == ' ' || line[(*i)] == '\t'))
+		(*i)++;
+	while (line && line[(*i)] && (line[(*i)] != ' ' && line[(*i)] != '\t'))
+	{
+		id[n] = line[(*i)];
+		n++;
+		(*i)++;
+	}
+	return (id);
+}
+
+int	ft_get_len(char *line, int *i)
+{
+	int	len;
+
+	len = 0;
+	while (line && line[(*i)])
+	{
+		(*i)++;
+		len++;
+	}
+	return (len);
+}
+
 void	ft_select_texts(t_game *game, char *line)
 {
 	int			i;
@@ -63,32 +98,14 @@ void	ft_select_texts(t_game *game, char *line)
 	int			len;
 	t_textures	*aux;
 
-	if (!ft_check_id(line))
-		ft_error(game, ERR_WRNG_ID);
-	id = (char *)ft_calloc(3, sizeof(char));
-	if (!id)
-		ft_error(game, ERR_MLLC_FAIL);
 	i = 0;
-	n = 0;
-	while (line && line[i] && (line[i] == ' ' || line[i] == '\t'))
-		i++;
-	while (line && line[i] && (line[i] != ' ' && line[i] != '\t'))
-	{
-		id[n] = line[i];
-		n++;
-		i++;
-	}
+	id = ft_get_id(game, line, &i);
 	while (line && line[i] && (line[i] == ' ' || line[i] == '\t'))
 		i++;
 	if (line[i] == '\0' || line[i] == '\n')
 		ft_error(game, ERR_EMPT_TEXTS);
-	len = 0;
 	n = i;
-	while (line && line[i])
-	{
-		i++;
-		len++;
-	}
+	len = ft_get_len(line, &i);
 	aux = game->map->texts;
 	while (aux && ft_strcmp(id, aux->id))
 		aux = aux->next;

@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 15:37:57 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/02/07 22:11:10 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/02/07 23:14:21 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	ft_free_mlx_textures(t_game *game)
 		{
 			mlx_delete_texture(game->textures[i]);
 			game->textures[i] = NULL;
-			printf("ELIMINADA TEXT: %d\n", i);
 		}
 		i++;
 	}
