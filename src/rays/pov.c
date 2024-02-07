@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 17:57:11 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/01/31 15:46:42 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/02/07 15:47:34 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	init_pov_display(t_game *game)
 	game->img3d = mlx_new_image(game->mlx, game->final_s_width, S_HEIGHT);
 	if (!game->img3d || (mlx_image_to_window(game->mlx, game->img3d, 0, 0) < 0))
 		return ;
-	game->img3d->instances[0].z = 0; //ESTABA A 1
+	game->img3d->instances[0].z = 1; //ESTABA A 1
 }
 
 void	ft_get_pix_x(t_game *g, int i, mlx_texture_t **text)
@@ -63,8 +63,9 @@ void	ft_draw_pixel(t_game *game, mlx_texture_t *texture, int start_y)
 			&& (start_y + px < (S_HEIGHT - 1) && start_y + px >= 0))
 		{
 			game->c_pix = ft_get_pix_color(texture, game->pix.x, game->pix.y);
-			mlx_put_pixel(game->img3d, game->start.x,
-				start_y + px, game->c_pix);
+			if (game->start.x > 250 || (start_y + px) > 250)
+				mlx_put_pixel(game->img3d, game->start.x,
+					start_y + px, game->c_pix);
 		}
 		px++;
 		game->pix.y += game->ty_step;

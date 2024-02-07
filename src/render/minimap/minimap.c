@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 13:53:48 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/02/05 18:40:36 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2024/02/07 16:18:43 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ int	ft_calc_size(t_game *game, int letter)
 	return ((long_line * 10) + 10); //añado +10 para que vaya bien, revisarlo bien
 }
 
-int	ft_pos_map(t_game *game, int letter)
+int	ft_pos_map(t_game *game, int letter, int moving)
 {
 	int	y;
 	int	x;
@@ -106,6 +106,11 @@ int	ft_pos_map(t_game *game, int letter)
 
 	y = game->map->player_pos.y;
 	x = game->map->player_pos.x;
+	if (moving)
+	{
+		y = (int)game->player->minimap.y / TSIZE_3D;
+		x = (int)game->player->minimap.x / TSIZE_3D;
+	}
 	counter = 0;
 	moved = 0;
 	if (letter == 1)
@@ -161,19 +166,25 @@ int	ft_pos_map(t_game *game, int letter)
 	return (moved * 10);
 }
 
-void	ft_paint_minimap(t_game *game, int img)
+void	ft_paint_minimap(t_game *game, int img, int moving)
 {
 	if (img)
 		mlx_delete_image(game->mlx, game->minimap->img);
-	game->minimap->img = mlx_new_image(game->mlx, ft_calc_size(game, 1), ft_calc_size(game, 0)); // CALCULAR TAMAÑO QUE VA A TENER EL MAPA
-	if (mlx_image_to_window(game->mlx, game->minimap->img, ft_pos_map(game, 0), ft_pos_map(game, 1)) < 0) // CALCULAR DONDE EMPIEZA EL MAPA
-		ft_error(game, ERR_MLX_FAIL);
+	game->minimap->img = mlx_new_image(game->mlx, ft_calc_size(game, 1), ft_calc_size(game, 0));
+	if (!moving)
+	{
+		if (mlx_image_to_window(game->mlx, game->minimap->img, ft_pos_map(game, 0, 0), ft_pos_map(game, 1, 0)) < 0)
+			ft_error(game, ERR_MLX_FAIL);
+	}
+	else if (moving)
+		if (mlx_image_to_window(game->mlx, game->minimap->img, ft_pos_map(game, 0, 1), ft_pos_map(game, 1, 1)) < 0)
+			ft_error(game, ERR_MLX_FAIL);
 	ft_paint_elements(game);
-	game->minimap->img->instances[0].z = 1;
+	game->minimap->img->instances[0].z = -1;
 }
 
 void	ft_init_minimap(t_game *game)
 {
 	ft_paint_player(game);
-	ft_paint_minimap(game, 0);
+	ft_paint_minimap(game, 0, 0);
 }
