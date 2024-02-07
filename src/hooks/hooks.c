@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 17:27:35 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/02/06 16:50:55 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/02/07 16:56:46 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,15 +86,4 @@ void	ft_move_player(mlx_key_data_t keydata, void *param)
 		press_key(keydata, param);
 	if (keydata.action == MLX_RELEASE)
 		release_key(keydata, param);
-}
-
-void	ft_update(void *param)
-{
-	t_game	*game;
-
-	game = (t_game *)param;
-	check_movement(game);
-	ft_rays(game);
-	ft_display_pov(game);
-	ft_animate(game);
 }

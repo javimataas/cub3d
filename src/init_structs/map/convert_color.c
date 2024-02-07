@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 16:23:20 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/01/30 22:42:05 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/02/07 17:04:06 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ void	ft_pixel(t_game *game)
 		if (ft_strchr("FC", aux->id[0]))
 		{
 			rgb = ft_split(aux->path, ',');
-			aux->color = (ft_atoi(rgb[0]) << 24 | ft_atoi(rgb[1]) << 16 | ft_atoi(rgb[2]) << 8 | 0xFF);
+			aux->color = (ft_atoi(rgb[0]) << 24 | \
+			ft_atoi(rgb[1]) << 16 | ft_atoi(rgb[2]) << 8 | 0xFF);
 			if (rgb != NULL)
 				ft_free_str_array(rgb);
 			rgb = NULL;
