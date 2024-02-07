@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 13:53:48 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/02/07 16:18:43 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/02/07 17:24:11 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int	ft_calc_size(t_game *game, int letter)
 			y++;
 		}
 	}
-	return ((long_line * 10) + 10); //añado +10 para que vaya bien, revisarlo bien
+	return ((long_line * 10) + 10);
 }
 
 int	ft_pos_map(t_game *game, int letter, int moving)
@@ -170,14 +170,17 @@ void	ft_paint_minimap(t_game *game, int img, int moving)
 {
 	if (img)
 		mlx_delete_image(game->mlx, game->minimap->img);
-	game->minimap->img = mlx_new_image(game->mlx, ft_calc_size(game, 1), ft_calc_size(game, 0));
+	game->minimap->img = mlx_new_image(game->mlx, \
+	ft_calc_size(game, 1), ft_calc_size(game, 0));
 	if (!moving)
 	{
-		if (mlx_image_to_window(game->mlx, game->minimap->img, ft_pos_map(game, 0, 0), ft_pos_map(game, 1, 0)) < 0)
+		if (mlx_image_to_window(game->mlx, game->minimap->img, \
+		ft_pos_map(game, 0, 0), ft_pos_map(game, 1, 0)) < 0)
 			ft_error(game, ERR_MLX_FAIL);
 	}
 	else if (moving)
-		if (mlx_image_to_window(game->mlx, game->minimap->img, ft_pos_map(game, 0, 1), ft_pos_map(game, 1, 1)) < 0)
+		if (mlx_image_to_window(game->mlx, game->minimap->img, \
+		ft_pos_map(game, 0, 1), ft_pos_map(game, 1, 1)) < 0)
 			ft_error(game, ERR_MLX_FAIL);
 	ft_paint_elements(game);
 	game->minimap->img->instances[0].z = -1;

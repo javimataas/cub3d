@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clean.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 15:37:57 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/01/10 17:23:22 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2024/02/07 17:16:55 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,11 @@ void	ft_free_t_texture(t_textures *texts)
 	while (texts)
 	{
 		aux = texts->next;
+		if (texts->id != NULL)
+		{
+			free (texts->id);
+			texts->id = NULL;
+		}
 		if (texts->path != NULL)
 		{
 			printf("%s\n", texts->path);
