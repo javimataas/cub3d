@@ -6,7 +6,7 @@
 /*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 19:32:55 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/02/07 19:40:03 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2024/02/08 19:04:13 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ft_cub3d(t_game *game)
 	ft_init_minimap(game);
 	mlx_loop(game->mlx);
 	mlx_terminate(game->mlx);
-	ft_clear(game);
+	ft_clear(game, 0);
 }
 
 int	main(int argc, char **argv)

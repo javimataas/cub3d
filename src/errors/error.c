@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:21:05 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/02/07 16:45:16 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/02/08 18:56:52 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,17 @@
 
 static void	ft_error_2(int error);
 
+void	ft_texts_error(int *flag, char *error)
+{
+	*flag = 1;
+	ft_printf("%s", error);
+}
+
 void	ft_error(t_game *game, int error)
 {
+	int	flag;
+
+	flag = 0;
 	if (error == ERR_WRNG_ARGS)
 	{
 		printf("Error: Wrong number of arguments\n");
@@ -29,14 +38,14 @@ void	ft_error(t_game *game, int error)
 	else if (error == ERR_MLLC_FAIL)
 		printf("Error: Malloc fail\n");
 	else if (error == ERR_DUP_TEXTS)
-		printf("Error: A coordenate texture is duplicated\n");
+		ft_texts_error(&flag, "Error: A coordenate texture is duplicated\n");
 	else if (error == ERR_MISS_TEXTS)
-		printf("Error: A coordenate texture is missing\n");
+		ft_texts_error(&flag, "Error: A coordenate texture is missing\n");
 	else if (error == ERR_EMPT_TEXTS)
 		printf("Error: A path texture is empty\n");
 	else
 		ft_error_2(error);
-	ft_clear(game);
+	ft_clear(game, flag);
 	exit(1);
 }
 

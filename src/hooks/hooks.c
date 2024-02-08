@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 17:27:35 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/02/07 23:15:51 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/02/08 18:52:30 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	escape_hook(t_game *game)
 {
 	mlx_close_window(game->mlx);
 	mlx_terminate(game->mlx);
-	ft_clear(game);
+	ft_clear(game, 0);
 	exit(0);
 }
 

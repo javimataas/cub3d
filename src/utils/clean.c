@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clean.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 15:37:57 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/02/07 23:14:21 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/02/08 19:01:55 by jmatas-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,12 @@ void	ft_free_mlx_textures(t_game *game)
 {
 	int	i;
 
-	i = 0;
-	while (i < 4)
+	i = -1;
+	while (++i < 4 && game->textures[i])
 	{
-		if (game->textures[i] != NULL)
-		{
-			mlx_delete_texture(game->textures[i]);
-			game->textures[i] = NULL;
-		}
-		i++;
+		ft_printf("%s\n", game->textures[i]);
+		mlx_delete_texture(game->textures[i]);
+		game->textures[i] = NULL;
 	}
 	if (game->textures != NULL)
 		free (game->textures);
@@ -62,10 +59,11 @@ void	ft_free_t_map(t_map *map)
 	map = NULL;
 }
 
-void	ft_clear(t_game *game)
+void	ft_clear(t_game *game, int flag)
 {
 	ft_free_t_map(game->map);
-	ft_free_mlx_textures(game);
+	if (!flag)
+		ft_free_mlx_textures(game);
 	if (game->rays != NULL)
 		free (game->rays);
 	if (game->minimap != NULL)
