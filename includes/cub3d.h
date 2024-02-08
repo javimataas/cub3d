@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:06:53 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/02/08 19:00:28 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2024/02/08 20:48:22 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ typedef struct s_minimap
 {
 	mlx_image_t	*img;
 	mlx_image_t	*player;
-	t_coord		img_paint; //LO HE AÑADIDO Y AHORA NO LO USO
+	t_coord		img_paint;
 }				t_minimap;
 
 typedef struct s_player

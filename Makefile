@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+         #
+#    By: jariza-o <jariza-o@student.42malaga.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/11/16 19:23:22 by jmatas-p          #+#    #+#              #
-#    Updated: 2024/02/08 15:54:24 by jariza-o         ###   ########.fr        #
+#    Created: 2022/09/22 15:56:20 by jmatas-p          #+#    #+#              #
+#    Updated: 2024/02/08 20:57:40 by jariza-o         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -84,7 +84,6 @@ norminette:
 			@echo "$(YELLOW)Norminette libft.$(END)"
 			@norminette ./libft
 			@echo "$(YELLOW)Norminette cub3d.$(END)"
-			@norminette ./Makefile
 			@norminette ./includes
 			@norminette ./src
 
