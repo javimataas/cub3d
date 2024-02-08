@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 19:32:55 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/02/08 19:04:13 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2024/02/08 22:09:50 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../includes_bonus/cub3d_bonus.h"
 
 void	ft_leaks(void)
 {
@@ -23,9 +23,11 @@ void	ft_cub3d(t_game *game)
 	if (!game->mlx)
 		ft_error(game, ERR_MLX_FAIL);
 	mlx_loop_hook(game->mlx, &ft_update, (void *)(game));
+	mlx_scroll_hook(game->mlx, &my_scrollhook, (void *)(game));
 	mlx_key_hook(game->mlx, &ft_move_player, (void *)(game));
 	ft_load_textures(game);
 	ft_init_colormap(game);
+	ft_init_minimap(game);
 	mlx_loop(game->mlx);
 	mlx_terminate(game->mlx);
 	ft_clear(game, 0);

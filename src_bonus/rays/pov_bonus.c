@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pov.c                                              :+:      :+:    :+:   */
+/*   pov_bonus.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 17:57:11 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/02/07 17:05:48 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/02/08 22:10:42 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "../../includes_bonus/cub3d_bonus.h"
 
 void	init_pov_display(t_game *game)
 {
@@ -63,8 +63,9 @@ void	ft_draw_pixel(t_game *game, mlx_texture_t *texture, int start_y)
 			&& (start_y + px < (S_HEIGHT - 1) && start_y + px >= 0))
 		{
 			game->c_pix = ft_get_pix_color(texture, game->pix.x, game->pix.y);
-			mlx_put_pixel(game->img3d, game->start.x,
-				start_y + px, game->c_pix);
+			if (game->start.x > 250 || (start_y + px) > 250)
+				mlx_put_pixel(game->img3d, game->start.x,
+					start_y + px, game->c_pix);
 		}
 		px++;
 		game->pix.y += game->ty_step;

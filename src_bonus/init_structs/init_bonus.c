@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   init_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 17:34:43 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/02/07 19:50:59 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2024/02/08 22:10:57 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "../../includes_bonus/cub3d_bonus.h"
 
 void	ft_init_sizes(t_game *game)
 {
@@ -50,6 +50,8 @@ void	ft_set_map_size(t_game *game)
 void	free_game_structures(t_game *game)
 {
 	free(game->player);
+	free(game->animation);
+	free(game->minimap);
 	free(game->map);
 	free(game);
 }
@@ -66,8 +68,10 @@ t_game	*allocate_game_structures(void)
 	}
 	game->file = NULL;
 	game->map = malloc(sizeof(t_map));
+	game->minimap = malloc(sizeof(t_minimap));
+	game->animation = malloc(sizeof(t_animation));
 	game->player = malloc(sizeof(t_player));
-	if (!game->map || !game->player)
+	if (!game->map || !game->minimap || !game->animation || !game->player)
 	{
 		printf("Error: Malloc fail\n");
 		free_game_structures(game);

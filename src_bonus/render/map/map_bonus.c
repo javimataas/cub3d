@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.c                                              :+:      :+:    :+:   */
+/*   map_bonus.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 19:14:05 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/02/07 19:09:13 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2024/02/08 22:10:32 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/cub3d.h"
+#include "../../../includes_bonus/cub3d_bonus.h"
 
 void	ft_search_colors(t_textures *textures, int *f_color, int *c_color)
 {
@@ -37,6 +37,8 @@ void	ft_draw_up_bg(t_game *game, int c_color)
 	while (++y < 540)
 	{
 		x = -1;
+		if (y < 250)
+			x = 250;
 		while (++x < game->final_s_width)
 			mlx_put_pixel(game->map->img, x, y, c_color);
 	}
@@ -80,4 +82,5 @@ void	ft_init_colormap(t_game *game)
 		ft_error(game, ERR_MLX_FAIL);
 	game->map->img->instances[0].z = -1;
 	ft_bg_map(game);
+	ft_paint_animation(game);
 }
