@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move_hooks.c                                       :+:      :+:    :+:   */
+/*   move_hooks_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 13:12:30 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/02/07 17:02:45 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/02/08 22:11:12 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "../../includes_bonus/cub3d_bonus.h"
 
 void	w_key(t_game *game)
 {
@@ -24,6 +24,9 @@ void	w_key(t_game *game)
 		game->player->minimap.x += cos(game->player->angrot) * MV_SPEED;
 	if (ft_check_wall(game->player->minimap.x, futur_pos.y, game))
 		game->player->minimap.y -= sin(game->player->angrot) * MV_SPEED;
+	if (ft_check_wall(futur_pos.x, game->player->minimap.y, game) || \
+	ft_check_wall(game->player->minimap.x, futur_pos.y, game))
+		ft_paint_minimap(game, 1, 1);
 }
 
 void	s_key(t_game *game)
@@ -38,6 +41,9 @@ void	s_key(t_game *game)
 		game->player->minimap.x -= cos(game->player->angrot) * MV_SPEED;
 	if (ft_check_wall(game->player->minimap.x, futur_pos.y, game))
 		game->player->minimap.y += sin(game->player->angrot) * MV_SPEED;
+	if (ft_check_wall(futur_pos.x, game->player->minimap.y, game) || \
+	ft_check_wall(game->player->minimap.x, futur_pos.y, game))
+		ft_paint_minimap(game, 1, 1);
 }
 
 void	a_key(t_game *game)
@@ -56,6 +62,9 @@ void	a_key(t_game *game)
 	if (ft_check_wall(game->player->minimap.x, futur_pos.y, game))
 		game->player->minimap.y -= sin(game->player->angrot + \
 		(PI / 2)) * MV_SPEED;
+	if (ft_check_wall(futur_pos.x, game->player->minimap.y, game) || \
+	ft_check_wall(game->player->minimap.x, futur_pos.y, game))
+		ft_paint_minimap(game, 1, 1);
 }
 
 void	d_key(t_game *game)
@@ -74,6 +83,9 @@ void	d_key(t_game *game)
 	if (ft_check_wall(game->player->minimap.x, futur_pos.y, game))
 		game->player->minimap.y -= sin(game->player->angrot - \
 		(PI / 2)) * MV_SPEED;
+	if (ft_check_wall(futur_pos.x, game->player->minimap.y, game) || \
+	ft_check_wall(game->player->minimap.x, futur_pos.y, game))
+		ft_paint_minimap(game, 1, 1);
 }
 
 void	check_movement(t_game *game)

@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:06:53 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/02/08 20:48:22 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/02/08 22:06:35 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef CUB3D_BONUS_H
+# define CUB3D_BONUS_H
 
 # include "../MLX42/include/MLX42/MLX42.h"
 # include "../libft/libft.h"
@@ -72,12 +72,26 @@ typedef struct s_map
 	int			width;
 }				t_map;
 
+typedef struct s_minimap
+{
+	mlx_image_t	*img;
+	mlx_image_t	*player;
+	t_coord		img_paint;
+}				t_minimap;
+
 typedef struct s_player
 {
 	t_coord	minimap;
 	int		moving;
 	double	angrot;
 }				t_player;
+
+typedef struct s_animation
+{
+	mlx_image_t	*img;
+	mlx_image_t	*img_moved;
+	float		time;
+}				t_animation;
 
 typedef struct s_rays
 {
@@ -93,6 +107,8 @@ typedef struct s_game
 	char				**file;
 	mlx_t				*mlx;
 	t_map				*map;
+	t_minimap			*minimap;
+	t_animation			*animation;
 	t_player			*player;
 	t_rays				*rays;
 	t_coord				start;
@@ -166,6 +182,14 @@ int				ft_contains_str(char *str, char *container);
 void			ft_load_textures(t_game *game);
 
 /* MAP */
+/* Minimap */
+void			ft_init_minimap(t_game *game);
+void			ft_paint_player(t_game *game);
+void			ft_paint_minimap(t_game *game, int img, int moving);
+int				ft_pos_map(t_game *game, int letter, int moving);
+int				ft_calc_size(t_game *game, int letter);
+void			ft_paint_elements(t_game *game);
+void			ft_block_loop(int y, int *ry);
 
 /* Floor and Cloud */
 void			ft_init_colormap(t_game *game);
@@ -210,5 +234,9 @@ void			ft_rays(t_game *game);
 /* Rays Utils */
 void			ft_check_h(t_game *game, t_coord *start, t_coord *end, int i);
 void			ft_check_v(t_game *game, t_coord *start, t_coord *end, int i);
+
+/* Animation */
+void			ft_paint_animation(t_game *game);
+void			ft_animate(t_game *game);
 
 #endif

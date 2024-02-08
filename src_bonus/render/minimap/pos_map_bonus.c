@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/cub3d.h"
+#include "../../../includes_bonus/cub3d_bonus.h"
 
 void	ft_move_up(t_game *game, int *y, int *x, int *moved)
 {

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clean.c                                            :+:      :+:    :+:   */
+/*   clean_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 15:37:57 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/02/08 19:01:55 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2024/02/08 22:10:09 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "../../includes_bonus/cub3d_bonus.h"
 
 void	ft_free_mlx_textures(t_game *game)
 {
@@ -66,6 +66,10 @@ void	ft_clear(t_game *game, int flag)
 		ft_free_mlx_textures(game);
 	if (game->rays != NULL)
 		free (game->rays);
+	if (game->minimap != NULL)
+		free (game->minimap);
+	if (game->animation != NULL)
+		free (game->animation);
 	if (game->player != NULL)
 		free (game->player);
 	if (game->file != NULL)

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   animations.c                                       :+:      :+:    :+:   */
+/*   animations_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 17:46:46 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/02/07 18:07:28 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/02/08 22:10:19 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "../../includes_bonus/cub3d_bonus.h"
 
 void	ft_paint_animation(t_game *game)
 {

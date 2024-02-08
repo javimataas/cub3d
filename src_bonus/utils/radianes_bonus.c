@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   update.c                                           :+:      :+:    :+:   */
+/*   radianes_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/07 16:56:27 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/02/07 16:56:49 by jariza-o         ###   ########.fr       */
+/*   Created: 2023/12/14 15:28:17 by jariza-o          #+#    #+#             */
+/*   Updated: 2024/02/08 22:10:00 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "../../includes_bonus/cub3d_bonus.h"
 
-void	ft_update(void *param)
+double	ft_rads(double angolugiro)
 {
-	t_game	*game;
-
-	game = (t_game *)param;
-	check_movement(game);
-	ft_rays(game);
-	ft_display_pov(game);
+	return (angolugiro * (PI / 180));
 }
