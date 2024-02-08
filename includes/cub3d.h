@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:06:53 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/02/07 19:41:05 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2024/02/08 15:04:17 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,7 @@ void			ft_lstadd_back_texts(t_textures **lst, t_textures *new);
 
 /* Load Textures in Struct */
 void			ft_load_struct(t_game *game);
+int				ft_check_id(char *line);
 void			ft_select_texts(t_game *game, char *line);
 void			ft_pixel(t_game *game);
 
