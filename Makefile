@@ -6,7 +6,7 @@
 #    By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/16 19:23:22 by jmatas-p          #+#    #+#              #
-#    Updated: 2024/02/07 21:31:10 by jariza-o         ###   ########.fr        #
+#    Updated: 2024/02/08 15:54:24 by jariza-o         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,7 @@ SRC		=	src/main.c \
 			src/render/map/map.c src/render/minimap/player.c src/hooks/hooks.c src/hooks/move_hooks.c src/hooks/hooks_utils.c \
 			src/hooks/mouse.c src/hooks/update.c src/render/animations.c src/render/minimap/pos_map.c \
 			src/rays/pov.c src/rays/c_pixel.c src/rays/rays.c src/rays/rays_utils.c \
+			src/init_structs/map/init_map_2.c \
 
 OBJ		=	$(SRC:.c=.o)
 
