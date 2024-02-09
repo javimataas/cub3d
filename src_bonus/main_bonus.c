@@ -6,15 +6,15 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 19:32:55 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/02/08 22:09:50 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/02/09 13:28:30 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes_bonus/cub3d_bonus.h"
 
-void	ft_leaks(void)
+void	ft_leaks(void) //ELIMINAR
 {
-	system("leaks -q cub3d");
+	system("leaks -q cub3D_bonus");
 }
 
 void	ft_cub3d(t_game *game)
@@ -35,6 +35,7 @@ void	ft_cub3d(t_game *game)
 
 int	main(int argc, char **argv)
 {
+	atexit(ft_leaks);
 	t_game	*game;
 
 	game = NULL;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmatas-p <jmatas-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 18:07:15 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/02/07 19:17:39 by jmatas-p         ###   ########.fr       */
+/*   Updated: 2024/02/09 14:58:59 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static void	ft_check_pngpath(t_game *game)
 	aux = game->map->texts;
 	while (aux)
 	{
-		if (ft_check_png(aux->path) && (ft_strcmp(aux->id, "F")
+		if (!ft_check_png(aux->path) && (ft_strcmp(aux->id, "F")
 				&& ft_strcmp(aux->id, "C")))
 			ft_error(game, ERR_PNG_FAIL);
 		if (!ft_strcmp(aux->id, "F") || !ft_strcmp(aux->id, "C"))

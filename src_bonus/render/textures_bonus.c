@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 18:07:15 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/02/08 22:10:16 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/02/09 15:47:05 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static void	ft_check_pngpath(t_game *game)
 	aux = game->map->texts;
 	while (aux)
 	{
-		if (ft_check_png(aux->path) && (ft_strcmp(aux->id, "F")
+		if (!ft_check_png(aux->path) && (ft_strcmp(aux->id, "F")
 				&& ft_strcmp(aux->id, "C")))
 			ft_error(game, ERR_PNG_FAIL);
 		if (!ft_strcmp(aux->id, "F") || !ft_strcmp(aux->id, "C"))

@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:29:43 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/02/08 22:11:36 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/02/09 15:00:23 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int	ft_check_png(char *file)
 	i = 0;
 	while (file[i])
 		i++;
+	i--;
 	if (file[i] == 'g' && file[i - 1] == 'n'
 		&& file[i - 2] == 'p' && file[i - 3] == '.' && file[i - 4])
 		return (1);
