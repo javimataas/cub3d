@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:06:53 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/02/08 22:06:35 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/02/11 10:24:19 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ enum			e_datatype
 	ERR_WRNG_EXT,
 	ERR_MLLC_FAIL,
 	ERR_DUP_TEXTS,
+	ERR_DUP_TEXTS_2,
 	ERR_MISS_TEXTS,
 	ERR_EMPT_TEXTS,
 	ERR_MLX_FAIL,

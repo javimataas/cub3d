@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:21:05 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/02/08 22:11:39 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/02/11 11:08:34 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,11 @@ void	ft_error(t_game *game, int error)
 	}
 	else if (error == ERR_MLLC_FAIL)
 		printf("Error: Malloc fail\n");
+	else if (error == ERR_DUP_TEXTS_2)
+		printf("Error: A coordenate texture not is correct\n");
 	else if (error == ERR_DUP_TEXTS)
-		ft_texts_error(&flag, "Error: A coordenate texture is duplicated\n");
-	else if (error == ERR_MISS_TEXTS)
+		ft_texts_error(&flag, "Error: A coordenate texture is duplicated\n"); // DA LEAKS CUANDO intanta cargar y va mal
+	else if (error == ERR_MISS_TEXTS || error == ERR_WRNG_ID)
 		ft_texts_error(&flag, "Error: A coordenate texture is missing\n");
 	else if (error == ERR_EMPT_TEXTS)
 		printf("Error: A path texture is empty\n");
