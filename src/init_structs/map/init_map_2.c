@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 15:01:14 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/02/08 15:02:26 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/02/11 10:59:21 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,21 @@ char	*ft_get_id(t_game *game, char *line, int *i)
 	char	*id;
 
 	if (!ft_check_id(line))
+	{
+		printf("JBHJBHJBJ\n");
 		ft_error(game, ERR_WRNG_ID);
+	}
+	ft_printf("rrrrrr\n");
 	id = (char *)ft_calloc(3, sizeof(char));
 	if (!id)
 		return (NULL);
 	n = 0;
 	while (line && line[(*i)] && (line[(*i)] == ' ' || line[(*i)] == '\t'))
 		(*i)++;
-	while (line && line[(*i)] && (line[(*i)] != ' ' && line[(*i)] != '\t'))
+	while (n < 2 && line && line[(*i)] && (line[(*i)] != ' ' && line[(*i)] != '\t'))
 	{
 		id[n] = line[(*i)];
+		printf("ID N: %c\n", id[n]);
 		n++;
 		(*i)++;
 	}
@@ -70,6 +75,7 @@ void	ft_select_texts(t_game *game, char *line)
 
 	i = 0;
 	id = ft_get_id(game, line, &i);
+	ft_printf("JHJreergergrgerrgdgfdgdfgdfg\n");
 	while (line && line[i] && (line[i] == ' ' || line[i] == '\t'))
 		i++;
 	if (line[i] == '\0' || line[i] == '\n')

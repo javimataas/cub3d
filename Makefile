@@ -6,7 +6,7 @@
 #    By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/22 15:56:20 by jmatas-p          #+#    #+#              #
-#    Updated: 2024/02/09 15:04:23 by jariza-o         ###   ########.fr        #
+#    Updated: 2024/02/11 11:10:50 by jariza-o         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ HDRS		= 	includes
 LIBFT		=	libft/libft.a
 MLX42		=	MLX42/libmlx42.a
 
-CFLAGS		=	-Wall -Wextra -Werror
+CFLAGS		=	-Wall -Wextra -Werror -g
 GLFW_FLAGS	=	-framework Cocoa -framework OpenGL -framework IOKit -Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/"
 LINUX_DEP	=	$(PWD)/MLX42/libmlx42.a -Iinclude -ldl -lglfw -pthread -lm
 
@@ -94,7 +94,7 @@ fclean:		clean
 			@make fclean -C libft
 			@make fclean -C MLX42/
 			@echo "$(GREEN)All clear$(END)"
-fclean_bonus:		clean
+fclean_bonus:		clean_bonus
 			@rm -f $(NAME_BONUS)
 			@make fclean -C libft
 			@make fclean -C MLX42/
