@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:21:05 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/02/13 15:47:14 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/02/13 22:39:39 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,9 @@ void	ft_error(t_game *game, int error)
 	else if (error == ERR_DUP_TEXTS_2)
 		printf("Error: A coordenate texture not is correct\n");
 	else if (error == ERR_DUP_TEXTS)
-		ft_texts_error(&flag, "Error: A coordenate texture not is correct\n"); // DA LEAKS CUANDO intanta cargar y va mal
+		ft_texts_error(&flag, "Error: A coordenate texture not is correct\n");
 	else if (error == ERR_MISS_TEXTS || error == ERR_WRNG_ID)
 		ft_texts_error(&flag, "Error: A coordenate texture is missing\n");
-	else if (error == ERR_EMPT_TEXTS)
-		printf("Error: A path texture is empty\n");
 	else
 		ft_error_2(error, &flag);
 	ft_clear(game, flag);
@@ -53,7 +51,9 @@ void	ft_error(t_game *game, int error)
 
 static void	ft_error_2(int error, int *flag)
 {
-	if (error == ERR_PNG_FAIL)
+	if (error == ERR_EMPT_TEXTS)
+		printf("Error: A path texture is empty\n");
+	else if (error == ERR_PNG_FAIL)
 		ft_texts_error(flag, "Error: The texture file ins't .png");
 	else if (error == ERR_MLX_FAIL)
 		printf("Error: MLX fail\n");

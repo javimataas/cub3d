@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 19:14:05 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/02/13 15:25:51 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/02/13 22:43:10 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ void	ft_bg_map(t_game *game)
 void	ft_init_colormap(t_game *game)
 {
 	ft_pixel(game);
-	printf("INIT_COLOR_MAP\n");
 	game->map->img = mlx_new_image(game->mlx, game->final_s_width, S_HEIGHT);
 	if (!game->map->img)
 		ft_error(game, ERR_MLX_FAIL);

@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 15:37:57 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/02/13 21:24:46 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/02/13 22:42:13 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	ft_free_mlx_textures(t_game *game)
 	i = -1;
 	while (++i < 4 && game->textures[i])
 	{
-		//ft_printf("%s\n", game->textures[i]);
 		mlx_delete_texture(game->textures[i]);
 		game->textures[i] = NULL;
 	}
@@ -63,10 +62,7 @@ void	ft_clear(t_game *game, int flag)
 {
 	ft_free_t_map(game->map);
 	if (!flag)
-	{
-		printf("ENTRA\n");
 		ft_free_mlx_textures(game);
-	}
 	if (game->rays != NULL)
 		free (game->rays);
 	if (game->player != NULL)

@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:36:17 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/02/13 21:37:26 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/02/13 22:39:09 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,5 @@ void	ft_load_game_textures(t_game *game)
 	game->textures[3] = mlx_load_png(game->map->texts->next->next->next->path);
 	if (game->textures[0] == NULL || game->textures[1] == NULL
 		|| game->textures[2] == NULL || game->textures[3] == NULL)
-		return (ft_error(game, ERR_MLX_FAIL)); // TA DANDO LEAKS cuando la imagen no existe
+		return (ft_error(game, ERR_MLX_FAIL));
 }
