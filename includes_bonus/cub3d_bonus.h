@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:06:53 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/02/11 10:24:19 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/02/13 22:05:46 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,6 +163,7 @@ int				ft_check_png(char *file);
 
 /* Check Walls */
 int				ft_check_walls(t_game *game, char **map);
+void			ft_check_map_symbols(t_game *game);
 
 t_coord			ft_has_floor(char **map);
 void			ft_space_map(char **map);

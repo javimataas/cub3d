@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 16:49:36 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/02/08 20:47:36 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/02/13 21:57:24 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,6 @@ int	ft_check_walls(t_game *game, char **map)
 	i = ft_walls(aux);
 	if (i == 2)
 		ft_error(game, ERR_MAP_FAIL);
+	ft_check_map_symbols(game);
 	return (1);
 }

@@ -6,7 +6,7 @@
 #    By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/22 15:56:20 by jmatas-p          #+#    #+#              #
-#    Updated: 2024/02/11 11:10:50 by jariza-o         ###   ########.fr        #
+#    Updated: 2024/02/13 22:06:54 by jariza-o         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ SRC		=	src/main.c \
 			src/render/map/map.c src/hooks/hooks.c src/hooks/move_hooks.c src/hooks/hooks_utils.c \
 			src/hooks/update.c \
 			src/rays/pov.c src/rays/c_pixel.c src/rays/rays.c src/rays/rays_utils.c \
-			src/init_structs/map/init_map_2.c \
+			src/init_structs/map/init_map_2.c src/errors/map_checker/check_map.c \
 
 SRC_BONUS	=	src_bonus/main_bonus.c \
 			src_bonus/errors/error_bonus.c src_bonus/errors/map_checker/extensions_checker_bonus.c src_bonus/errors/map_checker/check_walls_bonus.c src_bonus/errors/map_checker/check_walls_2_bonus.c  \
@@ -51,7 +51,7 @@ SRC_BONUS	=	src_bonus/main_bonus.c \
 			src_bonus/render/map/map_bonus.c src_bonus/render/minimap/player_bonus.c src_bonus/hooks/hooks_bonus.c src_bonus/hooks/move_hooks_bonus.c src_bonus/hooks/hooks_utils_bonus.c \
 			src_bonus/hooks/mouse_bonus.c src_bonus/hooks/update_bonus.c src_bonus/render/animations_bonus.c src_bonus/render/minimap/pos_map_bonus.c \
 			src_bonus/rays/pov_bonus.c src_bonus/rays/c_pixel_bonus.c src_bonus/rays/rays_bonus.c src_bonus/rays/rays_utils_bonus.c \
-			src_bonus/init_structs/map/init_map_2_bonus.c \
+			src_bonus/init_structs/map/init_map_2_bonus.c src_bonus/errors/map_checker/check_map_bonus.c \
 
 OBJ		=	$(SRC:.c=.o)
 
