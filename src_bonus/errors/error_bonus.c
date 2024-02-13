@@ -6,13 +6,13 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:21:05 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/02/11 11:08:34 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/02/13 08:45:57 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes_bonus/cub3d_bonus.h"
 
-static void	ft_error_2(int error);
+static void	ft_error_2(int error, int *flag);
 
 void	ft_texts_error(int *flag, char *error)
 {
@@ -46,21 +46,21 @@ void	ft_error(t_game *game, int error)
 	else if (error == ERR_EMPT_TEXTS)
 		printf("Error: A path texture is empty\n");
 	else
-		ft_error_2(error);
+		ft_error_2(error, &flag);
 	ft_clear(game, flag);
 	exit(1);
 }
 
-static void	ft_error_2(int error)
+static void	ft_error_2(int error, int *flag)
 {
-	if (error == ERR_MLX_FAIL)
+	if (error == ERR_PNG_FAIL)
+		ft_texts_error(flag, "Error: The texture file ins't .png");
+	else if (error == ERR_MLX_FAIL)
 		printf("Error: MLX fail\n");
 	else if (error == ERR_MAP_FAIL)
 		printf("Error: Invalid map\n");
 	else if (error == ERR_NO_PLAYER)
 		printf("Error: No player found in the map\n");
-	else if (error == ERR_PNG_FAIL)
-		printf("Error: The texture file ins't .png");
 	else if (error == ERR_COLOR_FAIL)
 		printf("Error: The color for the texture is incorrect");
 }
