@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 19:32:55 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/02/12 15:53:52 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/02/13 15:49:31 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,7 @@ void	ft_cub3d(t_game *game)
 {
 	game->mlx = mlx_init(game->final_s_width, S_HEIGHT, "Cub3D", false);
 	if (!game->mlx)
-	{
-		printf("MAIN\n");
 		ft_error(game, ERR_MLX_FAIL);
-	}
 	mlx_loop_hook(game->mlx, &ft_update, (void *)(game));
 	mlx_key_hook(game->mlx, &ft_move_player, (void *)(game));
 	ft_load_textures(game);
@@ -36,7 +33,7 @@ void	ft_cub3d(t_game *game)
 
 int	main(int argc, char **argv)
 {
-	// atexit(ft_leaks);
+	atexit(ft_leaks);
 	t_game	*game;
 	game = NULL;
 	if (argc == 2)
@@ -44,7 +41,6 @@ int	main(int argc, char **argv)
 		if (ft_check_cub(argv[1]) && ft_check_file(argv[1]))
 		{
 			game = ft_init_map(argv[1]);
-				printf("!!22323\n");
 			if (ft_check_player(game)
 				&& ft_check_walls(game, game->map->map))
 				ft_cub3d(game);

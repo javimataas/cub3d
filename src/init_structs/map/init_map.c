@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 16:57:41 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/02/11 11:23:34 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/02/13 15:41:23 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	ft_load_struct(t_game *game)
 			if (!ft_is_texts(game->file[i]))
 				break ;
 			ft_select_texts(game, game->file[i]);
-			printf("ARASTEPA\n");
 			i++;
 		}
 	}

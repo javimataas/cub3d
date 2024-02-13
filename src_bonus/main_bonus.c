@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 19:32:55 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/02/12 16:45:45 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/02/13 15:34:28 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_cub3d(t_game *game)
 
 int	main(int argc, char **argv)
 {
-	// atexit(ft_leaks);
+	atexit(ft_leaks);
 	t_game	*game;
 
 	game = NULL;
