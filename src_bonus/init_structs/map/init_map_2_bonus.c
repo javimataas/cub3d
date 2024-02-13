@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 15:01:14 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/02/11 10:58:29 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/02/13 15:46:48 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	ft_select_texts(t_game *game, char *line)
 	while (line && line[i] && (line[i] == ' ' || line[i] == '\t'))
 		i++;
 	if (line[i] == '\0' || line[i] == '\n')
-		ft_error(game, ERR_EMPT_TEXTS);
+		ft_error(game, ERR_DUP_TEXTS);
 	n = i;
 	len = ft_get_len(line, &i);
 	aux = game->map->texts;

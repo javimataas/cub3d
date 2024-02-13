@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 17:34:43 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/02/08 22:10:57 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/02/12 16:46:54 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ t_game	*ft_init_map(char *path)
 	game->rays = malloc(sizeof(t_rays) * game->pov_ang);
 	ft_init_map_textures(game);
 	ft_load_struct(game);
+				printf("JGBGBJGJJBGHJBGHJB\n");
 	ft_load_game_textures(game);
 	ft_reserve_map(game);
 	ft_load_map(game);

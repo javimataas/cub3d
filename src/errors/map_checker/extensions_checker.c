@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:29:43 by jmatas-p          #+#    #+#             */
-/*   Updated: 2024/02/09 14:54:46 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/02/13 15:23:19 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int	ft_check_png(char *file)
 	int	i;
 
 	i = 0;
-	printf("PATH: %s\n", file);
 	while (file[i])
 		i++;
 	i--;
