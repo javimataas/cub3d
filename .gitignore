@@ -2,6 +2,10 @@
 cub3D
 cub3D_bonus
 
+# MLX FILES
+MLX42/src/mlx_frag_shader.c
+MLX42/src/mlx_vert_shader.c
+
 # VsCode
 .vscode
 

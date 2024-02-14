@@ -6,7 +6,7 @@
 /*   By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 15:01:14 by jariza-o          #+#    #+#             */
-/*   Updated: 2024/02/13 22:38:28 by jariza-o         ###   ########.fr       */
+/*   Updated: 2024/02/14 15:59:24 by jariza-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,7 @@ char	*ft_get_id(t_game *game, char *line, int *i)
 	char	*id;
 
 	if (!ft_check_id(line))
-	{
-		printf("JBHJBHJBJ\n");
 		ft_error(game, ERR_WRNG_ID);
-	}
 	id = (char *)ft_calloc(3, sizeof(char));
 	if (!id)
 		return (NULL);
