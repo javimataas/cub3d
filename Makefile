@@ -6,7 +6,7 @@
 #    By: jariza-o <jariza-o@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/22 15:56:20 by jmatas-p          #+#    #+#              #
-#    Updated: 2024/02/13 22:06:54 by jariza-o         ###   ########.fr        #
+#    Updated: 2024/02/14 16:28:31 by jariza-o         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,24 +83,15 @@ $(MLX42):
 clean:
 			@make clean -C libft
 			@make clean -C MLX42/
-			@rm -f $(OBJ)
-clean_bonus:
-			@make clean -C libft
-			@make clean -C MLX42/
-			@rm -f $(OBJT_BONUS)
+			@rm -f $(OBJ) $(OBJT_BONUS)
 
 fclean:		clean
-			@rm -f $(NAME)
-			@make fclean -C libft
-			@make fclean -C MLX42/
-			@echo "$(GREEN)All clear$(END)"
-fclean_bonus:		clean_bonus
-			@rm -f $(NAME_BONUS)
+			@rm -f $(NAME) $(NAME_BONUS)
 			@make fclean -C libft
 			@make fclean -C MLX42/
 			@echo "$(GREEN)All clear$(END)"
 
-bonus:		fclean fclean_bonus $(NAME_BONUS)
+bonus:		fclean $(NAME_BONUS)
 ifeq ($(shell uname -s), Darwin)
 $(NAME_BONUS):	$(LIBFT) $(MLX42) $(OBJT_BONUS)
 			@gcc $(CFLAGS) $(OBJT_BONUS) -I $(HDRS) $(LIBFT) $(MLX42) $(GLFW_FLAGS) -o $(NAME_BONUS)
@@ -111,9 +102,7 @@ $(NAME_BONUS):	$(LIBFT) $(MLX42) $(OBJT_BONUS)
 			@echo "$(GREEN)$(NAME) compiled successfully$(END)"
 endif
 
-re:			fclean fclean_bonus all
-
-re_bonus:	fclean fclean_bonus bonus
+re:			fclean all
 
 norminette:	
 			@echo "$(YELLOW)Norminette libft.$(END)"
@@ -125,4 +114,4 @@ norminette:
 			@norminette ./includes_bonus
 			@norminette ./src_bonus
 
-.PHONY: all clean clean_bonus fclean fclean_bonus bonus re re_bonus norminette
+.PHONY: all clean fclean bonus re norminette
